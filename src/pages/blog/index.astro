@@ -1,0 +1,121 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog', ({ data }) => {
+    return data.draft !== true;
+});
+
+allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<Layout title="Blog | Build Your Business" description="Read practical articles and guides about building and managing a business.">
+    <div class="blog-index">
+        <div class="container">
+            <header class="page-header">
+                <h1>Blog</h1>
+                <p>Practical guides, strategies, and systems for building a successful business.</p>
+            </header>
+
+            <div class="post-list">
+                {allPosts.map(post => (
+                    <article class="post-card">
+                        <span class="category">{post.data.category}</span>
+                        <h2><a href={`/blog/${post.id}`}>{post.data.title}</a></h2>
+                        <div class="meta">
+                            <time datetime={post.data.pubDate.toISOString()}>
+                                {post.data.pubDate.toLocaleDateString('en-US', {
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: 'numeric',
+                                })}
+                            </time>
+                            <span class="author">By {post.data.author}</span>
+                        </div>
+                        <p class="description">{post.data.description}</p>
+                        <a href={`/blog/${post.id}`} class="read-more">Read article &rarr;</a>
+                    </article>
+                ))}
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 4rem 1rem;
+    }
+    .page-header {
+        margin-bottom: 4rem;
+        border-bottom: 1px solid #eaeaea;
+        padding-bottom: 2rem;
+    }
+    .page-header h1 {
+        font-size: 3rem;
+        margin: 0 0 1rem;
+        color: #111827;
+    }
+    .page-header p {
+        font-size: 1.25rem;
+        color: #4b5563;
+        margin: 0;
+    }
+    .post-list {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
+    .post-card {
+        padding: 2rem;
+        border: 1px solid #eaeaea;
+        border-radius: 8px;
+        background: #ffffff;
+        transition: box-shadow 0.2s ease;
+    }
+    .post-card:hover {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+    .category {
+        display: inline-block;
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #6b7280;
+        margin-bottom: 0.75rem;
+    }
+    .post-card h2 {
+        font-size: 1.75rem;
+        margin: 0 0 1rem;
+    }
+    .post-card h2 a {
+        color: #111827;
+        text-decoration: none;
+    }
+    .post-card h2 a:hover {
+        text-decoration: underline;
+    }
+    .meta {
+        font-size: 0.95rem;
+        color: #6b7280;
+        margin-bottom: 1rem;
+        display: flex;
+        gap: 1rem;
+    }
+    .description {
+        font-size: 1.125rem;
+        color: #4b5563;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+    .read-more {
+        display: inline-block;
+        font-weight: 500;
+        color: #111827;
+        text-decoration: none;
+    }
+    .read-more:hover {
+        text-decoration: underline;
+    }
+</style>

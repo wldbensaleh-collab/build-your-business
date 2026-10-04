@@ -1,11 +1,264 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Build Your Business | Practical Guidance for Entrepreneurs" description="Practical guidance on building, managing, and growing a business using strategy, systems, technology, and practical execution.">
+    <div class="homepage">
+        <!-- 1. HERO SECTION -->
+        <section class="hero">
+            <div class="container">
+                <span class="eyebrow">BUILD. MANAGE. GROW.</span>
+                <h1>Build a Business That Actually Works.</h1>
+                <p class="subtitle">
+                    Practical guidance on building, managing, and growing a business using strategy, systems, technology, and practical execution.
+                </p>
+                <div class="cta-group">
+                    <a href="/blog" class="button button-primary">Explore the Blog</a>
+                    <a href="/guides" class="button button-secondary">Explore Guides</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. WHAT YOU'LL FIND -->
+        <section class="features bg-light">
+            <div class="container">
+                <h2 class="section-title">What You'll Find</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Business Fundamentals</h3>
+                        <p>Practical foundations for starting and understanding a business.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Systems &amp; Management</h3>
+                        <p>Processes, organization, operations, and management.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Technology &amp; Digital Tools</h3>
+                        <p>How technology and information systems can help businesses work better.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Growth &amp; Income</h3>
+                        <p>Practical approaches to finding opportunities, creating value, and growing sustainably.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. LATEST / FEATURED CONTENT PLACEHOLDER -->
+        <section class="content-placeholder">
+            <div class="container text-center">
+                <h2 class="section-title">Learn Something Useful</h2>
+                <p class="section-desc">
+                    We will be publishing practical articles, guides, and resources here soon. 
+                    Check back for realistic advice and actionable insights.
+                </p>
+                <a href="/blog" class="button button-secondary">Visit the Blog</a>
+            </div>
+        </section>
+
+        <!-- 4. WHY THIS WEBSITE -->
+        <section class="philosophy bg-light">
+            <div class="container text-center">
+                <h2 class="section-title">Learn &rarr; Build &rarr; Publish &rarr; Improve</h2>
+                <p class="section-desc">
+                    Our philosophy is simple: practical learning comes through execution. 
+                    We cut through the noise and empty motivational content to focus on the actual mechanics of building and running a business.
+                </p>
+            </div>
+        </section>
+
+        <!-- 5. FINAL CTA -->
+        <section class="final-cta">
+            <div class="container text-center">
+                <h2>Start Building.</h2>
+                <p class="section-desc">
+                    Explore the guides, learn the fundamentals, and start turning ideas into something real.
+                </p>
+                <a href="/guides" class="button button-primary">Start Exploring</a>
+            </div>
+        </section>
+    </div>
 </Layout>
+
+<style>
+    /* Scope styles for the homepage */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+    
+    .text-center {
+        text-align: center;
+    }
+
+    section {
+        padding: 5rem 0;
+    }
+    
+    .bg-light {
+        background-color: #fafafa;
+        border-top: 1px solid #eaeaea;
+        border-bottom: 1px solid #eaeaea;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        color: #111827;
+    }
+    
+    .section-desc {
+        font-size: 1.125rem;
+        color: #4b5563;
+        max-width: 600px;
+        margin: 0 auto 2rem;
+        line-height: 1.7;
+    }
+
+    /* Buttons */
+    .button {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 500;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        cursor: pointer;
+    }
+    
+    .button-primary {
+        background-color: #111827;
+        color: #ffffff;
+        border: 1px solid #111827;
+    }
+    
+    .button-primary:hover {
+        background-color: #374151;
+        color: #ffffff;
+    }
+    
+    .button-secondary {
+        background-color: #ffffff;
+        color: #111827;
+        border: 1px solid #d1d5db;
+    }
+    
+    .button-secondary:hover {
+        background-color: #f3f4f6;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 6rem 0 5rem;
+        text-align: center;
+    }
+    
+    .eyebrow {
+        display: inline-block;
+        font-size: 0.875rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        color: #6b7280;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+    }
+    
+    .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        line-height: 1.1;
+        color: #111827;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.02em;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .hero .subtitle {
+        font-size: 1.25rem;
+        color: #4b5563;
+        max-width: 650px;
+        margin: 0 auto 2.5rem;
+        line-height: 1.6;
+    }
+    
+    .cta-group {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* Grid & Cards */
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+    
+    .card {
+        background: #ffffff;
+        border: 1px solid #eaeaea;
+        border-radius: 8px;
+        padding: 2rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    }
+    
+    .card h3 {
+        font-size: 1.25rem;
+        margin-top: 0;
+        margin-bottom: 0.75rem;
+        color: #111827;
+    }
+    
+    .card p {
+        margin: 0;
+        color: #4b5563;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    /* Final CTA */
+    .final-cta h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        color: #111827;
+    }
+
+    @media (max-width: 768px) {
+        .hero {
+            padding: 4rem 0 3rem;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+        }
+        .hero .subtitle {
+            font-size: 1.125rem;
+        }
+        .section-title {
+            font-size: 1.75rem;
+        }
+        .final-cta h2 {
+            font-size: 2rem;
+        }
+        .cta-group {
+            flex-direction: column;
+        }
+        .cta-group .button {
+            width: 100%;
+        }
+    }
+</style>

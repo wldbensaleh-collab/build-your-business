@@ -1,0 +1,103 @@
+---
+const currentYear = new Date().getFullYear();
+---
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="brand-info">
+                <h2>Build Your Business</h2>
+                <p>Learn how to build, manage, and grow a successful business from the ground up.</p>
+            </div>
+            <div class="footer-links">
+                <nav aria-label="Footer Navigation">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/guides">Guides</a></li>
+                        <li><a href="/resources">Resources</a></li>
+                        <li><a href="/about">About</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; {currentYear} Build Your Business. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<style>
+    .site-footer {
+        border-top: 1px solid #eaeaea;
+        padding: 3rem 0 1.5rem;
+        background-color: #fafafa;
+        margin-top: 4rem;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+    }
+    .brand-info {
+        max-width: 400px;
+    }
+    .brand-info h2 {
+        font-size: 1.25rem;
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        color: #111827;
+    }
+    .brand-info p {
+        color: #6b7280;
+        font-size: 0.95rem;
+        margin: 0;
+        line-height: 1.5;
+    }
+    .footer-links ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .footer-links a {
+        color: #4b5563;
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: color 0.2s ease;
+    }
+    .footer-links a:hover {
+        color: #111827;
+    }
+    .copyright {
+        border-top: 1px solid #eaeaea;
+        padding-top: 1.5rem;
+        text-align: center;
+        color: #9ca3af;
+        font-size: 0.875rem;
+    }
+    .copyright p {
+        margin: 0;
+    }
+
+    @media (max-width: 768px) {
+        .footer-content {
+            flex-direction: column;
+            text-align: center;
+        }
+        .footer-links ul {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+    }
+</style>
