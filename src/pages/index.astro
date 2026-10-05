@@ -1,44 +1,77 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog', ({ data }) => {
+    return data.draft !== true;
+});
+
+allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const latestPosts = allPosts.slice(0, 3);
 ---
 
-<Layout title="Build Your Business | Practical Guidance for Entrepreneurs" description="Practical guidance on building, managing, and growing a business using strategy, systems, technology, and practical execution.">
+<Layout title="Build Your Business | Start Lean, Grow Smart" description="Practical guidance on building, managing, and growing a business using strategy, systems, technology, and practical execution.">
     <div class="homepage">
+        
         <!-- 1. HERO SECTION -->
         <section class="hero">
-            <div class="container">
-                <span class="eyebrow">BUILD. MANAGE. GROW.</span>
-                <h1>Build a Business That Actually Works.</h1>
+            <div class="hero-bg-glow"></div>
+            <div class="container reveal">
+                <span class="eyebrow">The Entrepreneur's Playbook</span>
+                <h1>Build smarter<br/><span class="text-gradient">Start lean</span><br/>Grow a real business</h1>
                 <p class="subtitle">
-                    Practical guidance on building, managing, and growing a business using strategy, systems, technology, and practical execution.
+                    Cut through the noise. Get practical guidance on building, managing, and growing a profitable business through systems, execution, and strategy.
                 </p>
                 <div class="cta-group">
-                    <a href="/blog" class="button button-primary">Explore the Blog</a>
-                    <a href="/guides" class="button button-secondary">Explore Guides</a>
+                    <a href="/blog" class="btn btn-accent">Start Here</a>
+                    <a href="/guides" class="btn btn-outline">Explore Articles</a>
                 </div>
             </div>
+            
+            <!-- Abstract decorative elements -->
+            <div class="decoration dec-1"></div>
+            <div class="decoration dec-2"></div>
         </section>
 
         <!-- 2. WHAT YOU'LL FIND -->
-        <section class="features bg-light">
+        <section class="features bg-alt">
             <div class="container">
-                <h2 class="section-title">What You'll Find</h2>
-                <div class="grid">
-                    <div class="card">
+                <h2 class="section-title reveal">What You'll Find</h2>
+                <div class="pillars-grid">
+                    <div class="card pillar-card reveal">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                        </div>
                         <h3>Business Fundamentals</h3>
-                        <p>Practical foundations for starting and understanding a business.</p>
+                        <p>Understand how businesses make money, choose business models, price offers, and build solid foundations.</p>
                     </div>
-                    <div class="card">
-                        <h3>Systems &amp; Management</h3>
-                        <p>Processes, organization, operations, and management.</p>
+                    <div class="card pillar-card reveal" style="transition-delay: 100ms;">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                        </div>
+                        <h3>Starting a Business</h3>
+                        <p>Go from a business idea to validation, your first offer, and your first customer.</p>
                     </div>
-                    <div class="card">
-                        <h3>Technology &amp; Digital Tools</h3>
-                        <p>How technology and information systems can help businesses work better.</p>
+                    <div class="card pillar-card reveal" style="transition-delay: 200ms;">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        </div>
+                        <h3>Making Money</h3>
+                        <p>Learn practical ways to earn through services, skills, pricing, and sustainable revenue streams.</p>
                     </div>
-                    <div class="card">
-                        <h3>Growth &amp; Income</h3>
-                        <p>Practical approaches to finding opportunities, creating value, and growing sustainably.</p>
+                    <div class="card pillar-card reveal" style="transition-delay: 300ms;">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                        </div>
+                        <h3>Business Management & Systems</h3>
+                        <p>Build better processes, systems, automation, ERP workflows, and measurable operations.</p>
+                    </div>
+                    <div class="card pillar-card reveal" style="transition-delay: 400ms;">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                        </div>
+                        <h3>Growing a Business</h3>
+                        <p>Learn marketing, sales, customer acquisition, retention, and sustainable scaling.</p>
                     </div>
                 </div>
             </div>
@@ -46,46 +79,79 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- 3. LATEST / FEATURED CONTENT PLACEHOLDER -->
         <section class="content-placeholder">
-            <div class="container text-center">
-                <h2 class="section-title">Learn Something Useful</h2>
-                <p class="section-desc">
-                    We will be publishing practical articles, guides, and resources here soon. 
-                    Check back for realistic advice and actionable insights.
-                </p>
-                <a href="/blog" class="button button-secondary">Visit the Blog</a>
+            <div class="container">
+                <div class="text-center reveal">
+                    <h2 class="section-title">Learn Something Useful Today</h2>
+                    <p class="section-desc">
+                        Explore our latest deep-dives, step-by-step guides, and practical resources designed for the modern founder.
+                    </p>
+                </div>
+                
+                <div class="post-grid">
+                    {latestPosts.map((post, index) => (
+                        <article class="card article-card reveal" style={`transition-delay: ${index * 100}ms`}>
+                            <div class="card-content">
+                                <span class="category-badge">{post.data.category}</span>
+                                <h3><a href={`/blog/${post.id}`}>{post.data.title}</a></h3>
+                                <p class="description">{post.data.description}</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href={`/blog/${post.id}`} class="read-more-text">Read Article &rarr;</a>
+                            </div>
+                        </article>
+                    ))}
+                </div>
+                
+                <div class="text-center" style="margin-top: 3rem;">
+                    <a href="/blog" class="btn btn-primary">View All Articles</a>
+                </div>
             </div>
         </section>
 
         <!-- 4. WHY THIS WEBSITE -->
-        <section class="philosophy bg-light">
-            <div class="container text-center">
+        <section class="philosophy bg-alt">
+            <div class="container text-center reveal">
                 <h2 class="section-title">Learn &rarr; Build &rarr; Publish &rarr; Improve</h2>
                 <p class="section-desc">
-                    Our philosophy is simple: practical learning comes through execution. 
-                    We cut through the noise and empty motivational content to focus on the actual mechanics of building and running a business.
+                    Our philosophy is simple: real learning comes through execution. We ignore empty motivational fluff and focus strictly on the actual mechanics of running a successful business.
                 </p>
             </div>
         </section>
 
         <!-- 5. FINAL CTA -->
         <section class="final-cta">
-            <div class="container text-center">
-                <h2>Start Building.</h2>
+            <div class="container text-center reveal">
+                <h2>Ready to Start Building?</h2>
                 <p class="section-desc">
-                    Explore the guides, learn the fundamentals, and start turning ideas into something real.
+                    Join thousands of entrepreneurs learning how to build better businesses.
                 </p>
-                <a href="/guides" class="button button-primary">Start Exploring</a>
+                <a href="/blog" class="btn btn-accent">Start Exploring</a>
             </div>
         </section>
     </div>
 </Layout>
+
+<script>
+    // Scroll reveal logic
+    document.addEventListener("DOMContentLoaded", () => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
+</script>
 
 <style>
     /* Scope styles for the homepage */
     .container {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 0 1rem;
+        padding: 0 var(--space-3);
     }
     
     .text-center {
@@ -93,172 +159,298 @@ import Layout from '../layouts/Layout.astro';
     }
 
     section {
-        padding: 5rem 0;
+        padding: var(--space-12) 0;
+        position: relative;
+        overflow: hidden;
     }
     
-    .bg-light {
-        background-color: #fafafa;
-        border-top: 1px solid #eaeaea;
-        border-bottom: 1px solid #eaeaea;
+    .bg-alt {
+        background-color: var(--color-bg-alt);
+        border-top: 1px solid var(--color-border);
+        border-bottom: 1px solid var(--color-border);
     }
 
     .section-title {
-        font-size: 2rem;
+        font-size: clamp(2rem, 4vw, 2.5rem);
         margin-top: 0;
-        margin-bottom: 1.5rem;
-        color: #111827;
+        margin-bottom: var(--space-3);
     }
     
     .section-desc {
         font-size: 1.125rem;
-        color: #4b5563;
-        max-width: 600px;
-        margin: 0 auto 2rem;
+        color: var(--color-text-muted);
+        max-width: 650px;
+        margin: 0 auto var(--space-4);
         line-height: 1.7;
-    }
-
-    /* Buttons */
-    .button {
-        display: inline-block;
-        padding: 0.75rem 1.5rem;
-        font-size: 1rem;
-        font-weight: 500;
-        text-decoration: none;
-        border-radius: 6px;
-        transition: all 0.2s ease;
-        cursor: pointer;
-    }
-    
-    .button-primary {
-        background-color: #111827;
-        color: #ffffff;
-        border: 1px solid #111827;
-    }
-    
-    .button-primary:hover {
-        background-color: #374151;
-        color: #ffffff;
-    }
-    
-    .button-secondary {
-        background-color: #ffffff;
-        color: #111827;
-        border: 1px solid #d1d5db;
-    }
-    
-    .button-secondary:hover {
-        background-color: #f3f4f6;
     }
 
     /* Hero Section */
     .hero {
-        padding: 6rem 0 5rem;
+        padding: var(--space-16) 0 var(--space-12);
         text-align: center;
+        background: var(--gradient-hero-bg);
+    }
+    
+    .hero-bg-glow {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 800px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(37,99,235,0.15) 0%, rgba(255,255,255,0) 70%);
+        z-index: -1;
+    }
+    
+    .decoration {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(40px);
+        z-index: -2;
+        opacity: 0.5;
+    }
+    
+    .dec-1 {
+        width: 300px;
+        height: 300px;
+        background: rgba(139, 92, 246, 0.2);
+        top: -100px;
+        right: -100px;
+        animation: float 10s ease-in-out infinite;
+    }
+    
+    .dec-2 {
+        width: 250px;
+        height: 250px;
+        background: rgba(37, 99, 235, 0.2);
+        bottom: 50px;
+        left: -50px;
+        animation: float 12s ease-in-out infinite reverse;
+    }
+    
+    @keyframes float {
+        0% { transform: translateY(0) scale(1); }
+        50% { transform: translateY(-20px) scale(1.05); }
+        100% { transform: translateY(0) scale(1); }
     }
     
     .eyebrow {
         display: inline-block;
         font-size: 0.875rem;
-        font-weight: 600;
+        font-weight: 700;
         letter-spacing: 0.05em;
-        color: #6b7280;
+        color: var(--color-brand-accent);
         text-transform: uppercase;
-        margin-bottom: 1rem;
+        margin-bottom: var(--space-3);
+        background: rgba(37, 99, 235, 0.1);
+        padding: 6px 12px;
+        border-radius: 20px;
     }
     
     .hero h1 {
-        font-size: 3.5rem;
-        font-weight: 800;
-        line-height: 1.1;
-        color: #111827;
-        margin-top: 0;
-        margin-bottom: 1.5rem;
-        letter-spacing: -0.02em;
-        max-width: 800px;
+        margin-bottom: var(--space-4);
+        max-width: 900px;
         margin-left: auto;
         margin-right: auto;
     }
     
+    .text-gradient {
+        background: var(--gradient-accent);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
     .hero .subtitle {
         font-size: 1.25rem;
-        color: #4b5563;
+        color: var(--color-text-muted);
         max-width: 650px;
-        margin: 0 auto 2.5rem;
-        line-height: 1.6;
+        margin: 0 auto var(--space-6);
     }
     
     .cta-group {
         display: flex;
-        gap: 1rem;
+        gap: var(--space-3);
         justify-content: center;
         flex-wrap: wrap;
     }
 
     /* Grid & Cards */
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        margin-top: 3rem;
+    .pillars-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--space-6);
+        margin-top: var(--space-8);
     }
     
-    .card {
-        background: #ffffff;
-        border: 1px solid #eaeaea;
-        border-radius: 8px;
-        padding: 2rem;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    .pillar-card {
+        flex: 1 1 calc(33.333% - var(--space-6));
+        min-width: 280px;
+        max-width: 380px;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        border-top: 3px solid transparent;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
     
-    .card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    .pillar-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+        border-top-color: var(--color-brand-accent);
     }
     
-    .card h3 {
+    .pillar-card:nth-child(1) { border-top-color: var(--color-brand-primary); }
+    .pillar-card:nth-child(2) { border-top-color: var(--color-brand-accent); }
+    .pillar-card:nth-child(3) { border-top-color: var(--color-success); }
+    .pillar-card:nth-child(4) { border-top-color: var(--color-brand-purple); }
+    .pillar-card:nth-child(5) { border-top-color: var(--color-warning); }
+    
+    .pillar-card:hover:nth-child(1) { border-top-color: var(--color-brand-primary); }
+    .pillar-card:hover:nth-child(2) { border-top-color: var(--color-brand-accent); }
+    .pillar-card:hover:nth-child(3) { border-top-color: var(--color-success); }
+    .pillar-card:hover:nth-child(4) { border-top-color: var(--color-brand-purple); }
+    .pillar-card:hover:nth-child(5) { border-top-color: var(--color-warning); }
+    
+    .card-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        border-radius: var(--radius-md);
+        background: var(--color-bg-alt);
+        color: var(--color-brand-primary);
+        margin-bottom: var(--space-4);
+        border: 1px solid var(--color-border);
+    }
+    
+    .pillar-card h3 {
+        margin-bottom: var(--space-2);
         font-size: 1.25rem;
-        margin-top: 0;
-        margin-bottom: 0.75rem;
-        color: #111827;
     }
     
-    .card p {
-        margin: 0;
-        color: #4b5563;
+    .pillar-card p {
+        color: var(--color-text-muted);
         font-size: 0.95rem;
         line-height: 1.6;
     }
 
     /* Final CTA */
+    .final-cta {
+        background: var(--color-brand-primary);
+        color: #fff;
+    }
+    
     .final-cta h2 {
-        font-size: 2.5rem;
+        color: #fff;
+    }
+    
+    .final-cta .section-desc {
+        color: var(--color-text-light);
+    }
+    
+    /* Homepage Blog Cards */
+    .post-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: var(--space-6);
+        margin-top: var(--space-8);
+        text-align: left;
+    }
+    
+    .article-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 0;
+        overflow: hidden;
+    }
+    
+    .card-content {
+        padding: var(--space-4) var(--space-4) 0;
+        flex-grow: 1;
+    }
+    
+    .category-badge {
+        display: inline-block;
+        font-size: 0.75rem;
         font-weight: 700;
-        margin-top: 0;
-        margin-bottom: 1rem;
-        color: #111827;
+        text-transform: uppercase;
+        color: var(--color-brand-purple);
+        background: rgba(139, 92, 246, 0.1);
+        padding: 4px 10px;
+        border-radius: 20px;
+        margin-bottom: var(--space-3);
+    }
+    
+    .article-card h3 {
+        font-size: 1.25rem;
+        margin-bottom: var(--space-2);
+        line-height: 1.3;
+    }
+    
+    .article-card h3 a {
+        color: var(--color-brand-primary);
+    }
+    
+    .article-card h3 a:hover {
+        color: var(--color-brand-accent);
+    }
+    
+    .article-card h3 a::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+    }
+    
+    .description {
+        font-size: 1rem;
+        color: var(--color-text-muted);
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    
+    .card-footer {
+        padding: var(--space-4);
+        margin-top: var(--space-2);
+    }
+    
+    .read-more-text {
+        font-weight: 600;
+        color: var(--color-brand-accent);
+        font-size: 0.875rem;
+        position: relative;
+        z-index: 2;
+    }
+    
+    .read-more-text:hover {
+        color: var(--color-brand-primary);
+    }
+
+    @media (max-width: 992px) {
+        .pillar-card {
+            flex: 1 1 calc(50% - var(--space-6));
+            max-width: none;
+        }
     }
 
     @media (max-width: 768px) {
         .hero {
-            padding: 4rem 0 3rem;
-        }
-        .hero h1 {
-            font-size: 2.5rem;
-        }
-        .hero .subtitle {
-            font-size: 1.125rem;
-        }
-        .section-title {
-            font-size: 1.75rem;
-        }
-        .final-cta h2 {
-            font-size: 2rem;
+            padding: var(--space-12) 0 var(--space-8);
         }
         .cta-group {
             flex-direction: column;
         }
-        .cta-group .button {
+        .cta-group .btn {
             width: 100%;
+        }
+        .pillar-card {
+            flex: 1 1 100%;
         }
     }
 </style>

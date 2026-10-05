@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 630" width="1200" height="630">
+    <defs>
+        <style>
+            .headline { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 84px; font-weight: 800; fill: #001F3F; letter-spacing: -0.03em; }
+            .tagline { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 48px; font-weight: 700; fill: #0074D9; letter-spacing: -0.01em; }
+            .supporting { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 32px; font-weight: 400; fill: #334155; line-height: 1.5; }
+        </style>
+        <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#0074D9" stop-opacity="0.08" />
+            <stop offset="100%" stop-color="#001F3F" stop-opacity="0.0" />
+        </linearGradient>
+    </defs>
+    
+    <!-- Background -->
+    <rect width="1200" height="630" fill="#ffffff" />
+    
+    <!-- Abstract subtle editorial glow -->
+    <circle cx="1000" cy="100" r="500" fill="url(#glow)" />
+    <circle cx="200" cy="630" r="400" fill="url(#glow)" />
+    
+    <!-- Top accent border -->
+    <rect width="1200" height="12" fill="#001F3F" />
+    <rect width="400" height="12" fill="#0074D9" />
+    
+    <!-- Content Container -->
+    <g transform="translate(100, 120)">
+        
+        <!-- Logo -->
+        <!-- Uses relative path to resolve beside this SVG in the /brand/ folder -->
+        <image href="build-your-business-logo.png" xlink:href="build-your-business-logo.png" x="0" y="0" width="360" height="80" preserveAspectRatio="xMinYMin meet" />
+        
+        <!-- Main Headline -->
+        <text x="0" y="240" class="headline">
+            Build Your Business
+        </text>
+        
+        <!-- Supporting Tagline -->
+        <text x="0" y="320" class="tagline">
+            Start Lean. Grow Smart.
+        </text>
+        
+        <!-- Small Supporting Text -->
+        <text x="0" y="410" class="supporting">
+            Practical guidance for building, managing,
+        </text>
+        <text x="0" y="460" class="supporting">
+            and growing a real business.
+        </text>
+    </g>
+</svg>

@@ -6,12 +6,27 @@ import '../styles/global.css';
 interface Props {
     title?: string;
     description?: string;
+    ogType?: string;
+    image?: string;
+    articleMetadata?: {
+        publishedTime?: string;
+        author?: string;
+        section?: string;
+    };
+    schema?: string;
 }
 
 const {
     title = 'Build Your Business',
     description = 'Learn how to build, manage, and grow a business.',
+    ogType = 'website',
+    image = '/brand/build-your-business-og.svg',
+    articleMetadata,
+    schema,
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url);
+const socialImageURL = new URL(image, Astro.site || Astro.url);
 ---
 
 <!doctype html>
@@ -22,6 +37,31 @@ const {
 
         <title>{title}</title>
         <meta name="description" content={description} />
+        <link rel="canonical" href={canonicalURL} />
+        
+        <meta property="og:site_name" content="Build Your Business" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content={ogType} />
+        <meta property="og:url" content={canonicalURL} />
+        <meta property="og:image" content={socialImageURL} />
+        
+        {ogType === 'article' && articleMetadata && (
+            <>
+                {articleMetadata.publishedTime && <meta property="article:published_time" content={articleMetadata.publishedTime} />}
+                {articleMetadata.author && <meta property="article:author" content={articleMetadata.author} />}
+                {articleMetadata.section && <meta property="article:section" content={articleMetadata.section} />}
+            </>
+        )}
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={socialImageURL} />
+
+        <link rel="icon" type="image/png" href="/brand/build-your-business-favicon.png" />
+        
+        {schema && <script type="application/ld+json" set:html={schema} />}
     </head>
 
     <body>

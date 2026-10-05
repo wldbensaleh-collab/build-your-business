@@ -1,70 +1,169 @@
 ---
 ---
-<header class="site-header">
+<header class="site-header" id="main-header">
     <div class="container">
-        <a href="/" class="logo">Build Your Business</a>
-        <nav aria-label="Main Navigation">
+        <a href="/" class="logo" aria-label="Build Your Business">
+            <img src="/brand/build-your-business-logo.png" alt="Build Your Business" />
+        </a>
+        <nav id="main-nav">
             <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/blog">Blog</a></li>
+                <li><a href="/blog">Articles</a></li>
                 <li><a href="/guides">Guides</a></li>
                 <li><a href="/resources">Resources</a></li>
                 <li><a href="/about">About</a></li>
             </ul>
+            <div class="header-cta">
+                <a href="/blog" class="btn btn-primary">Start Learning</a>
+            </div>
         </nav>
+
+        <button class="mobile-toggle" aria-label="Toggle menu" id="menu-toggle">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
     </div>
 </header>
 
+<script>
+    // Sticky header on scroll
+    const header = document.getElementById('main-header');
+    if (header) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
+
+    // Mobile menu toggle
+    const toggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('main-nav');
+    if (toggle && nav) {
+        toggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+    }
+</script>
+
 <style>
     .site-header {
-        border-bottom: 1px solid #eaeaea;
-        padding: 1rem 0;
-        background-color: #ffffff;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid transparent;
+        transition: all 0.3s ease;
+        padding: var(--space-3) 0;
     }
+
+    .site-header.scrolled {
+        padding: var(--space-2) 0;
+        border-bottom: 1px solid var(--color-border);
+        background-color: rgba(255, 255, 255, 0.98);
+        box-shadow: var(--shadow-sm);
+    }
+
     .container {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 0 1rem;
+        padding: 0 var(--space-3);
         display: flex;
         justify-content: space-between;
         align-items: center;
-        flex-wrap: wrap;
-        gap: 1rem;
     }
+
     .logo {
-        font-weight: 600;
-        font-size: 1.25rem;
-        color: #111827;
+        display: flex;
+        align-items: center;
         text-decoration: none;
     }
+    
+    .logo img {
+        height: 36px;
+        width: auto;
+        display: block;
+    }
+
     nav {
         display: flex;
+        align-items: center;
+        gap: var(--space-6);
     }
+
     .nav-links {
         list-style: none;
         padding: 0;
         margin: 0;
         display: flex;
-        gap: 1.5rem;
-        flex-wrap: wrap;
+        gap: var(--space-4);
     }
+
     .nav-links a {
-        color: #4b5563;
-        text-decoration: none;
+        color: var(--color-text-muted);
+        font-weight: 600;
         font-size: 0.95rem;
-        transition: color 0.2s ease;
+        position: relative;
     }
+
     .nav-links a:hover {
-        color: #111827;
+        color: var(--color-brand-primary);
     }
-    
+
+    .mobile-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--color-text);
+        cursor: pointer;
+    }
+
     @media (max-width: 768px) {
-        .container {
-            flex-direction: column;
-            text-align: center;
+        .logo img {
+            height: 28px;
         }
+
+        .mobile-toggle {
+            display: block;
+        }
+
+        nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: var(--color-bg);
+            border-bottom: 1px solid var(--color-border);
+            padding: var(--space-4) var(--space-3);
+            flex-direction: column;
+            align-items: flex-start;
+            gap: var(--space-4);
+            box-shadow: var(--shadow-md);
+        }
+
+        nav.active {
+            display: flex;
+        }
+
         .nav-links {
-            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .header-cta {
+            width: 100%;
+            margin-top: var(--space-4);
+        }
+        
+        .header-cta .btn {
+            width: 100%;
+            text-align: center;
         }
     }
 </style>

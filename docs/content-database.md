@@ -1,629 +1,738 @@
 # Content Database
 
-This document serves as the master content planning database for the "Build Your Business" website. It contains 60 article hypotheses categorized across our six core content pillars. 
+This document serves as the master content planning database for the "Build Your Business" website.
 
-> **Note:** These are hypotheses based on strategic alignment, not verified SEO opportunities. Metrics like search volume or keyword difficulty are deliberately excluded.
+> **Note:** These are hypotheses based on strategic alignment, not verified SEO opportunities. Metrics like search volume or keyword difficulty are deliberately excluded unless researched.
 
----
+## Pillar: Business Fundamentals
 
-## Pillar 1: Find Opportunities
-
-### 1. How to Identify Unserved Local Service Markets
-- **Content pillar:** Find Opportunities
+### How Businesses Actually Make Money
+- **Pillar:** Business Fundamentals
+- **Article/topic:** How Businesses Actually Make Money
+- **Primary keyword:** TBD
 - **Search intent:** Informational
-- **Target reader:** Aspiring entrepreneurs looking for immediate local business ideas.
-- **Problem being solved:** Lack of ideas; fear of intense global online competition.
-- **Funnel stage:** TOFU
-- **Related articles:** Service Business vs SaaS, The 48-Hour Validation Framework
-- **Potential monetization connection:** Affiliate (local SEO tools), Course (local business blueprint).
+- **Status:** Planned
 - **Priority:** High
+- **Notes:** Part of First 20 Article Roadmap.
 
-### 2. B2B vs B2C: Which is Better for First-Time Founders?
-- **Content pillar:** Find Opportunities
+### What Is a Business Model?
+- **Pillar:** Business Fundamentals
+- **Article/topic:** What Is a Business Model?
+- **Primary keyword:** TBD
 - **Search intent:** Informational
-- **Target reader:** Beginners confused about target markets.
-- **Problem being solved:** Analysis paralysis regarding who to sell to.
-- **Funnel stage:** TOFU
-- **Related articles:** Defining Your Ideal Customer Profile
-- **Potential monetization connection:** None (pure brand building).
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Part of First 20 Article Roadmap.
+
+### 10 Business Models for Beginners
+- **Pillar:** Business Fundamentals
+- **Article/topic:** 10 Business Models for Beginners
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Part of First 20 Article Roadmap.
+
+### B2B vs B2C: Which is Better for First-Time Founders?
+- **Pillar:** Business Fundamentals
+- **Article/topic:** B2B vs B2C: Which is Better for First-Time Founders?
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
 - **Priority:** Medium
+- **Notes:** Analysis paralysis regarding who to sell to. | Beginners confused about target markets.
 
-### 3. Service Business vs SaaS: Evaluating Your First Venture
-- **Content pillar:** Find Opportunities
-- **Search intent:** Informational / Commercial Investigation
-- **Target reader:** Tech-adjacent beginners deciding between coding an app or offering a service.
-- **Problem being solved:** Wasting time building software when a service validates faster.
-- **Funnel stage:** TOFU
-- **Related articles:** Minimum Viable Service (MVS)
-- **Potential monetization connection:** Affiliate (website builders, hosting).
-- **Priority:** High
-
-### 4. How to Conduct a Basic Competitor Gap Analysis
-- **Content pillar:** Find Opportunities
-- **Search intent:** Informational
-- **Target reader:** Early-stage founders trying to differentiate.
-- **Problem being solved:** Fear of saturated markets; not knowing how to stand out.
-- **Funnel stage:** MOFU
-- **Related articles:** Competitor Analysis Checklist
-- **Potential monetization connection:** Affiliate (SEO/competitor research tools like Ahrefs/SEMrush).
-- **Priority:** High
-
-### 5. Using Online Reviews to Find Product Improvement Ideas
-- **Content pillar:** Find Opportunities
-- **Search intent:** Informational
-- **Target reader:** Product creators or e-commerce beginners.
-- **Problem being solved:** Guessing what customers want instead of listening to existing complaints.
-- **Funnel stage:** MOFU
-- **Related articles:** The Mom Test
-- **Potential monetization connection:** None.
-- **Priority:** Medium
-
-### 6. Identifying Niche E-commerce Opportunities Without Dropshipping
-- **Content pillar:** Find Opportunities
-- **Search intent:** Informational
-- **Target reader:** Aspiring physical product sellers avoiding low-quality dropshipping.
-- **Problem being solved:** Finding realistic inventory or handmade product niches.
-- **Funnel stage:** TOFU
-- **Related articles:** Digital vs Physical Products
-- **Potential monetization connection:** Affiliate (Shopify, print-on-demand partners).
-- **Priority:** Medium
-
-### 7. The Framework for Spotting Inefficiencies in Traditional Industries
-- **Content pillar:** Find Opportunities
-- **Search intent:** Informational
-- **Target reader:** Professionals looking to disrupt their current 9-to-5 industry.
-- **Problem being solved:** Translating professional experience into a business idea.
-- **Funnel stage:** TOFU
-- **Related articles:** How to Identify Unserved Local Service Markets
-- **Potential monetization connection:** None.
-- **Priority:** Low
-
-### 8. How to Turn Freelance Skills into a Scalable Agency
-- **Content pillar:** Find Opportunities
-- **Search intent:** Informational
-- **Target reader:** Existing freelancers hitting an income ceiling.
-- **Problem being solved:** Moving from trading time for money to building a business asset.
-- **Funnel stage:** MOFU
-- **Related articles:** Essential Software Stack for a Consulting Business
-- **Potential monetization connection:** SaaS Affiliate (CRM, project management tools).
-- **Priority:** High
-
-### 9. Digital Products vs Physical Products: A Beginner's Guide
-- **Content pillar:** Find Opportunities
+### Digital Products vs Physical Products: A Beginner's Guide
+- **Pillar:** Business Fundamentals
+- **Article/topic:** Digital Products vs Physical Products: A Beginner's Guide
+- **Primary keyword:** TBD
 - **Search intent:** Commercial Investigation
-- **Target reader:** Creators deciding on their first product format.
-- **Problem being solved:** Understanding margins, logistics, and scalability of product types.
-- **Funnel stage:** TOFU
-- **Related articles:** Setting Up Stripe
-- **Potential monetization connection:** Affiliate (Gumroad, LemonSqueezy, Shopify).
+- **Status:** Planned
 - **Priority:** Medium
+- **Notes:** Understanding margins, logistics, and scalability of product types. | Creators deciding on their first product format.
 
-### 10. Evaluating Trends vs Fads in New Business Opportunities
-- **Content pillar:** Find Opportunities
+### Evaluating Trends vs Fads in New Business Opportunities
+- **Pillar:** Business Fundamentals
+- **Article/topic:** Evaluating Trends vs Fads in New Business Opportunities
+- **Primary keyword:** TBD
 - **Search intent:** Informational
-- **Target reader:** Founders susceptible to "shiny object syndrome."
-- **Problem being solved:** Wasting capital on short-lived fads instead of enduring trends.
-- **Funnel stage:** MOFU
-- **Related articles:** The 48-Hour Validation Framework
-- **Potential monetization connection:** None.
+- **Status:** Planned
 - **Priority:** Low
+- **Notes:** Wasting capital on short-lived fads instead of enduring trends. | Founders susceptible to "shiny object syndrome."
 
----
-
-## Pillar 2: Strategy & Validation
-
-### 11. The 48-Hour Business Idea Validation Framework
-- **Content pillar:** Strategy & Validation
+### How to Calculate Break-Even Point for a Side Hustle
+- **Pillar:** Business Fundamentals
+- **Article/topic:** How to Calculate Break-Even Point for a Side Hustle
+- **Primary keyword:** TBD
 - **Search intent:** Informational
-- **Target reader:** Founders with an idea who haven't taken action.
-- **Problem being solved:** Spending months building something nobody wants.
-- **Funnel stage:** TOFU
-- **Related articles:** Setting Up Your First Landing Page
-- **Potential monetization connection:** Lead magnet (downloadable framework template).
-- **Priority:** High
+- **Status:** Planned
+- **Priority:** Medium
+- **Notes:** Operating at a loss without realizing it. | Solopreneurs tracking basic finances.
 
-### 12. How to Create a One-Page Business Plan That Works
-- **Content pillar:** Strategy & Validation
+## Pillar: Starting a Business
+
+### How to Start a Business With No Money
+- **Pillar:** Starting a Business
+- **Article/topic:** How to Start a Business With No Money
+- **Primary keyword:** TBD
 - **Search intent:** Informational
-- **Target reader:** Planners overwhelmed by traditional 50-page business plans.
-- **Problem being solved:** Analysis paralysis and unnecessary administrative work.
-- **Funnel stage:** TOFU
-- **Related articles:** Defining Your Ideal Customer Profile
-- **Potential monetization connection:** Lead magnet (PDF template).
+- **Status:** Planned
 - **Priority:** High
+- **Notes:** Part of First 20 Article Roadmap.
 
-### 13. Setting Up Your First Landing Page to Test Demand
-- **Content pillar:** Strategy & Validation
+### How to Find a Business Idea
+- **Pillar:** Starting a Business
+- **Article/topic:** How to Find a Business Idea
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Part of First 20 Article Roadmap.
+
+### How to Know if Your Business Idea Is Good
+- **Pillar:** Starting a Business
+- **Article/topic:** How to Know if Your Business Idea Is Good
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Part of First 20 Article Roadmap.
+
+### How to Start an Online Business
+- **Pillar:** Starting a Business
+- **Article/topic:** How to Start an Online Business
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Part of First 20 Article Roadmap.
+
+### How to Build a Business From Scratch
+- **Pillar:** Starting a Business
+- **Article/topic:** How to Build a Business From Scratch
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Part of First 20 Article Roadmap.
+
+### How to Identify Unserved Local Service Markets
+- **Pillar:** Starting a Business
+- **Article/topic:** How to Identify Unserved Local Service Markets
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Lack of ideas; fear of intense global online competition. | Aspiring entrepreneurs looking for immediate local business ideas.
+
+### Service Business vs SaaS: Evaluating Your First Venture
+- **Pillar:** Starting a Business
+- **Article/topic:** Service Business vs SaaS: Evaluating Your First Venture
+- **Primary keyword:** TBD
+- **Search intent:** Informational / Commercial Investigation
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Wasting time building software when a service validates faster. | Tech-adjacent beginners deciding between coding an app or offering a service.
+
+### How to Conduct a Basic Competitor Gap Analysis
+- **Pillar:** Starting a Business
+- **Article/topic:** How to Conduct a Basic Competitor Gap Analysis
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Fear of saturated markets; not knowing how to stand out. | Early-stage founders trying to differentiate.
+
+### Using Online Reviews to Find Product Improvement Ideas
+- **Pillar:** Starting a Business
+- **Article/topic:** Using Online Reviews to Find Product Improvement Ideas
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** Medium
+- **Notes:** Guessing what customers want instead of listening to existing complaints. | Product creators or e-commerce beginners.
+
+### Identifying Niche E-commerce Opportunities Without Dropshipping
+- **Pillar:** Starting a Business
+- **Article/topic:** Identifying Niche E-commerce Opportunities Without Dropshipping
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** Medium
+- **Notes:** Finding realistic inventory or handmade product niches. | Aspiring physical product sellers avoiding low-quality dropshipping.
+
+### The Framework for Spotting Inefficiencies in Traditional Industries
+- **Pillar:** Starting a Business
+- **Article/topic:** The Framework for Spotting Inefficiencies in Traditional Industries
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** Low
+- **Notes:** Translating professional experience into a business idea. | Professionals looking to disrupt their current 9-to-5 industry.
+
+### The 48-Hour Business Idea Validation Framework
+- **Pillar:** Starting a Business
+- **Article/topic:** The 48-Hour Business Idea Validation Framework
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Spending months building something nobody wants. | Founders with an idea who haven't taken action.
+
+### How to Create a One-Page Business Plan That Works
+- **Pillar:** Starting a Business
+- **Article/topic:** How to Create a One-Page Business Plan That Works
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Analysis paralysis and unnecessary administrative work. | Planners overwhelmed by traditional 50-page business plans.
+
+### Setting Up Your First Landing Page to Test Demand
+- **Pillar:** Starting a Business
+- **Article/topic:** Setting Up Your First Landing Page to Test Demand
+- **Primary keyword:** TBD
 - **Search intent:** Transactional / Commercial Investigation
-- **Target reader:** Founders ready to collect waitlist emails.
-- **Problem being solved:** Technical hurdles of launching a test page quickly.
-- **Funnel stage:** MOFU
-- **Related articles:** Choosing the Right Website Builder
-- **Potential monetization connection:** Affiliate (Carrd, Webflow, hosting).
+- **Status:** Planned
 - **Priority:** High
+- **Notes:** Technical hurdles of launching a test page quickly. | Founders ready to collect waitlist emails.
 
-### 14. The Mom Test: How to Ask Questions That Validate Your Idea
-- **Content pillar:** Strategy & Validation
+### The Mom Test: How to Ask Questions That Validate Your Idea
+- **Pillar:** Starting a Business
+- **Article/topic:** The Mom Test: How to Ask Questions That Validate Your Idea
+- **Primary keyword:** TBD
 - **Search intent:** Informational
-- **Target reader:** Founders conducting customer interviews.
-- **Problem being solved:** Getting false positives from friends and family.
-- **Funnel stage:** MOFU
-- **Related articles:** Defining Your Ideal Customer Profile
-- **Potential monetization connection:** Affiliate (Book recommendation).
+- **Status:** Planned
 - **Priority:** Medium
+- **Notes:** Getting false positives from friends and family. | Founders conducting customer interviews.
 
-### 15. Pricing Strategy 101: How to Price Your First Service
-- **Content pillar:** Strategy & Validation
+### Competitor Analysis Checklist for New Founders
+- **Pillar:** Starting a Business
+- **Article/topic:** Competitor Analysis Checklist for New Founders
+- **Primary keyword:** TBD
 - **Search intent:** Informational
-- **Target reader:** New freelancers and agency owners.
-- **Problem being solved:** Undervaluing services and racing to the bottom.
-- **Funnel stage:** BOFU
-- **Related articles:** How to Calculate Break-Even Point
-- **Potential monetization connection:** None.
-- **Priority:** High
-
-### 16. Competitor Analysis Checklist for New Founders
-- **Content pillar:** Strategy & Validation
-- **Search intent:** Informational
-- **Target reader:** Founders researching their market.
-- **Problem being solved:** Missing blind spots in competitive research.
-- **Funnel stage:** MOFU
-- **Related articles:** How to Conduct a Basic Competitor Gap Analysis
-- **Potential monetization connection:** Lead magnet (Checklist download).
+- **Status:** Planned
 - **Priority:** Medium
+- **Notes:** Missing blind spots in competitive research. | Founders researching their market.
 
-### 17. How to Calculate Break-Even Point for a Side Hustle
-- **Content pillar:** Strategy & Validation
+### Pre-Selling Your Product: A Step-by-Step Guide
+- **Pillar:** Starting a Business
+- **Article/topic:** Pre-Selling Your Product: A Step-by-Step Guide
+- **Primary keyword:** TBD
 - **Search intent:** Informational
-- **Target reader:** Solopreneurs tracking basic finances.
-- **Problem being solved:** Operating at a loss without realizing it.
-- **Funnel stage:** BOFU
-- **Related articles:** Accounting Software Comparison
-- **Potential monetization connection:** Affiliate (Accounting software).
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Funding the creation of a product before building it. | Creators and software builders.
+
+### Minimum Viable Service (MVS): Validating Without Software
+- **Pillar:** Starting a Business
+- **Article/topic:** Minimum Viable Service (MVS): Validating Without Software
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
 - **Priority:** Medium
+- **Notes:** Thinking code is required to test a software solution (concierge MVP). | Non-technical founders wanting to start a SaaS.
 
-### 18. Pre-Selling Your Product: A Step-by-Step Guide
-- **Content pillar:** Strategy & Validation
+## Pillar: Making Money
+
+### How to Make Your First $100 Online
+- **Pillar:** Making Money
+- **Article/topic:** How to Make Your First $100 Online
+- **Primary keyword:** TBD
 - **Search intent:** Informational
-- **Target reader:** Creators and software builders.
-- **Problem being solved:** Funding the creation of a product before building it.
-- **Funnel stage:** BOFU
-- **Related articles:** Setting Up Stripe
-- **Potential monetization connection:** Affiliate (Gumroad, Stripe).
+- **Status:** Planned
 - **Priority:** High
+- **Notes:** Part of First 20 Article Roadmap.
 
-### 19. Defining Your Ideal Customer Profile (ICP) From Scratch
-- **Content pillar:** Strategy & Validation
+### How to Price Your Services
+- **Pillar:** Making Money
+- **Article/topic:** How to Price Your Services
+- **Primary keyword:** TBD
 - **Search intent:** Informational
-- **Target reader:** Founders struggling with marketing messaging.
-- **Problem being solved:** Marketing to "everyone" and reaching no one.
-- **Funnel stage:** MOFU
-- **Related articles:** The Mom Test
-- **Potential monetization connection:** Lead magnet (ICP worksheet).
+- **Status:** Planned
 - **Priority:** High
+- **Notes:** Part of First 20 Article Roadmap.
 
-### 20. Minimum Viable Service (MVS): Validating Without Software
-- **Content pillar:** Strategy & Validation
+### Freelancing vs Starting a Business
+- **Pillar:** Making Money
+- **Article/topic:** Freelancing vs Starting a Business
+- **Primary keyword:** TBD
 - **Search intent:** Informational
-- **Target reader:** Non-technical founders wanting to start a SaaS.
-- **Problem being solved:** Thinking code is required to test a software solution (concierge MVP).
-- **Funnel stage:** TOFU
-- **Related articles:** Service Business vs SaaS
-- **Potential monetization connection:** None.
-- **Priority:** Medium
-
----
-
-## Pillar 3: Build the Business Online
-
-### 21. Choosing the Right Website Builder: Astro vs WordPress vs Shopify
-- **Content pillar:** Build the Business Online
-- **Search intent:** Commercial Investigation
-- **Target reader:** Founders ready to build their digital home.
-- **Problem being solved:** Choosing the wrong platform and migrating later.
-- **Funnel stage:** MOFU
-- **Related articles:** The Ultimate Checklist for Launching a Business Website
-- **Potential monetization connection:** Affiliate (Shopify, WP hosting).
+- **Status:** Planned
 - **Priority:** High
+- **Notes:** Part of First 20 Article Roadmap.
 
-### 22. The Ultimate Checklist for Launching a Business Website
-- **Content pillar:** Build the Business Online
+### Pricing Strategy 101: How to Price Your First Service
+- **Pillar:** Making Money
+- **Article/topic:** Pricing Strategy 101: How to Price Your First Service
+- **Primary keyword:** TBD
 - **Search intent:** Informational
-- **Target reader:** Business owners finalizing their site.
-- **Problem being solved:** Forgetting critical elements like mobile testing or meta tags.
-- **Funnel stage:** BOFU
-- **Related articles:** Basic Website SEO
-- **Potential monetization connection:** Lead magnet (Launch checklist).
+- **Status:** Planned
 - **Priority:** High
+- **Notes:** Undervaluing services and racing to the bottom. | New freelancers and agency owners.
 
-### 23. How to Set Up Professional Business Email
-- **Content pillar:** Build the Business Online
+### Invoicing 101: How to Bill Your First Customer
+- **Pillar:** Making Money
+- **Article/topic:** Invoicing 101: How to Bill Your First Customer
+- **Primary keyword:** TBD
 - **Search intent:** Transactional
-- **Target reader:** Founders operating from a Gmail address.
-- **Problem being solved:** Looking unprofessional to early clients.
-- **Funnel stage:** MOFU
-- **Related articles:** Securing Your Brand
-- **Potential monetization connection:** Affiliate (Google Workspace).
+- **Status:** Planned
 - **Priority:** High
+- **Notes:** Looking unprofessional or getting paid late. | Freelancers who just closed a deal.
 
-### 24. Securing Your Brand: Domain Names, Social Handles, and Trademarks
-- **Content pillar:** Build the Business Online
-- **Search intent:** Informational
-- **Target reader:** Pre-launch founders.
-- **Problem being solved:** Brand fragmentation and losing the ideal .com.
-- **Funnel stage:** TOFU
-- **Related articles:** Designing a Simple Brand Identity
-- **Potential monetization connection:** Affiliate (Namecheap, Domain registrars).
-- **Priority:** Medium
-
-### 25. Basic Website SEO for Brand New Businesses
-- **Content pillar:** Build the Business Online
-- **Search intent:** Informational
-- **Target reader:** Founders with a live site getting zero traffic.
-- **Problem being solved:** Invisible websites missing basic meta tags and keywords.
-- **Funnel stage:** MOFU
-- **Related articles:** The Ultimate Checklist for Launching a Business Website
-- **Potential monetization connection:** None.
-- **Priority:** High
-
-### 26. Writing High-Converting Website Copy: A Beginner's Guide
-- **Content pillar:** Build the Business Online
-- **Search intent:** Informational
-- **Target reader:** Non-writers building their own sites.
-- **Problem being solved:** Website copy that talks about the founder instead of the customer.
-- **Funnel stage:** MOFU
-- **Related articles:** AI Copywriting Frameworks
-- **Potential monetization connection:** None.
-- **Priority:** High
-
-### 27. How to Structure Your Website Navigation for Better UX
-- **Content pillar:** Build the Business Online
-- **Search intent:** Informational
-- **Target reader:** Founders designing their site layout.
-- **Problem being solved:** Confusing menus that cause high bounce rates.
-- **Funnel stage:** MOFU
-- **Related articles:** Writing High-Converting Website Copy
-- **Potential monetization connection:** None.
-- **Priority:** Low
-
-### 28. Setting Up Analytics: What to Track on Day One
-- **Content pillar:** Build the Business Online
-- **Search intent:** Informational
-- **Target reader:** Data-conscious founders launching their site.
-- **Problem being solved:** Flying blind without user data or relying on bloated analytics.
-- **Funnel stage:** BOFU
-- **Related articles:** The Ultimate Checklist for Launching a Business Website
-- **Potential monetization connection:** Affiliate (Privacy-focused analytics like Fathom/Plausible).
-- **Priority:** Medium
-
-### 29. The Must-Have Legal Pages for a New Website
-- **Content pillar:** Build the Business Online
-- **Search intent:** Informational
-- **Target reader:** Anxious founders worried about compliance.
-- **Problem being solved:** Launching without a Privacy Policy or Terms of Service.
-- **Funnel stage:** BOFU
-- **Related articles:** The Ultimate Checklist for Launching a Business Website
-- **Potential monetization connection:** Affiliate (Legal template generator platforms).
-- **Priority:** Medium
-
-### 30. Designing a Simple Brand Identity Without a Designer
-- **Content pillar:** Build the Business Online
-- **Search intent:** Informational
-- **Target reader:** Bootstrapped founders.
-- **Problem being solved:** Spending thousands on a logo before validating the business.
-- **Funnel stage:** TOFU
-- **Related articles:** Choosing the Right Website Builder
-- **Potential monetization connection:** Affiliate (Canva, Figma).
-- **Priority:** Medium
-
----
-
-## Pillar 4: AI + Digital Technology
-
-### 31. How to Use ChatGPT to Outline Your Business Operations
-- **Content pillar:** AI + Digital Technology
-- **Search intent:** Informational
-- **Target reader:** Solopreneurs scaling their workload.
-- **Problem being solved:** Overwhelm from undocumented processes.
-- **Funnel stage:** MOFU
-- **Related articles:** Creating SOPs Using AI
-- **Potential monetization connection:** None.
-- **Priority:** High
-
-### 32. Automating Customer Support with Basic AI Chatbots
-- **Content pillar:** AI + Digital Technology
-- **Search intent:** Commercial Investigation
-- **Target reader:** Small e-commerce or service business owners.
-- **Problem being solved:** Drowning in repetitive customer inquiries.
-- **Funnel stage:** BOFU
-- **Related articles:** Integrating Zapier
-- **Potential monetization connection:** Affiliate (Intercom, Chatbase, etc.).
-- **Priority:** Medium
-
-### 33. Best No-Code Tools to Build Internal Systems Fast
-- **Content pillar:** AI + Digital Technology
-- **Search intent:** Commercial Investigation
-- **Target reader:** Operations-focused founders.
-- **Problem being solved:** Messy spreadsheets and disjointed data.
-- **Funnel stage:** MOFU
-- **Related articles:** Organizing Business Files
-- **Potential monetization connection:** Affiliate (Airtable, Notion, Make).
-- **Priority:** High
-
-### 34. Using AI for Competitor Research and Analysis
-- **Content pillar:** AI + Digital Technology
-- **Search intent:** Informational
-- **Target reader:** Founders entering crowded markets.
-- **Problem being solved:** Spending hours manually reading competitor reviews.
-- **Funnel stage:** MOFU
-- **Related articles:** Competitor Analysis Checklist
-- **Potential monetization connection:** None.
-- **Priority:** Medium
-
-### 35. AI Copywriting Frameworks for Better Marketing Assets
-- **Content pillar:** AI + Digital Technology
-- **Search intent:** Informational
-- **Target reader:** Founders wearing the marketer hat.
-- **Problem being solved:** Generic, robotic AI text that doesn't convert.
-- **Funnel stage:** MOFU
-- **Related articles:** Writing High-Converting Website Copy
-- **Potential monetization connection:** None.
-- **Priority:** High
-
-### 36. How to Automate Social Media Posting on a Zero Budget
-- **Content pillar:** AI + Digital Technology
-- **Search intent:** Informational / Transactional
-- **Target reader:** Busy founders trying to maintain a social presence.
-- **Problem being solved:** Forgetting to post consistently.
-- **Funnel stage:** MOFU
-- **Related articles:** Social Media Scheduling Tools
-- **Potential monetization connection:** Affiliate (Buffer, Metricool).
-- **Priority:** High
-
-### 37. Organizing Business Files: Google Drive vs Notion
-- **Content pillar:** AI + Digital Technology
-- **Search intent:** Commercial Investigation
-- **Target reader:** New founders setting up their digital workspace.
-- **Problem being solved:** Lost files and disorganized documentation.
-- **Funnel stage:** TOFU
-- **Related articles:** Notion vs Trello
-- **Potential monetization connection:** Affiliate (Notion, Google Workspace).
-- **Priority:** Medium
-
-### 38. Integrating Zapier to Connect Your First Business Apps
-- **Content pillar:** AI + Digital Technology
-- **Search intent:** Informational
-- **Target reader:** Founders tired of manual data entry.
-- **Problem being solved:** Manually moving leads from email to CRM.
-- **Funnel stage:** BOFU
-- **Related articles:** Best No-Code Tools
-- **Potential monetization connection:** Affiliate (Zapier/Make).
-- **Priority:** High
-
-### 39. Creating Standard Operating Procedures (SOPs) Using AI
-- **Content pillar:** AI + Digital Technology
-- **Search intent:** Informational
-- **Target reader:** Founders looking to hire their first VA.
-- **Problem being solved:** Bottlenecking the business because "only I know how to do this."
-- **Funnel stage:** BOFU
-- **Related articles:** How to Use ChatGPT to Outline Operations
-- **Potential monetization connection:** Affiliate (Scribe, Tango).
-- **Priority:** Medium
-
-### 40. Using AI to Generate and Test Ad Creatives
-- **Content pillar:** AI + Digital Technology
-- **Search intent:** Informational
-- **Target reader:** Founders running their first paid ads.
-- **Problem being solved:** High costs of hiring designers for unproven ad campaigns.
-- **Funnel stage:** BOFU
-- **Related articles:** Designing a Simple Brand Identity
-- **Potential monetization connection:** Affiliate (Midjourney, Canva).
-- **Priority:** Low
-
----
-
-## Pillar 5: First Customer / First Revenue
-
-### 41. The 100-Person Outreach Strategy for Getting Your First Client
-- **Content pillar:** First Customer / First Revenue
-- **Search intent:** Informational
-- **Target reader:** B2B freelancers/agencies with zero clients.
-- **Problem being solved:** Fear of rejection and lack of a structured outreach plan.
-- **Funnel stage:** TOFU
-- **Related articles:** Cold Email vs Cold Calling
-- **Potential monetization connection:** None.
-- **Priority:** High
-
-### 42. Cold Email vs Cold Calling: What Works Better Today?
-- **Content pillar:** First Customer / First Revenue
-- **Search intent:** Informational
-- **Target reader:** B2B founders planning their sales strategy.
-- **Problem being solved:** Wasting time on outdated sales methods.
-- **Funnel stage:** MOFU
-- **Related articles:** How to Write a B2B Cold Email
-- **Potential monetization connection:** None.
-- **Priority:** Medium
-
-### 43. How to Write a B2B Cold Email That Actually Gets Replies
-- **Content pillar:** First Customer / First Revenue
-- **Search intent:** Informational
-- **Target reader:** Sales-averse founders.
-- **Problem being solved:** Sending spammy templates that get ignored.
-- **Funnel stage:** BOFU
-- **Related articles:** Cold Email vs Cold Calling
-- **Potential monetization connection:** Lead magnet (Email templates).
-- **Priority:** High
-
-### 44. Networking for Introverts: Finding Clients in Your Existing Circle
-- **Content pillar:** First Customer / First Revenue
-- **Search intent:** Informational
-- **Target reader:** Introverted service providers.
-- **Problem being solved:** The anxiety of traditional networking events.
-- **Funnel stage:** TOFU
-- **Related articles:** The 100-Person Outreach Strategy
-- **Potential monetization connection:** None.
-- **Priority:** Medium
-
-### 45. Invoicing 101: How to Bill Your First Customer
-- **Content pillar:** First Customer / First Revenue
+### Setting Up Stripe: A Step-by-Step Guide to Taking Payments
+- **Pillar:** Making Money
+- **Article/topic:** Setting Up Stripe: A Step-by-Step Guide to Taking Payments
+- **Primary keyword:** TBD
 - **Search intent:** Transactional
-- **Target reader:** Freelancers who just closed a deal.
-- **Problem being solved:** Looking unprofessional or getting paid late.
-- **Funnel stage:** BOFU
-- **Related articles:** Accounting Software Comparison
-- **Potential monetization connection:** Affiliate (Stripe, QuickBooks, Wave).
+- **Status:** Planned
 - **Priority:** High
+- **Notes:** The technical friction of accepting credit cards. | Founders ready to launch.
 
-### 46. Handling Objections: What to Say When They Say "It's Too Expensive"
-- **Content pillar:** First Customer / First Revenue
-- **Search intent:** Informational
-- **Target reader:** Founders struggling to close discovery calls.
-- **Problem being solved:** Losing deals at the finish line due to price pushback.
-- **Funnel stage:** BOFU
-- **Related articles:** Pricing Strategy 101
-- **Potential monetization connection:** None.
-- **Priority:** High
-
-### 47. Setting Up Stripe: A Step-by-Step Guide to Taking Payments
-- **Content pillar:** First Customer / First Revenue
-- **Search intent:** Transactional
-- **Target reader:** Founders ready to launch.
-- **Problem being solved:** The technical friction of accepting credit cards.
-- **Funnel stage:** BOFU
-- **Related articles:** Stripe vs PayPal
-- **Potential monetization connection:** None.
-- **Priority:** High
-
-### 48. The Discovery Call Framework: How to Close Your First Lead
-- **Content pillar:** First Customer / First Revenue
-- **Search intent:** Informational
-- **Target reader:** Service-based founders preparing for a sales call.
-- **Problem being solved:** Rambling on sales calls without a clear path to closing.
-- **Funnel stage:** BOFU
-- **Related articles:** Handling Objections
-- **Potential monetization connection:** Lead magnet (Discovery call script).
-- **Priority:** Medium
-
-### 49. Getting Your First 5 Customer Testimonials
-- **Content pillar:** First Customer / First Revenue
-- **Search intent:** Informational
-- **Target reader:** Founders with a few early users but no social proof.
-- **Problem being solved:** Nobody wants to be the first customer.
-- **Funnel stage:** MOFU
-- **Related articles:** The Discovery Call Framework
-- **Potential monetization connection:** Affiliate (Senja, Testimonial.to).
-- **Priority:** High
-
-### 50. Tracking Sales Leads Without Expensive CRM Software
-- **Content pillar:** First Customer / First Revenue
-- **Search intent:** Informational
-- **Target reader:** Bootstrapped founders on day one.
-- **Problem being solved:** Dropping the ball on follow-ups.
-- **Funnel stage:** MOFU
-- **Related articles:** The Best Free CRM Software
-- **Potential monetization connection:** Affiliate (Notion, Airtable, free CRM tiers).
-- **Priority:** Medium
-
----
-
-## Pillar 6: Tools & Software
-
-### 51. The Best Free CRM Software for Solopreneurs
-- **Content pillar:** Tools & Software
+### Stripe vs PayPal: Which Should You Use to Accept Payments?
+- **Pillar:** Making Money
+- **Article/topic:** Stripe vs PayPal: Which Should You Use to Accept Payments?
+- **Primary keyword:** TBD
 - **Search intent:** Commercial Investigation
-- **Target reader:** Solo founders graduating from spreadsheets.
-- **Problem being solved:** Choosing an affordable CRM that scales.
-- **Funnel stage:** MOFU
-- **Related articles:** Tracking Sales Leads
-- **Potential monetization connection:** Affiliate (HubSpot, Pipedrive, Folk).
+- **Status:** Planned
 - **Priority:** High
+- **Notes:** Understanding fees, chargebacks, and integrations. | Digital business owners setting up checkout.
 
-### 52. Stripe vs PayPal: Which Should You Use to Accept Payments?
-- **Content pillar:** Tools & Software
-- **Search intent:** Commercial Investigation
-- **Target reader:** Digital business owners setting up checkout.
-- **Problem being solved:** Understanding fees, chargebacks, and integrations.
-- **Funnel stage:** BOFU
-- **Related articles:** Setting Up Stripe
-- **Potential monetization connection:** None.
+## Pillar: Business Management & Systems
+
+### What Is Business Process Management?
+- **Pillar:** Business Management & Systems
+- **Article/topic:** What Is Business Process Management?
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
 - **Priority:** High
+- **Notes:** Part of First 20 Article Roadmap.
 
-### 53. Notion vs Trello: Choosing a Project Management Tool
-- **Content pillar:** Tools & Software
-- **Search intent:** Commercial Investigation
-- **Target reader:** Disorganized founders.
-- **Problem being solved:** Managing tasks effectively.
-- **Funnel stage:** MOFU
-- **Related articles:** Organizing Business Files
-- **Potential monetization connection:** Affiliate (Notion, Trello).
+### How to Build Systems for a Small Business
+- **Pillar:** Business Management & Systems
+- **Article/topic:** How to Build Systems for a Small Business
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Part of First 20 Article Roadmap.
+
+### What Is an ERP System?
+- **Pillar:** Business Management & Systems
+- **Article/topic:** What Is an ERP System?
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Part of First 20 Article Roadmap.
+
+### How to Automate a Small Business
+- **Pillar:** Business Management & Systems
+- **Article/topic:** How to Automate a Small Business
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Part of First 20 Article Roadmap.
+
+### The Most Important Business KPIs
+- **Pillar:** Business Management & Systems
+- **Article/topic:** The Most Important Business KPIs
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Part of First 20 Article Roadmap.
+
+### Setting Up Analytics: What to Track on Day One
+- **Pillar:** Business Management & Systems
+- **Article/topic:** Setting Up Analytics: What to Track on Day One
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
 - **Priority:** Medium
+- **Notes:** Flying blind without user data or relying on bloated analytics. | Data-conscious founders launching their site.
 
-### 54. Essential Software Stack for a Consulting Business
-- **Content pillar:** Tools & Software
+### How to Use ChatGPT to Outline Your Business Operations
+- **Pillar:** Business Management & Systems
+- **Article/topic:** How to Use ChatGPT to Outline Your Business Operations
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Overwhelm from undocumented processes. | Solopreneurs scaling their workload.
+
+### Automating Customer Support with Basic AI Chatbots
+- **Pillar:** Business Management & Systems
+- **Article/topic:** Automating Customer Support with Basic AI Chatbots
+- **Primary keyword:** TBD
+- **Search intent:** Commercial Investigation
+- **Status:** Planned
+- **Priority:** Medium
+- **Notes:** Drowning in repetitive customer inquiries. | Small e-commerce or service business owners.
+
+### Best No-Code Tools to Build Internal Systems Fast
+- **Pillar:** Business Management & Systems
+- **Article/topic:** Best No-Code Tools to Build Internal Systems Fast
+- **Primary keyword:** TBD
+- **Search intent:** Commercial Investigation
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Messy spreadsheets and disjointed data. | Operations-focused founders.
+
+### Organizing Business Files: Google Drive vs Notion
+- **Pillar:** Business Management & Systems
+- **Article/topic:** Organizing Business Files: Google Drive vs Notion
+- **Primary keyword:** TBD
+- **Search intent:** Commercial Investigation
+- **Status:** Planned
+- **Priority:** Medium
+- **Notes:** Lost files and disorganized documentation. | New founders setting up their digital workspace.
+
+### Integrating Zapier to Connect Your First Business Apps
+- **Pillar:** Business Management & Systems
+- **Article/topic:** Integrating Zapier to Connect Your First Business Apps
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Manually moving leads from email to CRM. | Founders tired of manual data entry.
+
+### Creating Standard Operating Procedures (SOPs) Using AI
+- **Pillar:** Business Management & Systems
+- **Article/topic:** Creating Standard Operating Procedures (SOPs) Using AI
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** Medium
+- **Notes:** Bottlenecking the business because "only I know how to do this." | Founders looking to hire their first VA.
+
+### The Best Free CRM Software for Solopreneurs
+- **Pillar:** Business Management & Systems
+- **Article/topic:** The Best Free CRM Software for Solopreneurs
+- **Primary keyword:** TBD
+- **Search intent:** Commercial Investigation
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Choosing an affordable CRM that scales. | Solo founders graduating from spreadsheets.
+
+### Notion vs Trello: Choosing a Project Management Tool
+- **Pillar:** Business Management & Systems
+- **Article/topic:** Notion vs Trello: Choosing a Project Management Tool
+- **Primary keyword:** TBD
+- **Search intent:** Commercial Investigation
+- **Status:** Planned
+- **Priority:** Medium
+- **Notes:** Managing tasks effectively. | Disorganized founders.
+
+### Essential Software Stack for a Consulting Business
+- **Pillar:** Business Management & Systems
+- **Article/topic:** Essential Software Stack for a Consulting Business
+- **Primary keyword:** TBD
 - **Search intent:** Informational / Commercial Investigation
-- **Target reader:** New consultants setting up infrastructure.
-- **Problem being solved:** Knowing exactly what tools are needed to look professional.
-- **Funnel stage:** MOFU
-- **Related articles:** Affordable Video Conferencing Tools
-- **Potential monetization connection:** Multiple affiliates (G-Suite, Calendly, CRM).
+- **Status:** Planned
 - **Priority:** High
+- **Notes:** Knowing exactly what tools are needed to look professional. | New consultants setting up infrastructure.
 
-### 55. Best Budget-Friendly Email Marketing Platforms
-- **Content pillar:** Tools & Software
+### Accounting Software Comparison: QuickBooks vs Xero vs Wave
+- **Pillar:** Business Management & Systems
+- **Article/topic:** Accounting Software Comparison: QuickBooks vs Xero vs Wave
+- **Primary keyword:** TBD
 - **Search intent:** Commercial Investigation
-- **Target reader:** Creators and newsletter writers starting out.
-- **Problem being solved:** Mailchimp alternatives that don't charge steep fees early on.
-- **Funnel stage:** MOFU
-- **Related articles:** Writing High-Converting Website Copy
-- **Potential monetization connection:** Affiliate (ConvertKit, MailerLite, Beehiiv).
+- **Status:** Planned
 - **Priority:** High
+- **Notes:** Overpaying for accounting tools when free/cheap alternatives exist. | Service and product businesses looking to track expenses.
 
-### 56. Accounting Software Comparison: QuickBooks vs Xero vs Wave
-- **Content pillar:** Tools & Software
+### Best Calendar Booking Software (Calendly vs Alternatives)
+- **Pillar:** Business Management & Systems
+- **Article/topic:** Best Calendar Booking Software (Calendly vs Alternatives)
+- **Primary keyword:** TBD
 - **Search intent:** Commercial Investigation
-- **Target reader:** Service and product businesses looking to track expenses.
-- **Problem being solved:** Overpaying for accounting tools when free/cheap alternatives exist.
-- **Funnel stage:** BOFU
-- **Related articles:** Invoicing 101
-- **Potential monetization connection:** Affiliate (QuickBooks, Xero).
+- **Status:** Planned
 - **Priority:** High
+- **Notes:** Eliminating the back-and-forth of scheduling calls. | Coaches, consultants, and sales reps.
 
-### 57. Tools for Creating Professional Client Proposals
-- **Content pillar:** Tools & Software
+### Affordable Video Conferencing Tools for Client Meetings
+- **Pillar:** Business Management & Systems
+- **Article/topic:** Affordable Video Conferencing Tools for Client Meetings
+- **Primary keyword:** TBD
 - **Search intent:** Commercial Investigation
-- **Target reader:** Freelancers and agencies sending large bids.
-- **Problem being solved:** Sending plain PDFs that don't stand out.
-- **Funnel stage:** BOFU
-- **Related articles:** The Discovery Call Framework
-- **Potential monetization connection:** Affiliate (PandaDoc, Proposify).
-- **Priority:** Medium
-
-### 58. Best Calendar Booking Software (Calendly vs Alternatives)
-- **Content pillar:** Tools & Software
-- **Search intent:** Commercial Investigation
-- **Target reader:** Coaches, consultants, and sales reps.
-- **Problem being solved:** Eliminating the back-and-forth of scheduling calls.
-- **Funnel stage:** BOFU
-- **Related articles:** The Discovery Call Framework
-- **Potential monetization connection:** Affiliate (Calendly, Cal.com, Acuity).
-- **Priority:** High
-
-### 59. Affordable Video Conferencing Tools for Client Meetings
-- **Content pillar:** Tools & Software
-- **Search intent:** Commercial Investigation
-- **Target reader:** Service businesses wanting white-labeled or cheap meetings.
-- **Problem being solved:** Avoiding Zoom's 40-minute limit on free plans.
-- **Funnel stage:** BOFU
-- **Related articles:** Essential Software Stack for a Consulting Business
-- **Potential monetization connection:** Affiliate (Google Workspace, Zoom).
+- **Status:** Planned
 - **Priority:** Low
+- **Notes:** Avoiding Zoom's 40-minute limit on free plans. | Service businesses wanting white-labeled or cheap meetings.
 
-### 60. Social Media Scheduling Tools: A Beginner's Comparison
-- **Content pillar:** Tools & Software
-- **Search intent:** Commercial Investigation
-- **Target reader:** Founders looking to automate distribution.
-- **Problem being solved:** Wasting time logging into multiple platforms daily.
-- **Funnel stage:** MOFU
-- **Related articles:** How to Automate Social Media Posting
-- **Potential monetization connection:** Affiliate (Buffer, Later, HootSuite).
+## Pillar: Growing a Business
+
+### How to Find Your First Customer
+- **Pillar:** Growing a Business
+- **Article/topic:** How to Find Your First Customer
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Part of First 20 Article Roadmap.
+
+### How to Get Your First 10 Customers
+- **Pillar:** Growing a Business
+- **Article/topic:** How to Get Your First 10 Customers
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Part of First 20 Article Roadmap.
+
+### How to Market a Small Business
+- **Pillar:** Growing a Business
+- **Article/topic:** How to Market a Small Business
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Part of First 20 Article Roadmap.
+
+### How to Scale a Small Business
+- **Pillar:** Growing a Business
+- **Article/topic:** How to Scale a Small Business
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Part of First 20 Article Roadmap.
+
+### How to Turn Freelance Skills into a Scalable Agency
+- **Pillar:** Growing a Business
+- **Article/topic:** How to Turn Freelance Skills into a Scalable Agency
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Moving from trading time for money to building a business asset. | Existing freelancers hitting an income ceiling.
+
+### Defining Your Ideal Customer Profile (ICP) From Scratch
+- **Pillar:** Growing a Business
+- **Article/topic:** Defining Your Ideal Customer Profile (ICP) From Scratch
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Marketing to "everyone" and reaching no one. | Founders struggling with marketing messaging.
+
+### Securing Your Brand: Domain Names, Social Handles, and Trademarks
+- **Pillar:** Growing a Business
+- **Article/topic:** Securing Your Brand: Domain Names, Social Handles, and Trademarks
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
 - **Priority:** Medium
+- **Notes:** Brand fragmentation and losing the ideal .com. | Pre-launch founders.
+
+### Writing High-Converting Website Copy: A Beginner's Guide
+- **Pillar:** Growing a Business
+- **Article/topic:** Writing High-Converting Website Copy: A Beginner's Guide
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Website copy that talks about the founder instead of the customer. | Non-writers building their own sites.
+
+### Designing a Simple Brand Identity Without a Designer
+- **Pillar:** Growing a Business
+- **Article/topic:** Designing a Simple Brand Identity Without a Designer
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** Medium
+- **Notes:** Spending thousands on a logo before validating the business. | Bootstrapped founders.
+
+### How to Automate Social Media Posting on a Zero Budget
+- **Pillar:** Growing a Business
+- **Article/topic:** How to Automate Social Media Posting on a Zero Budget
+- **Primary keyword:** TBD
+- **Search intent:** Informational / Transactional
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Forgetting to post consistently. | Busy founders trying to maintain a social presence.
+
+### The 100-Person Outreach Strategy for Getting Your First Client
+- **Pillar:** Growing a Business
+- **Article/topic:** The 100-Person Outreach Strategy for Getting Your First Client
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Fear of rejection and lack of a structured outreach plan. | B2B freelancers/agencies with zero clients.
+
+### Cold Email vs Cold Calling: What Works Better Today?
+- **Pillar:** Growing a Business
+- **Article/topic:** Cold Email vs Cold Calling: What Works Better Today?
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** Medium
+- **Notes:** Wasting time on outdated sales methods. | B2B founders planning their sales strategy.
+
+### How to Write a B2B Cold Email That Actually Gets Replies
+- **Pillar:** Growing a Business
+- **Article/topic:** How to Write a B2B Cold Email That Actually Gets Replies
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Sending spammy templates that get ignored. | Sales-averse founders.
+
+### Networking for Introverts: Finding Clients in Your Existing Circle
+- **Pillar:** Growing a Business
+- **Article/topic:** Networking for Introverts: Finding Clients in Your Existing Circle
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** Medium
+- **Notes:** The anxiety of traditional networking events. | Introverted service providers.
+
+### Handling Objections: What to Say When They Say "It's Too Expensive"
+- **Pillar:** Growing a Business
+- **Article/topic:** Handling Objections: What to Say When They Say "It's Too Expensive"
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Losing deals at the finish line due to price pushback. | Founders struggling to close discovery calls.
+
+### The Discovery Call Framework: How to Close Your First Lead
+- **Pillar:** Growing a Business
+- **Article/topic:** The Discovery Call Framework: How to Close Your First Lead
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** Medium
+- **Notes:** Rambling on sales calls without a clear path to closing. | Service-based founders preparing for a sales call.
+
+### Getting Your First 5 Customer Testimonials
+- **Pillar:** Growing a Business
+- **Article/topic:** Getting Your First 5 Customer Testimonials
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Nobody wants to be the first customer. | Founders with a few early users but no social proof.
+
+### Tracking Sales Leads Without Expensive CRM Software
+- **Pillar:** Growing a Business
+- **Article/topic:** Tracking Sales Leads Without Expensive CRM Software
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Planned
+- **Priority:** Medium
+- **Notes:** Dropping the ball on follow-ups. | Bootstrapped founders on day one.
+
+### Best Budget-Friendly Email Marketing Platforms
+- **Pillar:** Growing a Business
+- **Article/topic:** Best Budget-Friendly Email Marketing Platforms
+- **Primary keyword:** TBD
+- **Search intent:** Commercial Investigation
+- **Status:** Planned
+- **Priority:** High
+- **Notes:** Mailchimp alternatives that don't charge steep fees early on. | Creators and newsletter writers starting out.
+
+### Tools for Creating Professional Client Proposals
+- **Pillar:** Growing a Business
+- **Article/topic:** Tools for Creating Professional Client Proposals
+- **Primary keyword:** TBD
+- **Search intent:** Commercial Investigation
+- **Status:** Planned
+- **Priority:** Medium
+- **Notes:** Sending plain PDFs that don't stand out. | Freelancers and agencies sending large bids.
+
+### Social Media Scheduling Tools: A Beginner's Comparison
+- **Pillar:** Growing a Business
+- **Article/topic:** Social Media Scheduling Tools: A Beginner's Comparison
+- **Primary keyword:** TBD
+- **Search intent:** Commercial Investigation
+- **Status:** Planned
+- **Priority:** Medium
+- **Notes:** Wasting time logging into multiple platforms daily. | Founders looking to automate distribution.
+
+## Pillar: Archived
+
+### Choosing the Right Website Builder: Astro vs WordPress vs Shopify
+- **Pillar:** Archived (Unrelated to new core pillars)
+- **Article/topic:** Choosing the Right Website Builder: Astro vs WordPress vs Shopify
+- **Primary keyword:** TBD
+- **Search intent:** Commercial Investigation
+- **Status:** Archived
+- **Priority:** High
+- **Notes:** Choosing the wrong platform and migrating later. | Founders ready to build their digital home.
+
+### The Ultimate Checklist for Launching a Business Website
+- **Pillar:** Archived (Unrelated to new core pillars)
+- **Article/topic:** The Ultimate Checklist for Launching a Business Website
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Archived
+- **Priority:** High
+- **Notes:** Forgetting critical elements like mobile testing or meta tags. | Business owners finalizing their site.
+
+### How to Set Up Professional Business Email
+- **Pillar:** Archived (Unrelated to new core pillars)
+- **Article/topic:** How to Set Up Professional Business Email
+- **Primary keyword:** TBD
+- **Search intent:** Transactional
+- **Status:** Archived
+- **Priority:** High
+- **Notes:** Looking unprofessional to early clients. | Founders operating from a Gmail address.
+
+### Basic Website SEO for Brand New Businesses
+- **Pillar:** Archived (Unrelated to new core pillars)
+- **Article/topic:** Basic Website SEO for Brand New Businesses
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Archived
+- **Priority:** High
+- **Notes:** Invisible websites missing basic meta tags and keywords. | Founders with a live site getting zero traffic.
+
+### How to Structure Your Website Navigation for Better UX
+- **Pillar:** Archived (Unrelated to new core pillars)
+- **Article/topic:** How to Structure Your Website Navigation for Better UX
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Archived
+- **Priority:** Low
+- **Notes:** Confusing menus that cause high bounce rates. | Founders designing their site layout.
+
+### The Must-Have Legal Pages for a New Website
+- **Pillar:** Archived (Unrelated to new core pillars)
+- **Article/topic:** The Must-Have Legal Pages for a New Website
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Archived
+- **Priority:** Medium
+- **Notes:** Launching without a Privacy Policy or Terms of Service. | Anxious founders worried about compliance.
+
+### Using AI for Competitor Research and Analysis
+- **Pillar:** Archived (Unrelated to new core pillars)
+- **Article/topic:** Using AI for Competitor Research and Analysis
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Archived
+- **Priority:** Medium
+- **Notes:** Spending hours manually reading competitor reviews. | Founders entering crowded markets.
+
+### AI Copywriting Frameworks for Better Marketing Assets
+- **Pillar:** Archived (Unrelated to new core pillars)
+- **Article/topic:** AI Copywriting Frameworks for Better Marketing Assets
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Archived
+- **Priority:** High
+- **Notes:** Generic, robotic AI text that doesn't convert. | Founders wearing the marketer hat.
+
+### Using AI to Generate and Test Ad Creatives
+- **Pillar:** Archived (Unrelated to new core pillars)
+- **Article/topic:** Using AI to Generate and Test Ad Creatives
+- **Primary keyword:** TBD
+- **Search intent:** Informational
+- **Status:** Archived
+- **Priority:** Low
+- **Notes:** High costs of hiring designers for unproven ad campaigns. | Founders running their first paid ads.
+
