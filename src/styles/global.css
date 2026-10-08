@@ -335,7 +335,7 @@ a {
 }
 
 .editorial-intro p:first-of-type {
-  font-size: 1.35rem;
+  font-size: clamp(1.15rem, 2.5vw, 1.35rem);
   font-weight: 500;
   color: var(--color-brand-primary);
   line-height: 1.5;
@@ -349,6 +349,205 @@ a {
 
 .editorial-intro p:last-of-type {
   margin-bottom: 0;
+}
+
+/* Business Data Tables */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin: var(--space-6) 0;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.table-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+.table-wrapper::-webkit-scrollbar-track {
+  background: var(--color-bg-alt);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-lg);
+}
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1;
+}
+
+.business-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 1rem;
+  min-width: 650px; /* Forces scroll on small mobile screens */
+}
+
+.business-table thead {
+  background: #001F3F; /* Deep Navy */
+}
+
+.business-table th {
+  padding: var(--space-4);
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  border: none;
+}
+
+.business-table td {
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  color: #001F3F;
+  vertical-align: middle;
+  line-height: 1.6;
+}
+
+.business-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Subtle alternating row backgrounds */
+.business-table tbody tr:nth-child(even) td {
+  background: rgba(0, 31, 63, 0.015);
+}
+
+.business-table tbody tr:hover td {
+  background: rgba(0, 116, 217, 0.03);
+}
+
+/* Important / Highlighted Rows */
+.business-table tr.important-row td {
+  background: rgba(0, 116, 217, 0.06) !important; /* Subtle Electric Blue tint */
+  color: #001F3F;
+  border-top: 1px solid rgba(0, 116, 217, 0.2);
+  border-bottom: 1px solid rgba(0, 116, 217, 0.2);
+}
+
+.business-table tr.important-row td:first-child {
+  border-left: 4px solid #0074D9; /* Electric Blue Accent */
+}
+
+.business-table td strong {
+  font-weight: 700;
+}
+
+.business-table tr.important-row td strong {
+  color: #0074D9;
+}
+
+/* Mobile Responsive Tables (Card View) */
+@media (max-width: 768px) {
+  .table-wrapper {
+    overflow: visible !important;
+    width: 100% !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+  
+  .business-table {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .business-table thead {
+    display: none !important;
+  }
+
+  .business-table tbody {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .business-table tbody tr {
+    display: block !important;
+    width: 100% !important;
+    margin-bottom: var(--space-6) !important;
+    padding: var(--space-3) !important;
+    box-sizing: border-box !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: var(--radius-lg) !important;
+    background: #ffffff !important;
+    box-shadow: var(--shadow-sm) !important;
+  }
+
+  .business-table tbody td {
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: var(--space-2) 0 !important;
+    text-align: left !important;
+    white-space: normal !important;
+    border-bottom: 1px solid rgba(0,0,0,0.04) !important;
+  }
+  
+  .business-table tbody td:last-child {
+    border-bottom: none !important;
+  }
+
+  .business-table tbody td::before {
+    content: attr(data-label);
+    display: block !important;
+    margin-bottom: var(--space-1) !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    color: var(--color-text-muted) !important;
+  }
+
+  .business-table tr.important-row {
+    background: rgba(0, 116, 217, 0.03) !important;
+    border: 1px solid rgba(0, 116, 217, 0.2) !important;
+    border-left: 4px solid #0074D9 !important;
+  }
+  
+  .business-table tr.important-row td {
+    background: transparent !important;
+    border-top: none !important;
+  }
+}
+
+/* Article Visuals */
+.article-visual {
+  margin: var(--space-8) 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(0, 31, 63, 0.05);
+  background: #ffffff;
+}
+
+@media (min-width: 890px) {
+  .article-visual {
+    width: 116%;
+    margin-left: -8%;
+  }
+}
+
+.article-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+.article-visual figcaption {
+  padding: var(--space-4);
+  background: var(--color-bg-alt);
+  border-top: 1px solid rgba(0, 31, 63, 0.05);
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  font-style: italic;
+  font-weight: 500;
 }
 
 /* Scroll Reveal Animation Classes */

@@ -91,9 +91,10 @@ Having a skill is not enough. "I am good at Excel" is a statement of fact, not a
 You need to move from: "I have a skill."
 To: "I can solve this specific problem for this specific person."
 
-**Concrete Example:** 
-Instead of: "I am going to offer spreadsheet services."
-Try: "I help local plumbing companies automate their monthly financial reporting so they save 10 hours a month and stop losing invoices."
+> **Concrete Example**
+> 
+> Instead of: "I am going to offer spreadsheet services."
+> Try: "I help local plumbing companies automate their monthly financial reporting so they save 10 hours a month and stop losing invoices."
 
 People do not pay for skills; they pay for outcomes. They pay to save time, make more money, or eliminate headaches. 
 

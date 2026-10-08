@@ -34,8 +34,9 @@ You do not need to invent a new product category. Use these three proven framewo
 
 The lowest barrier to entry for any beginner is to sell a skill they already possess. If you know how to write, design, code, organize, or manage projects, you have the foundation of a service business.
 
-**Practical Example:**
-Imagine you have a background in corporate accounting. Instead of trying to invent a new financial software, you could start a specialized bookkeeping service for local digital marketing agencies. You already possess the core skill; you simply need to package it for a specific target audience.
+> **Practical Example**
+> 
+> Imagine you have a background in corporate accounting. Instead of trying to invent a new financial software, you could start a specialized bookkeeping service for local digital marketing agencies. You already possess the core skill; you simply need to package it for a specific target audience.
 
 Service-based businesses can often be started with little or no upfront capital, depending on the service and local requirements. They allow you to generate revenue quickly and learn how to manage clients before scaling into more complex business models. For more on getting started with limited resources, read our guide on [how to start a business](/blog/how-to-start-a-business-with-no-money).
 
@@ -43,15 +44,17 @@ Service-based businesses can often be started with little or no upfront capital,
 
 Many successful businesses were born because the founder experienced a problem that the market hadn't adequately solved. When you solve a problem for yourself, you deeply understand the user's pain points.
 
-**Practical Example:**
-You are a freelance photographer struggling to keep track of your equipment inventory and maintenance schedules. You build a simple, effective spreadsheet template to manage it. After sharing it with peers, you realize other photographers have the same problem. You can package this template and sell it as a downloadable product, or eventually turn it into a lightweight software tool.
+> **Practical Example**
+> 
+> You are a freelance photographer struggling to keep track of your equipment inventory and maintenance schedules. You build a simple, effective spreadsheet template to manage it. After sharing it with peers, you realize other photographers have the same problem. You can package this template and sell it as a downloadable product, or eventually turn it into a lightweight software tool.
 
 ### Framework 3: The "Unbundling" Method
 
 Look at large, generalized companies or agencies and "unbundle" a single specific service they offer. Large companies are often slow and expensive because they try to do everything for everyone. You can succeed by doing one highly specific thing faster, cheaper, or better.
 
-**Practical Example:**
-Instead of starting a full-service marketing agency (which is highly competitive), you could unbundle "marketing" and focus exclusively on writing email newsletters for e-commerce brands. By specializing, you become the expert in that specific niche, making it easier to attract clients who need that exact service.
+> **Practical Example**
+> 
+> Instead of starting a full-service marketing agency (which is highly competitive), you could unbundle "marketing" and focus exclusively on writing email newsletters for e-commerce brands. By specializing, you become the expert in that specific niche, making it easier to attract clients who need that exact service.
 
 ## Why "Boring" Businesses Make the Best First Businesses
 

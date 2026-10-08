@@ -31,33 +31,50 @@ Important examples:
 - Scaling SaaS
 - Scaling service businesses
 
-## 6. First 20 Article Roadmap
+## 6. Intended Learning Progression
+The roadmap follows a specific, practical sequence to guide beginners from zero to scale:
+IDEA → VALIDATE → CHOOSE A BUSINESS MODEL → UNDERSTAND REVENUE → PRICE → MAKE FIRST MONEY → BUILD → GET CUSTOMERS → SYSTEMIZE → AUTOMATE → MARKET → GROW
+
+## 7. First 20 Article Roadmap
+
+**PHASE 1 — IDEATION & VALIDATION**
 1. How to Start a Business With No Money
+Status: Published
 2. How to Find a Business Idea
-3. How to Know if Your Business Idea Is Good
-4. How Businesses Actually Make Money
-5. What Is a Business Model?
-6. 10 Business Models for Beginners
-7. How to Start an Online Business
+Status: Published
+3. How to Validate a Business Idea Before You Waste Your Time and Money
+Status: Published
+
+**PHASE 2 — BUSINESS MODELS & REVENUE**
+4. 10 Business Models for Beginners (Service & SaaS Focus)
+5. How Businesses Actually Make Money (Unit Economics & Margins)
+6. Freelancing vs. Agency vs. SaaS: Which Should You Start?
+7. How to Price Your Services & Products
 8. How to Make Your First $100 Online
-9. How to Find Your First Customer
-10. How to Price Your Services
-11. Freelancing vs Starting a Business
-12. How to Build a Business From Scratch
-13. What Is Business Process Management?
-14. How to Build Systems for a Small Business
-15. What Is an ERP System?
-16. How to Automate a Small Business
-17. The Most Important Business KPIs
-18. How to Get Your First 10 Customers
-19. How to Market a Small Business
+
+**PHASE 3 — LAUNCH & INITIAL CUSTOMERS**
+9. How to Build a Business From Scratch (The Master Pillar Guide)
+10. The Essential Software Stack for a New Business
+11. How to Find Your First Customer
+12. How to Get Your First 10 Customers
+
+**PHASE 4 — SYSTEMS & OPERATIONS**
+13. How to Build Systems for a Small Business
+14. What Is a Productized Service?
+15. How to Automate a Small Business
+16. The Most Important Business KPIs to Track
+
+**PHASE 5 — MARKETING & GROWTH**
+17. How to Market a Small Business
+18. How to Scale a Service Business
+19. When and How to Hire Your First Freelancer
 20. How to Scale a Small Business
 
-## 7. Master Pillar Article
+## 8. Master Pillar Article
 Eventually create: **How to Build a Business From Scratch: The Complete Beginner's Guide**
 This should become a major pillar page linking to relevant supporting articles.
 
-## 8. Editorial Rules
+## 9. Editorial Rules
 - Prioritize practical and actionable business education.
 - Avoid generic "get rich quick" content.
 - Technology should support the business rather than become the main topic.
