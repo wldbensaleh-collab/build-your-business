@@ -9,8 +9,8 @@ const allPosts = await getCollection('blog', ({ data }) => {
 allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const featuredSlug = 'how-to-start-a-business-with-no-money';
-const featuredPost = allPosts.find(post => post.id === featuredSlug || post.slug === featuredSlug);
-const regularPosts = allPosts.filter(post => post.id !== featuredSlug && post.slug !== featuredSlug);
+const featuredPost = allPosts.find(post => post.id === featuredSlug);
+const regularPosts = allPosts.filter(post => post.id !== featuredSlug);
 ---
 
 <Layout title="Business Insights | Build Your Business" description="Practical guidance on starting, managing, and growing a business.">
@@ -31,9 +31,9 @@ const regularPosts = allPosts.filter(post => post.id !== featuredSlug && post.sl
                         <span class="featured-label">START HERE</span>
                         <article class="featured-card">
                             <div class="featured-content">
-                                <h2><a href={`/blog/${featuredPost.id || featuredPost.slug}`}>{featuredPost.data.title}</a></h2>
+                                <h2><a href={`/blog/${featuredPost.id}`}>{featuredPost.data.title}</a></h2>
                                 <p class="featured-description">{featuredPost.data.description}</p>
-                                <a href={`/blog/${featuredPost.id || featuredPost.slug}`} class="read-article featured-cta" aria-label={`Read ${featuredPost.data.title}`}>
+                                <a href={`/blog/${featuredPost.id}`} class="read-article featured-cta" aria-label={`Read ${featuredPost.data.title}`}>
                                     Read the guide
                                     <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                                 </a>
