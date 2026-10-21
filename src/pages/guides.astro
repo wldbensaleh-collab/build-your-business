@@ -1,0 +1,533 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog', ({ data }) => {
+    return data.draft !== true;
+});
+
+// The 4 foundational guides arranged in strict sequential order
+const foundationSteps = [
+    {
+        step: '01',
+        phase: 'IDEATION',
+        slug: 'how-to-find-a-business-idea',
+        stepHeading: 'Find a Realistic Problem to Solve',
+        summary: 'Move past the myth of the "million-dollar idea." Learn how to identify painful, unsolved problems and market inefficiencies that people are already eager to pay for.'
+    },
+    {
+        step: '02',
+        phase: 'VALIDATION',
+        slug: 'how-to-validate-a-business-idea',
+        stepHeading: 'Validate Before Investing Time and Money',
+        summary: 'Treat your idea as a hypothesis. Test customer demand with evidence, run customer discovery interviews, and verify financial feasibility before building anything.'
+    },
+    {
+        step: '03',
+        phase: 'PLANNING',
+        slug: 'how-to-write-a-business-plan',
+        stepHeading: 'Write a Practical Operating Plan',
+        summary: 'Turn your validated concept into a working roadmap. Define your value proposition, customer acquisition strategy, unit economics, and operational workflows.'
+    },
+    {
+        step: '04',
+        phase: 'EXECUTION',
+        slug: 'how-to-start-a-business-with-no-money',
+        stepHeading: 'Start Lean With What You Have',
+        summary: 'Launch without outside funding. Leverage sweat equity, low-overhead service models, and free digital tools to acquire your first customers and generate cash flow.'
+    }
+];
+
+const stepsWithPosts = foundationSteps.map(item => {
+    const post = allPosts.find(p => p.id === item.slug);
+    return {
+        ...item,
+        post
+    };
+});
+---
+
+<Layout 
+    title="Practical Business Guides | Build Your Business" 
+    description="Follow our structured, step-by-step business guides to find an idea, validate demand, write a simple plan, and launch lean."
+>
+    <div class="guides-page">
+        <!-- 1. HERO SECTION -->
+        <header class="page-header">
+            <div class="hero-bg-glow"></div>
+            <div class="container reveal">
+                <span class="eyebrow">STRUCTURED LEARNING PATHS</span>
+                <h1>Practical Business Guides</h1>
+                <p class="hero-subtitle">
+                    Turn business knowledge into actionable progress. Our guides organize proven strategies into sequential, step-by-step paths designed to take you from concept to a sustainable business.
+                </p>
+            </div>
+        </header>
+
+        <!-- 2. PRIMARY LEARNING PATH -->
+        <section class="guides-section">
+            <div class="container">
+                <div class="section-header text-center reveal">
+                    <span class="eyebrow">CORE ROADMAP</span>
+                    <h2 class="section-title">The Foundation Path: Idea to Execution</h2>
+                    <p class="section-desc">
+                        Follow these four core guides in sequential order to eliminate guesswork and build on solid ground.
+                    </p>
+                </div>
+
+                <div class="path-timeline">
+                    {stepsWithPosts.map((item, index) => (
+                        <article class="card path-card reveal" style={`transition-delay: ${index * 100}ms`}>
+                            <div class="path-card-aside">
+                                <span class="step-badge">{item.step}</span>
+                                <span class="phase-tag">{item.phase}</span>
+                            </div>
+
+                            <div class="path-card-main">
+                                <div class="card-meta">
+                                    <span class="category-badge">{item.post?.data.category || 'Business'}</span>
+                                    {item.post && (
+                                        <time datetime={item.post.data.pubDate.toISOString()}>
+                                            {item.post.data.pubDate.toLocaleDateString('en-US', {
+                                                month: 'short',
+                                                day: 'numeric',
+                                                year: 'numeric'
+                                            })}
+                                        </time>
+                                    )}
+                                </div>
+
+                                <h3>
+                                    <a href={`/blog/${item.slug}`}>
+                                        {item.post ? item.post.data.title : item.stepHeading}
+                                    </a>
+                                </h3>
+
+                                <p class="step-summary">{item.summary}</p>
+
+                                <div class="card-action">
+                                    <a href={`/blog/${item.slug}`} class="read-link" aria-label={`Read guide: ${item.post?.data.title || item.stepHeading}`}>
+                                        Read Guide
+                                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. WHY SEQUENCE MATTERS -->
+        <section class="guides-section bg-alt">
+            <div class="container">
+                <div class="section-header text-center reveal">
+                    <span class="eyebrow">THE METHODOLOGY</span>
+                    <h2 class="section-title">Why the sequence matters</h2>
+                    <p class="section-desc">
+                        Random tactics create chaos. Structured sequence creates momentum.
+                    </p>
+                </div>
+
+                <div class="principles-grid">
+                    <div class="card reason-card reveal">
+                        <div class="reason-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="8" x2="12" y2="12"></line>
+                                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                            </svg>
+                        </div>
+                        <h3>Avoid Building What Nobody Wants</h3>
+                        <p>
+                            Skipping ideation discipline and validation is the #1 reason startups fail. Validating before building protects your savings and saves months of wasted labor.
+                        </p>
+                    </div>
+
+                    <div class="card reason-card reveal" style="transition-delay: 100ms;">
+                        <div class="reason-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Clarity Before Commitment</h3>
+                        <p>
+                            Writing an operating plan before executing clarifies your unit economics, pricing strategy, and day-to-day operations so you enter the market with confidence.
+                        </p>
+                    </div>
+
+                    <div class="card reason-card reveal" style="transition-delay: 200ms;">
+                        <div class="reason-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                <polyline points="17 6 23 6 23 12"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Sustainable Momentum</h3>
+                        <p>
+                            Starting lean forces you to focus on early cash flow and direct customer relationships, creating a solid base that funds future growth without debt or burnout.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. CALL TO ACTION -->
+        <section class="guides-cta">
+            <div class="container text-center reveal">
+                <h2>Looking for specific topics?</h2>
+                <p class="section-desc">
+                    Browse all our published articles, teardowns, and frameworks in the main insights feed.
+                </p>
+                <div class="cta-actions">
+                    <a href="/blog" class="btn btn-primary">Browse All Articles</a>
+                    <a href="/" class="btn btn-outline">Back to Homepage</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</Layout>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
+</script>
+
+<style>
+    .guides-page {
+        background-color: var(--color-bg);
+        min-height: 100vh;
+        position: relative;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 var(--space-3);
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    /* Page Header */
+    .page-header {
+        position: relative;
+        padding: var(--space-16) 0 var(--space-12);
+        background: linear-gradient(135deg, rgba(11, 17, 32, 0.02) 0%, rgba(37, 99, 235, 0.05) 50%, rgba(139, 92, 246, 0.07) 100%);
+        border-bottom: 1px solid var(--color-border);
+        overflow: hidden;
+    }
+
+    .hero-bg-glow {
+        position: absolute;
+        top: -40%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 800px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .page-header .container {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        text-align: center;
+    }
+
+    .eyebrow {
+        display: inline-block;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        color: var(--color-brand-accent);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: var(--space-3);
+    }
+
+    .page-header h1 {
+        font-size: clamp(2.5rem, 5vw, 3.75rem);
+        font-weight: 800;
+        line-height: 1.15;
+        letter-spacing: -0.03em;
+        color: var(--color-brand-primary);
+        margin-bottom: var(--space-4);
+    }
+
+    .hero-subtitle {
+        font-size: clamp(1.125rem, 2vw, 1.25rem);
+        color: var(--color-text-muted);
+        line-height: 1.6;
+        margin: 0 auto;
+        max-width: 680px;
+    }
+
+    /* Sections */
+    .guides-section {
+        padding: var(--space-12) 0;
+        position: relative;
+    }
+
+    .bg-alt {
+        background-color: var(--color-bg-alt);
+        border-top: 1px solid var(--color-border);
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .section-header {
+        margin-bottom: var(--space-8);
+    }
+
+    .section-title {
+        font-size: clamp(2rem, 3.5vw, 2.5rem);
+        font-weight: 700;
+        color: var(--color-brand-primary);
+        letter-spacing: -0.02em;
+        margin-top: 0;
+        margin-bottom: var(--space-2);
+    }
+
+    .section-desc {
+        font-size: 1.125rem;
+        color: var(--color-text-muted);
+        max-width: 640px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+    /* Path Timeline / Cards */
+    .path-timeline {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .path-card {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+        padding: var(--space-6);
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-left: 4px solid var(--color-brand-accent);
+        border-radius: var(--radius-lg);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .path-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+        border-left-color: var(--color-brand-purple);
+    }
+
+    @media (min-width: 680px) {
+        .path-card {
+            flex-direction: row;
+            align-items: flex-start;
+            gap: var(--space-6);
+        }
+    }
+
+    .path-card-aside {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        flex-shrink: 0;
+    }
+
+    @media (min-width: 680px) {
+        .path-card-aside {
+            flex-direction: column;
+            align-items: center;
+            min-width: 90px;
+            padding-top: var(--space-1);
+        }
+    }
+
+    .step-badge {
+        font-family: var(--font-mono);
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--color-brand-accent);
+        background: rgba(37, 99, 235, 0.08);
+        width: 52px;
+        height: 52px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--radius-md);
+    }
+
+    .phase-tag {
+        font-size: 0.6875rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--color-text-muted);
+        margin-top: 4px;
+    }
+
+    .path-card-main {
+        flex: 1;
+    }
+
+    .card-meta {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        margin-bottom: var(--space-2);
+    }
+
+    .card-meta time {
+        font-size: 0.875rem;
+        color: var(--color-text-light);
+    }
+
+    .category-badge {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--color-brand-purple);
+        background: rgba(139, 92, 246, 0.1);
+        padding: 3px 10px;
+        border-radius: 20px;
+        letter-spacing: 0.04em;
+    }
+
+    .path-card-main h3 {
+        font-size: 1.35rem;
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: var(--space-2);
+        line-height: 1.3;
+    }
+
+    .path-card-main h3 a {
+        color: var(--color-brand-primary);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .path-card-main h3 a:hover {
+        color: var(--color-brand-accent);
+    }
+
+    .step-summary {
+        font-size: 1rem;
+        color: var(--color-text-muted);
+        line-height: 1.6;
+        margin-bottom: var(--space-3);
+    }
+
+    .card-action {
+        display: flex;
+        align-items: center;
+    }
+
+    .read-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: var(--color-brand-accent);
+        text-decoration: none;
+        transition: gap 0.2s ease, color 0.2s ease;
+    }
+
+    .read-link:hover {
+        color: var(--color-brand-accent-glow);
+        gap: 10px;
+    }
+
+    /* Principles / Reason Grid */
+    .principles-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+        .principles-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    .reason-card {
+        padding: var(--space-6);
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-lg);
+    }
+
+    .reason-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: var(--radius-md);
+        background: var(--color-info-bg);
+        color: var(--color-brand-accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: var(--space-4);
+    }
+
+    .reason-card h3 {
+        font-size: 1.25rem;
+        color: var(--color-brand-primary);
+        margin-top: 0;
+        margin-bottom: var(--space-2);
+    }
+
+    .reason-card p {
+        font-size: 0.95rem;
+        color: var(--color-text-muted);
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+    /* Call to Action */
+    .guides-cta {
+        padding: var(--space-16) 0;
+        border-top: 1px solid var(--color-border);
+    }
+
+    .guides-cta h2 {
+        font-size: clamp(2rem, 3.5vw, 2.5rem);
+        color: var(--color-brand-primary);
+        margin-top: 0;
+        margin-bottom: var(--space-2);
+    }
+
+    .cta-actions {
+        display: flex;
+        gap: var(--space-3);
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: var(--space-6);
+    }
+</style>

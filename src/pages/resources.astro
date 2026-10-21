@@ -1,0 +1,575 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const businessFrameworks = [
+    {
+        title: "Idea Validation Framework",
+        pill: "Validation",
+        summary: "A structured process connecting Problem → Customer → Evidence. Avoid building on assumptions by verifying real market willingness to pay before writing code or spending savings.",
+        link: "/blog/how-to-validate-a-business-idea",
+        linkText: "Read Validation Guide"
+    },
+    {
+        title: "Business Model Thinking",
+        pill: "Fundamentals",
+        summary: "Understand the core engine of commerce: who the customer is, what value you deliver, how revenue is collected, and what it costs to deliver that value reliably.",
+        link: "/blog/how-to-find-a-business-idea",
+        linkText: "Explore Ideation Models"
+    },
+    {
+        title: "Lean Starting Framework",
+        pill: "Execution",
+        summary: "The discipline of minimizing upfront financial investment by leveraging sweat equity, service models, and free digital tools to achieve early profitability.",
+        link: "/blog/how-to-start-a-business-with-no-money",
+        linkText: "Read Lean Starting Guide"
+    },
+    {
+        title: "Simple Business Planning",
+        pill: "Strategy",
+        summary: "A practical, executable operating plan that defines target customers, value propositions, unit economics, daily operations, and milestone targets without dense jargon.",
+        link: "/blog/how-to-write-a-business-plan",
+        linkText: "Read Business Plan Guide"
+    }
+];
+
+const workingTools = [
+    {
+        name: "Business Model Canvas",
+        tag: "Strategy",
+        description: "A one-page strategic template that visually maps the 9 key building blocks of a business, including value propositions, customer segments, channels, and cost structure."
+    },
+    {
+        name: "Lean Canvas",
+        tag: "Validation",
+        description: "An actionable variation of the Business Model Canvas designed for startups, emphasizing customer problems, early solutions, key metrics, and unfair advantages."
+    },
+    {
+        name: "Customer Persona",
+        tag: "Customer Discovery",
+        description: "A semi-fictional representation of your ideal buyer based on real interview data, outlining their pain points, daily workflows, goals, and purchasing triggers."
+    },
+    {
+        name: "Value Proposition Canvas",
+        tag: "Offer Design",
+        description: "A mapping tool that ensures your product or service directly addresses specific customer pains, creates tangible gains, and completes jobs to be done."
+    },
+    {
+        name: "Competitor Matrix",
+        tag: "Market Research",
+        description: "A structured comparison grid that analyzes direct and indirect market alternatives across features, pricing models, weaknesses, and positioning gaps."
+    },
+    {
+        name: "SWOT Analysis",
+        tag: "Assessment",
+        description: "A classic diagnostic framework for assessing internal Strengths and Weaknesses alongside external market Opportunities and competitive Threats."
+    },
+    {
+        name: "Basic Unit Economics",
+        tag: "Finance",
+        description: "The fundamental mathematics of a single customer transaction: calculating Customer Acquisition Cost (CAC), Lifetime Value (LTV), gross margins, and break-even points."
+    }
+];
+
+const startingSteps = [
+    {
+        num: "01",
+        label: "Find an Idea",
+        desc: "Identify real, unsolved problems based on skills and market needs.",
+        url: "/blog/how-to-find-a-business-idea"
+    },
+    {
+        num: "02",
+        label: "Validate Demand",
+        desc: "Gather evidence from real customers before investing capital.",
+        url: "/blog/how-to-validate-a-business-idea"
+    },
+    {
+        num: "03",
+        label: "Write the Plan",
+        desc: "Map your operations, unit economics, and customer acquisition roadmap.",
+        url: "/blog/how-to-write-a-business-plan"
+    },
+    {
+        num: "04",
+        label: "Start Lean",
+        desc: "Launch with low overhead, acquire early clients, and reach cash flow.",
+        url: "/blog/how-to-start-a-business-with-no-money"
+    }
+];
+---
+
+<Layout 
+    title="Practical Business Resources & Frameworks | Build Your Business" 
+    description="Essential frameworks, mental models, and working tools to help entrepreneurs validate ideas, structure business models, and plan operations."
+>
+    <div class="resources-page">
+        <!-- 1. HERO SECTION -->
+        <header class="page-header">
+            <div class="hero-bg-glow"></div>
+            <div class="container reveal">
+                <span class="eyebrow">PRACTICAL BUSINESS RESOURCES</span>
+                <h1>Tools and Resources to<br/><span class="text-gradient">Build Smarter</span></h1>
+                <p class="hero-subtitle">
+                    A curated collection of practical frameworks, conceptual tools, and foundational models to help you analyze opportunities, structure your operations, and execute with clarity.
+                </p>
+            </div>
+        </header>
+
+        <!-- 2. SECTION 1: BUSINESS FRAMEWORKS -->
+        <section class="resources-section">
+            <div class="container">
+                <div class="section-header text-center reveal">
+                    <span class="eyebrow">FOUNDATIONAL FRAMEWORKS</span>
+                    <h2 class="section-title">Core Business Frameworks</h2>
+                    <p class="section-desc">
+                        Proven strategic models referenced throughout our articles to help structure your thinking from validation to operations.
+                    </p>
+                </div>
+
+                <div class="frameworks-grid">
+                    {businessFrameworks.map((fw, index) => (
+                        <div class="card framework-card reveal" style={`transition-delay: ${index * 75}ms`}>
+                            <div class="card-top">
+                                <span class="pill-badge">{fw.pill}</span>
+                            </div>
+                            <h3>{fw.title}</h3>
+                            <p class="framework-summary">{fw.summary}</p>
+                            <div class="card-bottom">
+                                <a href={fw.link} class="read-link">
+                                    {fw.linkText}
+                                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. SECTION 2: USEFUL WORKING TOOLS -->
+        <section class="resources-section bg-alt">
+            <div class="container">
+                <div class="section-header text-center reveal">
+                    <span class="eyebrow">MENTAL MODELS & CONCEPTS</span>
+                    <h2 class="section-title">Useful Working Tools</h2>
+                    <p class="section-desc">
+                        Standard analytical tools used by experienced operators to pressure-test assumptions and map business mechanics.
+                    </p>
+                </div>
+
+                <div class="tools-grid">
+                    {workingTools.map((tool, index) => (
+                        <div class="card tool-card reveal" style={`transition-delay: ${index * 50}ms`}>
+                            <div class="tool-header">
+                                <span class="tool-tag">{tool.tag}</span>
+                            </div>
+                            <h3>{tool.name}</h3>
+                            <p>{tool.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. SECTION 3: RECOMMENDED STARTING POINT -->
+        <section class="resources-section">
+            <div class="container">
+                <div class="section-header text-center reveal">
+                    <span class="eyebrow">RECOMMENDED SEQUENCE</span>
+                    <h2 class="section-title">Start Here: Your Learning Progression</h2>
+                    <p class="section-desc">
+                        If you are new to entrepreneurship, work through these four core guides in sequential order to minimize risk and avoid wasted capital.
+                    </p>
+                </div>
+
+                <div class="start-grid">
+                    {startingSteps.map((step, index) => (
+                        <a href={step.url} class="card start-card reveal" style={`transition-delay: ${index * 100}ms`}>
+                            <div class="step-num">{step.num}</div>
+                            <h3>{step.label}</h3>
+                            <p>{step.desc}</p>
+                            <span class="step-arrow">Read Guide &rarr;</span>
+                        </a>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. CTA SECTION -->
+        <section class="resources-cta bg-alt">
+            <div class="container text-center reveal">
+                <h2>Ready to deepen your business knowledge?</h2>
+                <p class="section-desc">
+                    Explore our step-by-step learning paths or dive straight into our comprehensive business guides.
+                </p>
+                <div class="cta-actions">
+                    <a href="/guides" class="btn btn-primary">View Practical Guides</a>
+                    <a href="/blog" class="btn btn-outline">Browse All Articles</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</Layout>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
+</script>
+
+<style>
+    .resources-page {
+        background-color: var(--color-bg);
+        min-height: 100vh;
+        position: relative;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 var(--space-3);
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    /* Page Header */
+    .page-header {
+        position: relative;
+        padding: var(--space-16) 0 var(--space-12);
+        background: linear-gradient(135deg, rgba(11, 17, 32, 0.02) 0%, rgba(37, 99, 235, 0.05) 50%, rgba(139, 92, 246, 0.07) 100%);
+        border-bottom: 1px solid var(--color-border);
+        overflow: hidden;
+    }
+
+    .hero-bg-glow {
+        position: absolute;
+        top: -40%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 800px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .page-header .container {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        text-align: center;
+    }
+
+    .eyebrow {
+        display: inline-block;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        color: var(--color-brand-accent);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: var(--space-3);
+    }
+
+    .page-header h1 {
+        font-size: clamp(2.5rem, 5vw, 3.75rem);
+        font-weight: 800;
+        line-height: 1.15;
+        letter-spacing: -0.03em;
+        color: var(--color-brand-primary);
+        margin-bottom: var(--space-4);
+    }
+
+    .text-gradient {
+        background: var(--gradient-accent);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+        font-size: clamp(1.125rem, 2vw, 1.25rem);
+        color: var(--color-text-muted);
+        line-height: 1.6;
+        margin: 0 auto;
+        max-width: 680px;
+    }
+
+    /* Sections */
+    .resources-section {
+        padding: var(--space-12) 0;
+        position: relative;
+    }
+
+    .bg-alt {
+        background-color: var(--color-bg-alt);
+        border-top: 1px solid var(--color-border);
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .section-header {
+        margin-bottom: var(--space-8);
+    }
+
+    .section-title {
+        font-size: clamp(2rem, 3.5vw, 2.5rem);
+        font-weight: 700;
+        color: var(--color-brand-primary);
+        letter-spacing: -0.02em;
+        margin-top: 0;
+        margin-bottom: var(--space-2);
+    }
+
+    .section-desc {
+        font-size: 1.125rem;
+        color: var(--color-text-muted);
+        max-width: 640px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+    /* Frameworks Grid */
+    .frameworks-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+        .frameworks-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    .framework-card {
+        padding: var(--space-6);
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-lg);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .framework-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+        border-color: rgba(37, 99, 235, 0.3);
+    }
+
+    .card-top {
+        margin-bottom: var(--space-3);
+    }
+
+    .pill-badge {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--color-brand-accent);
+        background: rgba(37, 99, 235, 0.08);
+        padding: 3px 10px;
+        border-radius: 20px;
+        letter-spacing: 0.04em;
+    }
+
+    .framework-card h3 {
+        font-size: 1.35rem;
+        color: var(--color-brand-primary);
+        margin-top: 0;
+        margin-bottom: var(--space-2);
+    }
+
+    .framework-summary {
+        font-size: 1rem;
+        color: var(--color-text-muted);
+        line-height: 1.6;
+        margin-bottom: var(--space-4);
+        flex-grow: 1;
+    }
+
+    .card-bottom {
+        padding-top: var(--space-2);
+        border-top: 1px solid var(--color-border);
+    }
+
+    .read-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: var(--color-brand-accent);
+        text-decoration: none;
+        transition: gap 0.2s ease, color 0.2s ease;
+    }
+
+    .read-link:hover {
+        color: var(--color-brand-accent-glow);
+        gap: 10px;
+    }
+
+    /* Working Tools Grid */
+    .tools-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 640px) {
+        .tools-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .tools-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    .tool-card {
+        padding: var(--space-5);
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .tool-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+    }
+
+    .tool-header {
+        margin-bottom: var(--space-2);
+    }
+
+    .tool-tag {
+        font-size: 0.6875rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--color-brand-purple);
+        background: rgba(139, 92, 246, 0.08);
+        padding: 2px 8px;
+        border-radius: 4px;
+    }
+
+    .tool-card h3 {
+        font-size: 1.15rem;
+        color: var(--color-brand-primary);
+        margin-top: var(--space-2);
+        margin-bottom: var(--space-2);
+    }
+
+    .tool-card p {
+        font-size: 0.9375rem;
+        color: var(--color-text-muted);
+        line-height: 1.55;
+        margin-bottom: 0;
+    }
+
+    /* Start Here Grid */
+    .start-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 640px) {
+        .start-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .start-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    .start-card {
+        padding: var(--space-5);
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-lg);
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .start-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--color-brand-accent);
+    }
+
+    .step-num {
+        font-family: var(--font-mono);
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: var(--color-brand-accent);
+        margin-bottom: var(--space-2);
+    }
+
+    .start-card h3 {
+        font-size: 1.15rem;
+        color: var(--color-brand-primary);
+        margin-top: 0;
+        margin-bottom: var(--space-2);
+    }
+
+    .start-card p {
+        font-size: 0.875rem;
+        color: var(--color-text-muted);
+        line-height: 1.5;
+        margin-bottom: var(--space-3);
+        flex-grow: 1;
+    }
+
+    .step-arrow {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--color-brand-accent);
+    }
+
+    /* Call to Action */
+    .resources-cta {
+        padding: var(--space-16) 0;
+    }
+
+    .resources-cta h2 {
+        font-size: clamp(2rem, 3.5vw, 2.5rem);
+        color: var(--color-brand-primary);
+        margin-top: 0;
+        margin-bottom: var(--space-2);
+    }
+
+    .cta-actions {
+        display: flex;
+        gap: var(--space-3);
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: var(--space-6);
+    }
+</style>
