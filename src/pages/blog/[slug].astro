@@ -37,6 +37,76 @@ const articleSchema = {
     "@id": new URL(Astro.url.pathname, Astro.site || Astro.url).toString()
   }
 };
+
+// Sequential learning progression for the foundation path
+const foundationSteps = [
+    {
+        slug: 'how-to-start-a-business-with-no-money',
+        stepNumber: '01',
+        nextSlug: 'how-to-find-a-business-idea',
+        nextStepNumber: '02',
+        nextReason: 'Now that you understand how to launch with zero upfront capital, discover a repeatable process to identify realistic, high-demand problems worth solving.',
+    },
+    {
+        slug: 'how-to-find-a-business-idea',
+        stepNumber: '02',
+        nextSlug: 'how-to-validate-a-business-idea',
+        nextStepNumber: '03',
+        nextReason: 'An idea is only a hypothesis. Test customer willingness to pay and analyze your unit economics before investing time, energy, or savings.',
+    },
+    {
+        slug: 'how-to-validate-a-business-idea',
+        stepNumber: '03',
+        nextSlug: 'how-to-write-a-business-plan',
+        nextStepNumber: '04',
+        nextReason: 'Turn validated customer evidence into an actionable operating plan covering your value proposition, customer acquisition, and unit economics.',
+    },
+    {
+        slug: 'how-to-write-a-business-plan',
+        stepNumber: '04',
+        isComplete: true,
+        completionTitle: "You've Completed the Foundation Path",
+        completionReason: "You’ve covered all four core milestones: starting lean, finding an idea, validating demand, and operational planning. Review our complete roadmap and practical toolkits.",
+        completionCta: 'Explore All Guides',
+        completionUrl: '/guides/',
+        secondaryUrl: '/blog/how-to-start-a-business-with-no-money/',
+        secondaryText: 'Restart Foundation Path'
+    }
+];
+
+const currentStep = foundationSteps.find(step => step.slug === entry.id);
+const allBlogPosts = await getCollection('blog');
+
+let nextNavigation = null;
+
+if (currentStep) {
+    if (currentStep.isComplete) {
+        nextNavigation = {
+            badge: 'FOUNDATION COMPLETE',
+            stepMeta: `STEP ${currentStep.stepNumber} OF 04`,
+            title: currentStep.completionTitle,
+            description: currentStep.completionReason,
+            ctaText: currentStep.completionCta,
+            targetUrl: currentStep.completionUrl,
+            secondaryUrl: currentStep.secondaryUrl,
+            secondaryText: currentStep.secondaryText,
+            isComplete: true,
+        };
+    } else {
+        const nextPost = allBlogPosts.find(p => p.id === currentStep.nextSlug);
+        nextNavigation = {
+            badge: 'CONTINUE YOUR JOURNEY',
+            stepMeta: `NEXT STEP · ${currentStep.nextStepNumber} OF 04`,
+            title: nextPost ? nextPost.data.title : 'Continue Learning',
+            description: currentStep.nextReason,
+            ctaText: 'Read Next',
+            targetUrl: `/blog/${currentStep.nextSlug}/`,
+            secondaryUrl: '/guides/',
+            secondaryText: 'View Full Roadmap',
+            isComplete: false,
+        };
+    }
+}
 ---
 
 <Layout 
@@ -96,24 +166,34 @@ const articleSchema = {
         </div>
             
         <footer class="post-footer article-container">
-            <div class="topics-section">
-                <span class="topics-label">Related Topics</span>
-                <div class="topics-list">
-                    {entry.data.tags.map((tag: string) => (
-                        <span class="topic-item">{tag}</span>
-                    ))}
-                </div>
-            </div>
-            
-            <div class="continue-learning reveal">
-                <span class="cl-eyebrow">KEEP BUILDING</span>
-                <h2 class="cl-heading">Continue building your business</h2>
-                <p class="cl-desc">Explore more practical guidance, systems, and strategies to help you grow.</p>
-                <a href="/blog" class="cl-cta">
-                    Browse All Articles
-                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </a>
-            </div>
+            {nextNavigation && (
+                <aside class="next-step-card reveal" aria-label="Next Step in Learning Path">
+                    <div class="next-step-header">
+                        <span class={`next-step-badge ${nextNavigation.isComplete ? 'badge-complete' : ''}`}>
+                            {nextNavigation.badge}
+                        </span>
+                        <span class="next-step-meta">{nextNavigation.stepMeta}</span>
+                    </div>
+                    <div class="next-step-body">
+                        <h3 class="next-step-title">
+                            <a href={nextNavigation.targetUrl}>{nextNavigation.title}</a>
+                        </h3>
+                        <p class="next-step-desc">{nextNavigation.description}</p>
+                    </div>
+                    <div class="next-step-actions">
+                        <a href={nextNavigation.targetUrl} class="next-step-btn">
+                            <span>{nextNavigation.ctaText}</span>
+                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                        <a href={nextNavigation.secondaryUrl} class="next-step-secondary">
+                            {nextNavigation.secondaryText} &rarr;
+                        </a>
+                    </div>
+                </aside>
+            )}
         </footer>
     </article>
 </Layout>
@@ -391,40 +471,134 @@ const articleSchema = {
         padding-bottom: var(--space-12);
     }
     
-    .topics-section {
-        border-top: 1px solid rgba(0, 0, 0, 0.08);
-        padding-top: var(--space-8);
-        margin-bottom: var(--space-12);
+    .next-step-card {
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-left: 4px solid var(--color-brand-accent);
+        border-radius: var(--radius-lg);
+        padding: var(--space-6);
+        box-shadow: var(--shadow-sm);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-left-color 0.2s ease;
     }
     
-    .topics-label {
-        display: block;
-        font-size: 0.875rem;
+    .next-step-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+        border-left-color: var(--color-brand-purple);
+    }
+    
+    .next-step-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-3);
+        margin-bottom: var(--space-3);
+    }
+    
+    .next-step-badge {
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.1em;
-        color: var(--color-text-muted);
-        margin-bottom: var(--space-4);
+        color: var(--color-brand-accent);
+        background: rgba(37, 99, 235, 0.08);
+        padding: 4px 10px;
+        border-radius: var(--radius-sm);
     }
     
-    .topics-list {
-        display: flex;
-        gap: var(--space-3);
-        flex-wrap: wrap;
+    .next-step-badge.badge-complete {
+        color: var(--color-success);
+        background: var(--color-success-bg);
     }
     
-    .topic-item {
-        font-size: 0.875rem;
-        font-weight: 500;
+    .next-step-meta {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--color-text-light);
+    }
+    
+    .next-step-body {
+        margin-bottom: var(--space-5);
+    }
+    
+    .next-step-title {
+        font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+        font-weight: 800;
         color: var(--color-brand-primary);
-        background: var(--color-bg-alt);
-        padding: 6px 14px;
-        border-radius: 6px;
-        transition: background 0.2s ease;
+        line-height: 1.35;
+        letter-spacing: -0.015em;
+        margin: 0 0 var(--space-2) 0;
     }
     
-    .topic-item:hover {
-        background: rgba(0, 0, 0, 0.04);
+    .next-step-title a {
+        color: inherit;
+        text-decoration: none;
+        transition: color 0.15s ease;
+    }
+    
+    .next-step-title a:hover {
+        color: var(--color-brand-accent);
+    }
+    
+    .next-step-desc {
+        font-size: 0.95rem;
+        color: var(--color-text-muted);
+        line-height: 1.6;
+        margin: 0;
+    }
+    
+    .next-step-actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: var(--space-3);
+        padding-top: var(--space-4);
+        border-top: 1px solid var(--color-border);
+    }
+    
+    .next-step-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--color-brand-primary);
+        color: #ffffff;
+        font-size: 0.9375rem;
+        font-weight: 600;
+        padding: 10px 20px;
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .next-step-btn:hover {
+        background: var(--color-brand-accent);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+    }
+    
+    .next-step-btn svg {
+        transition: transform 0.2s ease;
+    }
+    
+    .next-step-btn:hover svg {
+        transform: translateX(3px);
+    }
+    
+    .next-step-secondary {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--color-text-muted);
+        text-decoration: none;
+        transition: color 0.15s ease;
+    }
+    
+    .next-step-secondary:hover {
+        color: var(--color-brand-accent);
     }
     
     .reveal {
@@ -436,68 +610,6 @@ const articleSchema = {
     .reveal.active {
         opacity: 1;
         transform: translateY(0);
-    }
-    
-    .continue-learning {
-        background: var(--color-bg-alt);
-        border: 1px solid rgba(0, 0, 0, 0.05);
-        border-radius: 16px;
-        padding: var(--space-8) var(--space-8);
-        text-align: center;
-    }
-    
-    .cl-eyebrow {
-        display: block;
-        font-size: 0.75rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--color-brand-accent);
-        margin-bottom: var(--space-3);
-    }
-    
-    .cl-heading {
-        font-size: 1.75rem;
-        color: var(--color-brand-primary);
-        font-weight: 800;
-        margin-bottom: var(--space-3);
-        letter-spacing: -0.02em;
-    }
-    
-    .cl-desc {
-        font-size: 1.1rem;
-        color: var(--color-text-muted);
-        margin-bottom: var(--space-6);
-        max-width: 500px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    .cl-cta {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: var(--color-brand-primary);
-        color: #ffffff;
-        font-weight: 600;
-        padding: 12px 24px;
-        border-radius: 8px;
-        text-decoration: none;
-        transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    
-    .cl-cta:hover {
-        background: var(--color-brand-accent);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 116, 217, 0.2);
-    }
-    
-    .cl-cta svg {
-        transition: transform 0.2s ease;
-    }
-    
-    .cl-cta:hover svg {
-        transform: translateX(4px);
     }
     
     @media (max-width: 768px) {
@@ -520,13 +632,26 @@ const articleSchema = {
         .article-content {
             font-size: 1.05rem;
         }
-        
-        .continue-learning {
-            padding: var(--space-6) var(--space-5);
+    }
+    
+    @media (max-width: 640px) {
+        .next-step-card {
+            padding: var(--space-4);
         }
         
-        .cl-heading {
-            font-size: 1.5rem;
+        .next-step-actions {
+            flex-direction: column;
+            align-items: stretch;
+            gap: var(--space-3);
+        }
+        
+        .next-step-btn {
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .next-step-secondary {
+            text-align: center;
         }
     }
 </style>

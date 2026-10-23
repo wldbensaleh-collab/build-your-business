@@ -156,7 +156,7 @@ The student must then interview those who declined:
 
 ## 5. The Lightweight Business Plan
 
-Before investing significant money, an entrepreneur can formalize these learnings into a lightweight business plan. Keep it concise. This document is simply a set of assumptions that must be actively tested, not a guarantee of success.
+Before investing significant money, an entrepreneur can formalize these learnings into a [lightweight business plan](/blog/how-to-write-a-business-plan). Keep it concise. This document is simply a set of assumptions that must be actively tested, not a guarantee of success.
 
 Your lightweight plan should cover:
 

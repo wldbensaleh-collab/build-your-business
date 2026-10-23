@@ -12,7 +12,7 @@ tags: ["business plan", "startup guide", "entrepreneurship"]
 <div class="editorial-intro">
 <span class="intro-label">Introduction</span>
 
-You have a business idea, and after taking the time to validate that real people need it, you are ready to move forward. But there is a fundamental difference between having an interesting concept and knowing how a business will actually operate day to day.
+You have a business idea, and after [taking the time to validate](/blog/how-to-validate-a-business-idea) that real people need it, you are ready to move forward. But there is a fundamental difference between having an interesting concept and knowing how a business will actually operate day to day.
 
 Many beginners assume a business plan is a dense, forty-page document meant only for bank loans or venture capital pitches. In reality, a business plan is first and foremost for you. It is a practical tool that takes your initial validation and turns it into a structured, executable roadmap.
 
