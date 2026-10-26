@@ -27,7 +27,7 @@ To understand the difference:
 
 * **A business idea** is the starting concept (realizing busy university students need healthy food).
 * **A business model** explains how you capture revenue (a recurring weekly subscription).
-* **A business plan** outlines how everything actually works: who you serve, how you reach them, what fulfillment costs, and whether the numbers leave a sustainable margin.
+* **A business plan** outlines how everything actually works: who you serve, how you reach them, what fulfillment costs, and whether the numbers leave a viable contribution margin to cover overhead.
 
 Instead of a vague thought like "selling food on campus," a practical plan specifies the entire engine: preparing 50 ready-to-heat dinners every Sunday in a rented kitchen, delivering them to dorms for a $45 weekly subscription, and testing customer demand before spending significant savings.
 
@@ -109,42 +109,52 @@ Instead of a vague thought like "selling food on campus," a practical plan speci
 
 ## Why You Don't Need a 40-Page Business Plan
 
-How detailed does your business plan actually need to be? The answer depends entirely on the complexity, financial risk, and funding requirements of your venture.
+You do not need a forty-page business plan to start. Complex businesses or companies seeking external bank financing require detailed documentation, but an early-stage founder needs a tool to make practical decisions.
 
-A traditional forty-page plan makes sense when seeking institutional financing or launching a capital-intensive operation—such as opening a brick-and-mortar restaurant with equipment loans, long-term commercial leases, and multiple staff. In that context, extensive documentation is necessary.
+A simple business plan answers five core questions: Who is your customer? What exact offer are they buying? How will they find you? How will you fulfill orders? And do your numbers leave enough contribution margin to cover fixed costs?
 
-However, if you are an early-stage founder testing a simpler model with limited resources—like our student meal-prep service preparing pre-orders in a shared kitchen—speculative multi-year projections only delay execution. What you need instead is a lean working plan that guides your core decisions and evolves as real customer demand and operating data emerge.
+Your first plan should be a working roadmap you can test and update with real buyers, not an academic essay that sits unread on a hard drive.
 
 ## Step 1: Define the Problem and Customer
 
-Every operational decision in your business plan flows from two foundational questions: who are you serving, and what specific problem are you solving? Targeting "everyone" makes marketing impossible and drains your resources. Instead, define your audience by their daily situation, habits, and real-world constraints. Crucially, frame the problem through the customer's perspective—their frustration, cost, or lost time—rather than your desire to sell a product.
+Every operational decision in your business plan flows from who you serve and what friction they experience. If your target customer is "everyone," your marketing and offer will appeal to no one.
 
-Consider our university meal-prep service. A vague statement like "students need food" provides zero operational guidance. A sharp definition sounds very different: second- and third-year university students balancing heavy course loads with part-time jobs lack the time to cook nutritious dinners, forcing them to rely on expensive, unhealthy takeout. This specific description immediately reveals where to reach your buyers, the daily trade-offs they make, and their actual budget constraints.
+**Drafting your customer & problem:**
+* **Weak:** "Busy people who want healthy food." *(Too broad—does not tell you where to reach them or what they can afford).*
+* **Better:** "Second- and third-year university students with heavy course loads and part-time jobs who struggle to cook balanced dinners on weeknights and rely on expensive takeout." *(Identifies an exact life situation, clear budget constraints, and specific places to reach them).*
 
-Before moving forward, run your customer and problem through this quick checklist:
+**Prompts to fill in:**
+* **Write down your target customer:** ____________________ *(e.g., student, working parent, freelance designer)*
+* **Their specific situation/trigger:** ____________________ *(e.g., working part-time while studying full-time)*
+* **Their primary struggle:** ____________________ *(e.g., no time to cook healthy meals during weekdays)*
+* **Current workaround & why it fails:** ____________________ *(e.g., spending $15/day on cafeteria food that is expensive and bland)*
 
-* **The target profile:** What specific situation, routine, or role defines your buyer?
-* **The painful trigger:** What exact circumstance causes this problem to occur?
-* **The real constraint:** What time, money, or access limitations restrict their choices?
-* **The current workaround:** How do they cope today, and why does that solution fall short?
+**What to write in your plan:**
+Write a 2–3 sentence customer profile combining your answers into a single clear paragraph.
 
 ## Step 2: Explain Your Solution
 
-The solution section describes what your business will practically deliver to solve the customer's problem. Avoid the common trap of listing technical features or product specifications. Customers do not buy features in isolation—they buy a tangible outcome that eliminates their daily friction.
+Your solution is the tangible deliverable the customer pays for—not a theoretical list of future features. Focus on the simplest version (**Minimum Viable Product**) that solves the core problem immediately.
 
-In our running meal-prep example, saying "we sell healthy food" is too generic to guide execution. A concrete solution defines the exact offer: a weekly pre-order subscription of five ready-to-heat, nutritionally balanced dinners delivered to student housing on Sunday evenings. The customer is not buying containers of food; they are buying five evenings saved from grocery shopping, cooking, and washing dishes.
+**Drafting your solution:**
+* **Weak:** "A full-featured mobile food platform with custom nutrition tracking, multiple chef selections, and on-demand campus delivery." *(Too complex and capital-intensive for an early-stage launch).*
+* **Better:** "A weekly pre-order subscription of five ready-to-heat, balanced dinners delivered to student dorm common areas every Sunday evening." *(Solves five days of meals immediately and can be fulfilled using a shared kitchen and a simple spreadsheet).*
 
-Keep your initial launch realistic by defining a lean **Minimum Viable Product (MVP)**. Instead of offering twenty menu choices and an automated app, start with one fixed weekly menu coordinated through a simple order form. An MVP delivers the promised customer outcome while reducing operational complexity, allowing you to master preparation and delivery before expanding features.
+**Prompts to fill in:**
+* **Write down your exact deliverable:** ____________________ *(What does the customer physically receive or access?)*
+* **Delivery schedule & method:** ____________________ *(When and how is the offer delivered?)*
+* **MVP boundaries:** ____________________ *(What features or options are you deliberately omitting at launch to keep fulfillment simple?)*
+
+**What to write in your plan:**
+State your launch deliverable in 1–2 sentences, followed by 2–3 bullet points defining your delivery schedule and MVP boundaries.
 
 ## Step 3: Define Your Value Proposition
 
-Your **value proposition** answers one question: why should this customer choose you instead of the alternatives? It is not a slogan, mission statement, or marketing hype. It is a clear statement of the value you exchange.
+A value proposition is not marketing hype. It is a clear, verifiable explanation of why a buyer should choose you over their existing alternatives.
 
-A practical value proposition combines three elements:
-
-* **The target customer:** Who specifically has the problem?
-* **The friction:** What daily struggle or frustration are they trying to eliminate?
-* **The specific benefit:** What tangible outcome do you deliver?
+**Drafting your value proposition:**
+* **Weak:** "Healthy meals for busy people." *(Vague, unprovable, and easily ignored).*
+* **Better:** "Pre-ordered weekly meal-prep boxes for university students who want affordable dinners without cooking every day." *(Tells the buyer exactly what the offer is, who it is for, and the specific headache it eliminates).*
 
 <figure class="article-visual" role="region" aria-label="Value Proposition: Weak vs. Strong">
   <div style="background: #0B1120; padding: 18px 24px; color: #FFFFFF; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; border-bottom: 2px solid #2563EB;">
@@ -225,31 +235,38 @@ A practical value proposition combines three elements:
   </figcaption>
 </figure>
 
-Vague buzzwords fail because customers cannot verify unprovable claims. A strong value proposition replaces hype with concrete specifics. For our meal-prep service, that means promising five ready-to-heat dinners delivered every Sunday for $9 each, saving five hours of weekly cooking.
+**Prompts to fill in:**
+* **Target buyer:** ____________________ *(e.g., working university students)*
+* **Painful friction they experience:** ____________________ *(e.g., no time to cook healthy meals during the week)*
+* **Your specific offer:** ____________________ *(e.g., pre-portioned ready-to-heat weekly dinner boxes)*
+* **Measurable outcome or time/money saved:** ____________________ *(e.g., saves 5 hours of cooking and cleanup each week)*
 
-Defining this clearly provides your internal compass. It anchors your pricing, guides your marketing copy, and ensures your offer solves a genuine problem.
+**What to write in your plan:**
+Combine your answers into one clear sentence using this formula:
+> *For [target customer] who [painful friction], our [offer] delivers [measurable outcome or time/money saved].*
 
 ## Step 4: Choose Your Business Model
 
-While your business plan is the overarching roadmap for operating the company, your **business model** is the economic engine that explains how your venture creates, delivers, and captures value.
+Your business model defines how you charge and structure your revenue. For an early-stage venture, collecting payment upfront protects your cash flow and eliminates the risk of unpaid orders.
 
-To define your business model, answer five practical questions:
+**Drafting your revenue model:**
+* **Weak:** "We will sell food on campus and maybe add advertisements or a loyalty app later." *(Unclear pricing, delayed cash collection, and speculative revenue streams).*
+* **Better:** "A recurring weekly subscription of $45 for five meals ($9 per meal), billed in advance every Friday before purchasing ingredients." *(Predictable cash flow, zero food waste, and upfront payment).*
 
-* **What are you selling?** A weekly bundle of five pre-portioned, ready-to-heat dinners.
-* **Who pays?** The university student (or a parent funding their living expenses).
-* **How much do they pay?** $45 per week through an automated recurring subscription ($9 per meal).
-* **What does it cost to deliver?** $30 in direct variable costs ($21 for ingredients and packaging plus $9 allocated for kitchen time and delivery fuel).
-* **What remains after variable costs?** $15 in contribution margin per subscriber.
+**Prompts to fill in:**
+* **Revenue model:** ____________________ *(e.g., recurring weekly subscription, one-off purchase, hourly fee)*
+* **Price point:** $______ per order or unit
+* **Billing timing:** ____________________ *(e.g., billed upfront every Friday, 50% deposit, paid on delivery)*
+* **Payment collection tool:** ____________________ *(e.g., Stripe subscription link, mobile payment, simple order form)*
 
-Answering these questions reveals your **unit economics**—the financial reality of a single customer transaction. Beginners often celebrate top-line revenue without realizing that a business can attract dozens of customers while quietly losing money. Generating $45 per customer means nothing if direct fulfillment costs consume the entire payment.
-
-Crucially, that $15 is **contribution margin, not net profit**. Ongoing fixed overheads—such as commercial kitchen rent, software subscriptions, and local permits—must still be covered before the business earns a single dollar of true profit.
+**What to write in your plan:**
+State your revenue model, price point, and billing terms in 2–3 sentences. *(Direct unit costs, contribution margins, and break-even targets are detailed in Step 8).*
 
 ## Step 5: Analyze Your Competition
 
-Every business has competition, even if no direct rival exists yet. Competition includes direct competitors offering identical services, indirect substitutes, and whatever customers already do instead of buying from you—such as grocery shopping, cooking at home, or eating on campus. Acknowledging these existing habits prevents you from making unrealistic sales assumptions.
+Your true competition is whatever your customer is currently doing to solve their problem—including doing nothing or using an inconvenient habit. Studying alternatives clarifies where your offer has a clear advantage.
 
-For our university meal-prep service, we must evaluate the offer against four common alternatives across price, convenience, strengths, and weaknesses:
+**Meal-prep competitor matrix**
 
 | Option | Price | Convenience | Strengths & Weaknesses |
 | :--- | :--- | :--- | :--- |
@@ -258,18 +275,22 @@ For our university meal-prep service, we must evaluate the offer against four co
 | **Restaurant / Takeaway** | High ($15–$20) | High | Instant gratification, but expensive with poor nutritional value. |
 | **Student Meal-Prep** | Balanced ($9.00) | High (delivered) | Healthy, portioned, and affordable, but requires ordering in advance. |
 
-The goal of competitor analysis is not to prove "my idea is better" in every single category. Every business involves natural operational trade-offs. Instead, studying alternatives uncovers real customer gaps, defines clear positioning opportunities, and helps you build realistic assumptions into your plan.
+**Drafting your competitive positioning:**
+* **Weak:** "We have no competitors because nobody makes food quite like ours." *(Ignores that students already spend money on groceries, cafeterias, and delivery apps).*
+* **Better:** "Unlike cafeteria food ($12) or takeout ($18), we provide balanced dinners for $9; unlike grocery shopping, we save students five hours of cooking and cleanup each week." *(Directly compares price, time, and trade-offs).*
+
+**Prompts to fill in:**
+* **Primary alternative #1 & trade-off:** ____________________ *(e.g., cooking from scratch: cheap, but takes 5+ hours)*
+* **Primary alternative #2 & trade-off:** ____________________ *(e.g., campus takeout: fast, but costs $15–$20/meal)*
+* **Where your offer clearly wins:** ____________________ *(e.g., healthy dinners at $9 delivered directly to dorms)*
+* **Where your offer has an intentional trade-off:** ____________________ *(e.g., requires ordering two days in advance)*
+
+**What to write in your plan:**
+Include a 3–4 row comparison table listing existing customer alternatives and one short paragraph explaining your positioning advantage.
 
 ## Step 6: Plan How You'll Get Customers
 
-Customer acquisition is the path from someone discovering your business to becoming a repeat buyer. Rather than testing every marketing channel, focus on where your audience already spends time.
-
-A practical plan answers four questions:
-
-1. Where will potential customers discover you?
-2. What makes them trust the offer?
-3. How easy is it to purchase?
-4. Why would they return?
+Customer acquisition maps the path from first contact to repeat business. Rather than scattering effort across too many marketing channels, focus on a clear, low-friction pipeline where your target buyers already spend time.
 
 <figure class="article-visual" role="region" aria-label="Customer Journey: From Discovery to Repeat Purchase">
   <style>
@@ -412,15 +433,22 @@ A practical plan answers four questions:
   </figcaption>
 </figure>
 
-For our student meal-prep service, execution is concrete: attract students via TikTok and campus groups, build trust through transparent menus and reviews, enable simple digital ordering, and drive retention with a $5 roommate referral credit.
+**Drafting your acquisition pathway:**
+* **Weak:** "We will post on social media and run paid online ads to get traffic." *(No targeted audience, no trust mechanism, high ad spend).*
+* **Better:** "Short TikTok videos showing weekly batch prep shared into campus WhatsApp and Discord groups $\rightarrow$ Simple menu landing page $\rightarrow$ 1-click mobile order form $\rightarrow$ Sunday dorm delivery $\rightarrow$ $5 renewal credit for referring a roommate." *(Direct, low-cost channel with built-in referral incentive).*
 
-The principle is straightforward: choose channels your customers already use, remove friction from the first purchase, and give them a reason to return.
+**Prompts to fill in:**
+* **Discovery channel (where buyers find you):** ____________________ *(e.g., student club chats, flyers in dorm lounges)*
+* **Trust builder (proof before buying):** ____________________ *(e.g., photos of prep kitchen, hygiene certificate, sample menu)*
+* **Order conversion tool:** ____________________ *(e.g., simple mobile order form without mandatory account creation)*
+* **Retention / referral driver:** ____________________ *(e.g., $5 credit toward next week's box for referring a roommate)*
+
+**What to write in your plan:**
+Summarize each of the five stages of your customer journey in 1–2 sentences.
 
 ## Step 7: Plan Your Operations
 
-Operations answer one fundamental question: how will your business actually deliver what it promises?
-
-Even a business with strong customer demand will quickly collapse if production, suppliers, timing, or fulfillment fail. A practical operations plan defines the essential workflow: who does the work, what equipment is required, where it happens, and how the product reaches the buyer.
+Operations is the fulfillment engine of your business. Strong customer demand means nothing if production, suppliers, or delivery fail. A practical operations plan defines the repeatable workflow required to deliver reliably.
 
 <figure class="article-visual" role="region" aria-label="Weekly Operations Timeline: From Friday Sourcing to Sunday Delivery">
   <style>
@@ -562,21 +590,28 @@ Even a business with strong customer demand will quickly collapse if production,
   </figcaption>
 </figure>
 
-For our student meal-prep service, operations follow a predictable weekly rhythm: sourcing ingredients on Friday, batch cooking in a rented commercial kitchen on Sunday morning, packaging with reheating labels, and delivering directly to dorms on Sunday evening with SMS confirmation.
+**Drafting your operational routine:**
+* **Weak:** "We will cook meals whenever orders come in and deliver them across campus." *(Chaotic schedule, uneven food quality, and high risk of delivery delays).*
+* **Better:** "Order cutoff Friday 18:00 $\rightarrow$ Wholesale ingredient sourcing Saturday morning $\rightarrow$ 5-hour batch cooking and packaging Sunday morning in a rented commercial kitchen $\rightarrow$ Dorm deliveries Sunday 18:00–20:00 with SMS arrival confirmation." *(Predictable batch schedule, controlled food safety, and streamlined delivery).*
 
-Keep your early operations lean. Focus on mastering this repeatable fulfillment cycle before adding complex logistics, new menu items, or extra staff.
+**Prompts to fill in:**
+* **Key ingredients / materials & primary supplier:** ____________________ *(e.g., local wholesale food market; backup: supermarket)*
+* **Production facility & equipment:** ____________________ *(e.g., commercial commissary kitchen rented for 5 hours on Sundays)*
+* **Fulfillment & delivery schedule:** ____________________ *(e.g., dorm lounge delivery Sunday 18:00–20:00 by car)*
+* **Maximum weekly fulfillment capacity:** ______ orders/week *(Before needing more kitchen hours or an assistant)*
+
+**What to write in your plan:**
+List your primary suppliers, batch production schedule, delivery process, and current weekly fulfillment capacity.
 
 ## Step 8: Estimate Your Basic Finances
 
-You do not need an accounting degree to verify your early numbers. The goal of this section is simple: confirm that each sale leaves enough cash to help cover ongoing expenses.
+You do not need complex spreadsheets to test financial viability. You only need to verify two things: that each sale generates a positive **contribution margin**, and that you can sell enough volume to cover your **fixed costs**.
 
-To evaluate viability, understand five basic concepts:
-
-* **Revenue:** Total cash collected from paying customers.
-* **Variable costs:** Direct expenses to fulfill each order (ingredients, packaging, delivery fuel).
-* **Contribution margin:** Money remaining from each sale to help pay overhead.
-* **Fixed overheads:** Ongoing expenses (rent, permits, software) paid regardless of sales volume.
-* **Net profit:** True profit earned only after contribution margin covers all overheads.
+To evaluate viability, understand four practical numbers:
+* **Revenue:** What the customer pays per order.
+* **Variable costs:** Direct expenses incurred specifically to fulfill that order (ingredients, packaging, delivery).
+* **Contribution margin:** Revenue minus variable costs. This is the cash left over to help cover fixed overheads.
+* **Fixed costs:** Ongoing monthly expenses paid regardless of sales volume (rent, software, permits).
 
 <figure class="article-visual" role="region" aria-label="Basic Financial Breakdown: Unit Economics Waterfall">
   <div style="background: #0B1120; padding: 18px 24px; color: #FFFFFF; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; border-bottom: 2px solid #2563EB;">
@@ -684,32 +719,68 @@ To evaluate viability, understand five basic concepts:
   </figcaption>
 </figure>
 
-For our university meal-prep service, the weekly numbers show the economics of a single subscriber:
+### Meal-Prep Financial Breakdown
 
-| Item | Per Subscriber / Week |
-| --- | ---: |
-| Revenue | $45 |
-| Ingredients & Packaging | -$21 |
-| Kitchen & Fuel | -$9 |
-| Contribution Margin | $15 |
+Assuming a simplified four-week month:
 
-Each $45 subscription leaves $15 in contribution margin after covering $30 in direct costs. Crucially, that $15 is **contribution margin, not net profit**. If kitchen rent, software, and permits cost $600 monthly, you must fulfill 40 weekly orders simply to break even. Profit only begins once all overheads are paid.
+| Item | Amount |
+| :--- | ---: |
+| Customer pays | $45 |
+| Ingredients + packaging | −$21 |
+| Kitchen + delivery | −$9 |
+| **Contribution per order** | **$15** |
+| **Monthly fixed costs** | **$600** |
+| **Break-even** | **40 orders/month** |
+| **Equivalent** | **10 weekly subscribers** |
+
+**What this tells us:**
+
+Each weekly order contributes $15 toward the business's fixed costs. After 40 orders in a four-week month, the $600 fixed costs are covered. Additional orders contribute toward net profit, assuming the same costs.
+
+Reaching break-even requires approximately **10 active weekly subscribers** over a simplified four-week month:
+
+$$10 \text{ subscribers} \times 4 \text{ weekly orders} = 40 \text{ orders/month}$$
+
+Crucially, that $15 is **contribution margin, not net profit**. True net profit only begins once all 40 break-even orders are fulfilled and fixed costs are fully covered.
+
+**Prompts to fill in:**
+* **Write down your price per order:** $______
+* **List the direct cost of delivering one order:**
+  * Materials / ingredients: $______
+  * Packaging: $______
+  * Delivery / fuel / payment fees: $______
+  * Other direct fulfillment costs: $______
+  * **Total variable cost per unit:** $______
+* **Calculate your contribution per order (Price − Variable cost):** $______
+* **List your monthly fixed costs (Rent, software, permits):** $______
+* **Calculate your break-even volume (Fixed costs ÷ Contribution per order):** ______ orders/month
+
+**What to write in your plan:**
+State your price, itemized direct costs, unit contribution margin, monthly fixed overheads, and your calculated break-even order volume.
 
 ## Step 9: Set Milestones
 
-A good milestone tells you exactly what needs to become true before you move to the next stage. Beginners often set vague goals like "get more customers" or "build momentum." Useful milestones are specific, measurable, and tied to a concrete decision—such as interviewing 20 students before buying inventory, or securing 10 paying customers before committing to commercial space.
+Milestones are checkpoint gates that tell you whether to proceed, adjust, or pause. Instead of committing all your savings at once, tie your spending to proven milestones using **GO / PIVOT / STOP** decision triggers.
 
-For our university meal-prep service, milestones create a clear decision path:
+**Meal-prep milestones & decision gates:**
 
-| Stage | Milestone |
-| --- | --- |
-| Validate | Interview 20 students |
-| Test | Get first 10 paying customers |
-| Launch | Deliver the first weekly batch |
-| Improve | Measure satisfaction and repeat orders |
-| Grow | Reach 50 weekly subscribers |
+| Stage | Milestone Target | Decision Trigger | Action (GO / PIVOT / STOP) |
+| :--- | :--- | :--- | :--- |
+| **1. Validate** | Interview 20 students | 15+ confirm weekday dinner pain | **GO:** Cook test samples. If <5 care, **STOP**. |
+| **2. Pre-sell** | Secure 10 pre-orders | 10 students pay $45 in advance | **GO:** Rent kitchen. If <5 pay, **PIVOT** pricing. |
+| **3. Fulfill** | Deliver first 50 meals | Cooked & delivered on time | **GO:** Measure food quality & feedback. |
+| **4. Retain** | 70%+ re-order rate | 7 of 10 renew for week two | **GO:** Open enrollment to 25 subscribers. |
+| **5. Break-even** | 10 weekly subscribers | $600 monthly overhead covered | **GO:** Business is self-sustaining. |
 
-Each checkpoint gives you verified demand and real operational data. Crucially, milestones help you decide whether to continue, adjust the offer, or stop. If early feedback shows students want the service but cannot afford the price, you refine your model before risking more capital.
+**Prompts to fill in:**
+* **Milestone 1 (Validation gate):** ____________________ *(What must you prove before spending any money?)*
+* **Milestone 2 (First paying customers):** ____________________ *(How many pre-orders prove willingness to pay? e.g., 5–10 customers)*
+* **Milestone 3 (Operational test):** ____________________ *(First full batch delivered without quality or timing failures)*
+* **Milestone 4 (Retention gate):** ____________________ *(What re-order or satisfaction rate proves customers love the product?)*
+* **Your decision rule:** If Milestone 2 fails after 2 weeks of outreach, I will: ____________________ *(PIVOT offer / STOP)*
+
+**What to write in your plan:**
+Create a 3–5 stage milestone table with clear targets and GO / PIVOT / STOP rules for each phase.
 
 ## A Simple One-Page Business Plan Template
 
@@ -888,9 +959,7 @@ A one-page plan is not a shrunken forty-page business plan—it is a fast decisi
   </figcaption>
 </figure>
 
-Work through the canvas in logical order: start with the customer and problem, define the solution and value proposition, decide how you make money, and map out acquisition, operations, finances, and milestones. Then review the full page to find unanswered questions or fragile assumptions.
-
-Complete this canvas before writing a longer document. If you cannot explain clearly how your business creates value and generates profit on a single page, the problem is never the length of the document—it is the clarity of the plan.
+Complete this canvas before writing a longer document. Work through the 10 boxes in logical order to map your assumptions, test your unit economics, and catch contradictory plans early. If you cannot explain clearly how your business creates value, covers its costs, and generates a sustainable contribution margin on a single page, the problem is not document length—it is strategic clarity.
 
 ## Common Business Planning Mistakes
 
@@ -899,7 +968,7 @@ Before putting your business plan into action, run your draft through this quick
 * **Writing for investors instead of yourself:** Beginners often waste weeks polishing impressive formatting for hypothetical lenders. Write your first plan as an honest operating guide for your own decisions.
 * **Making assumptions without testing them:** Believing your idea is flawless without speaking to buyers leads to expensive mistakes. Validate demand with real customer conversations before spending capital.
 * **Overcomplicating the first plan:** Exhaustive binders create analysis paralysis and delay real-world progress. Keep your initial strategy concise so you can execute immediately.
-* **Ignoring the real numbers:** Celebrating top-line sales while overlooking variable costs and fixed overhead destroys margins. Calculate your contribution margin upfront to confirm each sale leaves a positive margin to cover overhead.
+* **Ignoring unit economics:** Celebrating top-line revenue while overlooking variable costs and fixed overhead destroys margins. Calculate your contribution margin upfront to verify that each sale leaves enough cash to help cover fixed operating expenses.
 * **Treating the plan as permanent:** A business plan is an evolving hypothesis, not a rigid contract. Update your goals and operations continuously as customer feedback and real costs come in.
 
 ## Final Thoughts

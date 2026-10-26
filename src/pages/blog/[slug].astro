@@ -363,9 +363,10 @@ if (currentStep) {
     .article-content {
         font-size: 1.15rem;
         line-height: 1.8;
-        color: #334155; /* highly readable dark slate */
+        color: #1E293B; /* highly readable dark slate matching Article #4 */
     }
     
+    .article-content > h1,
     .article-content > p,
     .article-content > ul,
     .article-content > ol,
@@ -380,7 +381,23 @@ if (currentStep) {
         margin-right: auto;
     }
     
+    .article-content > h1 {
+        font-size: clamp(2.25rem, 4vw, 3.25rem);
+        font-weight: 800;
+        letter-spacing: -0.025em;
+        line-height: 1.15;
+        color: var(--color-brand-primary);
+        margin-top: 0;
+        margin-bottom: var(--space-4);
+    }
+    
+    .article-content > .editorial-intro {
+        margin-top: 0;
+        margin-bottom: var(--space-8);
+    }
+    
     .article-content p {
+        color: #1E293B;
         margin-bottom: var(--space-6);
     }
     
@@ -427,6 +444,7 @@ if (currentStep) {
     }
     
     .article-content li {
+        color: #1E293B;
         margin-bottom: var(--space-3);
         line-height: 1.7;
     }
@@ -437,22 +455,19 @@ if (currentStep) {
     }
     
     .article-content blockquote {
-        margin: var(--space-8) auto;
-        padding: var(--space-6);
+        margin: 16px auto 20px;
+        padding: 12px 18px;
         border-left: 4px solid var(--color-brand-accent);
-        background: rgba(0, 116, 217, 0.04);
+        background: #F8FAFC;
         font-style: normal;
-        font-size: 1.15rem;
-        color: var(--color-brand-primary);
+        font-size: 1.05rem;
+        color: #0F172A;
         border-radius: 0 var(--radius-md) var(--radius-md) 0;
         box-shadow: var(--shadow-sm);
     }
     
     .article-content blockquote p {
-        margin-bottom: var(--space-3);
-    }
-    
-    .article-content blockquote p:last-child {
+        color: #1E293B;
         margin-bottom: 0;
     }
     
