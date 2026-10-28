@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 
 const allPosts = await getCollection('blog', ({ data }) => {
     return data.draft !== true;
@@ -12,959 +12,2649 @@ const curatedSlugs = [
     'how-to-validate-a-business-idea'
 ];
 
-const curatedPosts = curatedSlugs.map(slug => allPosts.find(post => post.id === slug)).filter(Boolean);
+const curatedPosts = curatedSlugs
+    .map(slug => allPosts.find(post => post.id === slug))
+    .filter((post): post is CollectionEntry<'blog'> => post !== undefined);
 
 const learningSteps = [
-    { number: '01', label: 'FIND AN IDEA' },
-    { number: '02', label: 'START LEAN' },
-    { number: '03', label: 'VALIDATE IT' }
+    { number: '01', phase: 'IDEATION', label: 'FIND AN IDEA' },
+    { number: '02', phase: 'BOOTSTRAPPING', label: 'START LEAN' },
+    { number: '03', phase: 'VALIDATION', label: 'VALIDATE IT' }
+];
+
+const pillars = [
+    {
+        number: '01',
+        title: 'Business Fundamentals',
+        description: 'Understand how businesses make money, select viable models, price offers, and build solid foundations.',
+        href: '/guides',
+        tag: 'FOUNDATION',
+        outcome: 'Core Business Model',
+        borderColor: 'var(--color-brand-primary)',
+        icon: '<svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>'
+    },
+    {
+        number: '02',
+        title: 'Starting a Business',
+        description: 'Go from an initial idea to customer validation, your first offer, and your first paying customer.',
+        href: '/guides',
+        tag: 'VALIDATION',
+        outcome: 'First Paying Customer',
+        borderColor: 'var(--color-brand-accent)',
+        icon: '<svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg>'
+    },
+    {
+        number: '03',
+        title: 'Making Money',
+        description: 'Learn practical ways to earn through high-value skills, pricing, and recurring revenue streams.',
+        href: '/blog',
+        tag: 'REVENUE',
+        outcome: 'Predictable Cash Flow',
+        borderColor: 'var(--color-success)',
+        icon: '<svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>'
+    },
+    {
+        number: '04',
+        title: 'Business Management & Systems',
+        description: 'Build reliable processes, automation, measurable workflows, and scalable operations.',
+        href: '/guides',
+        tag: 'OPERATIONS',
+        outcome: 'Scalable Systems',
+        borderColor: 'var(--color-brand-purple)',
+        icon: '<svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>'
+    },
+    {
+        number: '05',
+        title: 'Growing a Business',
+        description: 'Learn modern marketing, sales, customer acquisition, retention, and sustainable scaling.',
+        href: '/blog',
+        tag: 'SCALING',
+        outcome: 'Compounding Growth',
+        borderColor: 'var(--color-warning)',
+        icon: '<svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>'
+    }
+];
+
+const methodologySteps = [
+    {
+        number: '01',
+        title: 'Learn',
+        description: 'Understand the problem, market demand, and customer reality.',
+        takeaway: 'Problem Discovery'
+    },
+    {
+        number: '02',
+        title: 'Build',
+        description: 'Turn the insight into a testable offer or lean prototype in days.',
+        takeaway: 'Rapid Prototyping'
+    },
+    {
+        number: '03',
+        title: 'Publish',
+        description: 'Put the work directly in front of buyers to collect market evidence.',
+        takeaway: 'Market Feedback'
+    },
+    {
+        number: '04',
+        title: 'Improve',
+        description: 'Use quantitative results and buyer feedback to refine systems.',
+        takeaway: 'System Optimization'
+    }
+];
+
+const chapters = [
+    { id: 'chapter-hero', label: 'Playbook', shortNum: '01' },
+    { id: 'chapter-pillars', label: 'Pillars', shortNum: '02' },
+    { id: 'chapter-guides', label: 'Roadmap', shortNum: '03' },
+    { id: 'chapter-methodology', label: 'Methodology', shortNum: '04' },
+    { id: 'chapter-cta', label: 'Launch', shortNum: '05' }
 ];
 ---
 
-<Layout title="Build Your Business | Start Lean, Grow Smart" description="Practical guidance on building, managing, and growing a business using strategy, systems, technology, and practical execution.">
-    <div class="homepage">
+<Layout 
+    title="Build Your Business | Start Lean, Grow Smart" 
+    description="Practical guidance on building, managing, and growing a business using strategy, systems, technology, and practical execution."
+>
+    <div class="editorial-panorama-root" id="editorial-panorama-root">
         
-        <!-- 1. HERO SECTION -->
-        <section class="hero">
-            <div class="hero-bg-glow"></div>
-            <div class="container hero-container reveal">
-                <!-- LEFT COLUMN: Text -->
-                <div class="hero-content">
-                    <span class="eyebrow">The Entrepreneur's Playbook</span>
-                    <h1>Build smarter<br/><span class="text-gradient">Start lean</span><br/>Grow a real business</h1>
-                    <p class="subtitle">
-                        Cut through the noise. Get practical guidance on building, managing, and growing a profitable business through systems, execution, and strategy.
-                    </p>
-                    <div class="cta-group">
-                        <a href="/blog" class="btn btn-primary">Start Here</a>
-                        <a href="/guides" class="btn btn-outline">Explore Articles</a>
-                    </div>
-                </div>
-                
-                <!-- RIGHT COLUMN: Visual System -->
-                <div class="hero-visual">
-                    <div class="system-card">
-                        <div class="system-header">
-                            <span class="system-label">THE BUSINESS SYSTEM</span>
-                        </div>
-                        <div class="system-steps">
-                            <div class="step-item">
-                                <div class="step-icon">1</div>
-                                <div class="step-text">IDEA</div>
-                            </div>
-                            <div class="step-connector"></div>
-                            <div class="step-item">
-                                <div class="step-icon">2</div>
-                                <div class="step-text">VALIDATE</div>
-                            </div>
-                            <div class="step-connector"></div>
-                            <div class="step-item active-step">
-                                <div class="step-icon">3</div>
-                                <div class="step-text">BUILD</div>
-                            </div>
-                            <div class="step-connector"></div>
-                            <div class="step-item">
-                                <div class="step-icon">4</div>
-                                <div class="step-text">SELL</div>
-                            </div>
-                            <div class="step-connector"></div>
-                            <div class="step-item">
-                                <div class="step-icon">5</div>
-                                <div class="step-text">GROW</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- Pinned Sticky Viewport for Horizontal Canvas on Desktop -->
+        <div class="panorama-viewport" id="panorama-viewport">
             
-            <!-- Abstract decorative elements -->
-            <div class="decoration dec-1"></div>
-            <div class="decoration dec-2"></div>
-        </section>
-
-        <!-- 2. WHAT YOU'LL FIND -->
-        <section class="features bg-alt">
-            <div class="container">
-                <div class="features-header text-center reveal">
-                    <h2 class="section-title">Everything you need to build a real business</h2>
-                    <p class="section-desc">
-                        From understanding how businesses work to building, managing, and growing one.
-                    </p>
-                </div>
-                <div class="pillars-grid">
-                    <div class="card pillar-card reveal">
-                        <div class="pillar-header">
-                            <div class="pillar-number">01</div>
-                            <div class="card-icon">
-                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
-                            </div>
-                        </div>
-                        <h3>Business Fundamentals</h3>
-                        <p>Understand how businesses make money, choose business models, price offers, and build solid foundations.</p>
-                        <div class="pillar-footer">
-                            <span class="pillar-arrow">&rarr;</span>
-                        </div>
-                    </div>
-                    <div class="card pillar-card reveal" style="transition-delay: 100ms;">
-                        <div class="pillar-header">
-                            <div class="pillar-number">02</div>
-                            <div class="card-icon">
-                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-                            </div>
-                        </div>
-                        <h3>Starting a Business</h3>
-                        <p>Go from a business idea to validation, your first offer, and your first customer.</p>
-                        <div class="pillar-footer">
-                            <span class="pillar-arrow">&rarr;</span>
-                        </div>
-                    </div>
-                    <div class="card pillar-card reveal" style="transition-delay: 200ms;">
-                        <div class="pillar-header">
-                            <div class="pillar-number">03</div>
-                            <div class="card-icon">
-                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-                            </div>
-                        </div>
-                        <h3>Making Money</h3>
-                        <p>Learn practical ways to earn through services, skills, pricing, and sustainable revenue streams.</p>
-                        <div class="pillar-footer">
-                            <span class="pillar-arrow">&rarr;</span>
-                        </div>
-                    </div>
-                    <div class="card pillar-card reveal" style="transition-delay: 300ms;">
-                        <div class="pillar-header">
-                            <div class="pillar-number">04</div>
-                            <div class="card-icon">
-                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
-                            </div>
-                        </div>
-                        <h3>Business Management & Systems</h3>
-                        <p>Build better processes, systems, automation, ERP workflows, and measurable operations.</p>
-                        <div class="pillar-footer">
-                            <span class="pillar-arrow">&rarr;</span>
-                        </div>
-                    </div>
-                    <div class="card pillar-card pillar-featured reveal" style="transition-delay: 400ms;">
-                        <div class="pillar-header">
-                            <div class="pillar-number">05</div>
-                            <div class="card-icon">
-                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
-                            </div>
-                        </div>
-                        <div class="featured-content">
-                            <h3>Growing a Business</h3>
-                            <p>Learn marketing, sales, customer acquisition, retention, and sustainable scaling.</p>
-                        </div>
-                        <div class="pillar-footer">
-                            <span class="pillar-arrow">&rarr;</span>
-                        </div>
-                    </div>
-                </div>
+            <!-- Scroll-Reactive Atmospheric Background Layer -->
+            <div class="panorama-atmosphere" id="panorama-atmosphere" aria-hidden="true">
+                <div class="atmosphere-base"></div>
+                <div class="atmosphere-glow"></div>
             </div>
-        </section>
 
-        <!-- 3. FEATURED LEARNING PATH -->
-        <section class="learning-path">
-            <div class="container">
-                <div class="text-center reveal">
-                    <h2 class="section-title">Start Building Your Business</h2>
-                    <p class="section-desc">
-                        Practical guides to help you go from an idea to a business you can actually test.
-                    </p>
-                </div>
+            <!-- Continuous Horizontal Canvas Track -->
+            <div class="panorama-canvas" id="panorama-canvas">
                 
-                <div class="path-grid">
-                    {curatedPosts.map((post, index) => (
-                        <article class="card path-card reveal" style={`transition-delay: ${index * 100}ms`}>
-                            <div class="path-header">
-                                <span class="path-num">{learningSteps[index].number}</span>
-                                <span class="path-label">&mdash; {learningSteps[index].label}</span>
-                            </div>
-                            <div class="card-content">
-                                <span class="category-badge">{post.data.category}</span>
-                                <h3><a href={`/blog/${post.id}`}>{post.data.title}</a></h3>
-                                <p class="description">{post.data.description}</p>
-                            </div>
-                            <div class="card-footer">
-                                <a href={`/blog/${post.id}`} class="read-more-text">Read Article &rarr;</a>
-                            </div>
-                        </article>
-                    ))}
-                </div>
-                
-                <div class="text-center" style="margin-top: 3rem;">
-                    <a href="/blog" class="btn btn-outline">View All Articles &rarr;</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. METHODOLOGY -->
-        <section class="methodology bg-alt">
-            <div class="container text-center reveal">
-                <h2 class="section-title">Learn. Build. Publish. Improve.</h2>
-                <p class="section-desc">
-                    Don't just consume business advice. Turn what you learn into something real, put it in front of people, and improve it from evidence.
-                </p>
-                
-                <div class="cycle-container">
-                    <div class="cycle-track"></div>
-                    <div class="cycle-return"></div>
+                <!-- ============================================================== -->
+                <!-- CHAPTER 1: THE PLAYBOOK (HERO & BUSINESS SYSTEM)               -->
+                <!-- ============================================================== -->
+                <section class="chapter chapter-hero" id="chapter-hero" data-chapter="0">
+                    <div class="hero-bg-glow"></div>
                     
-                    <div class="cycle-steps">
-                        <div class="cycle-step">
-                            <div class="cycle-num">01</div>
-                            <h3 class="cycle-title">Learn</h3>
-                            <p class="cycle-text">Understand the problem, market, customer, and fundamentals.</p>
+                    <div class="chapter-content hero-layout">
+                        <!-- Left Wing: Editorial Typographic Lead -->
+                        <div class="hero-lead">
+                            <div class="chapter-badge">
+                                <span class="badge-index">01</span>
+                                <span class="badge-text">THE ENTREPRENEUR'S PLAYBOOK</span>
+                            </div>
+                            <h1 class="hero-title">
+                                Build smarter<br/>
+                                <span class="text-gradient">Start lean</span><br/>
+                                Grow a real business
+                            </h1>
+                            <p class="hero-desc">
+                                Cut through the noise. Get practical guidance on building, managing, and growing a profitable business through systems, execution, and strategy.
+                            </p>
+                            <div class="hero-cta-group">
+                                <a href="/blog" class="btn btn-primary">Start Here</a>
+                                <a href="/guides" class="btn btn-outline">Explore Guides</a>
+                            </div>
+                            
+                            <div class="hero-scroll-hint" aria-hidden="true">
+                                <span class="hint-arrow">&rarr;</span>
+                                <span class="hint-text">Scroll to explore the playbook</span>
+                            </div>
                         </div>
-                        <div class="cycle-step">
-                            <div class="cycle-num">02</div>
-                            <h3 class="cycle-title">Build</h3>
-                            <p class="cycle-text">Turn the knowledge into something real and testable.</p>
-                        </div>
-                        <div class="cycle-step">
-                            <div class="cycle-num">03</div>
-                            <h3 class="cycle-title">Publish</h3>
-                            <p class="cycle-text">Put the work in front of real people and get feedback.</p>
-                        </div>
-                        <div class="cycle-step">
-                            <div class="cycle-num">04</div>
-                            <h3 class="cycle-title">Improve</h3>
-                            <p class="cycle-text">Use results and feedback to make the business better.</p>
+
+                        <!-- Right Wing: Chapter 01 Hero Sculpture Visual -->
+                        <div class="hero-visual-card">
+                            <div class="hero-sculpture-stage" id="hero-sculpture-stage">
+                                <canvas 
+                                    class="hero-sculpture-canvas" 
+                                    id="hero-sculpture-canvas"
+                                    aria-label="Build Your Business assembling sapphire glass sculpture"
+                                ></canvas>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
+                </section>
 
-        <!-- 5. FINAL CTA -->
-        <section class="final-cta">
-            <div class="container text-center reveal">
-                <h2>Ready to Start Building?</h2>
-                <p class="section-desc">
-                    Join thousands of entrepreneurs learning how to build better businesses.
-                </p>
-                <a href="/blog" class="btn btn-accent">Start Exploring</a>
+                <!-- ============================================================== -->
+                <!-- CHAPTER 2: THE 5 PILLARS (CONSISTENT COMPONENT SYSTEM)         -->
+                <!-- ============================================================== -->
+                <section class="chapter chapter-pillars" id="chapter-pillars" data-chapter="1">
+                    
+                    <div class="chapter-content pillars-layout">
+                        <!-- Chapter Intro Header -->
+                        <div class="section-header-centered">
+                            <div class="chapter-badge">
+                                <span class="badge-index">02</span>
+                                <span class="badge-text">CORE DISCIPLINES</span>
+                            </div>
+                            <h2 class="chapter-heading">Everything you need to build a real business</h2>
+                            <p class="chapter-summary">
+                                Five interconnected pillars designed for pragmatic founders—from initial validation to sustainable operations.
+                            </p>
+                        </div>
+
+                        <!-- 5 Pillar Cards in One Unified Component Family -->
+                        <div class="pillars-grid">
+                            {pillars.map((pillar) => (
+                                <a 
+                                    href={pillar.href} 
+                                    class="card pillar-card"
+                                    style={`--pillar-accent: ${pillar.borderColor};`}
+                                    aria-label={`Explore ${pillar.title}`}
+                                >
+                                    <div class="pillar-card-header">
+                                        <div class="pillar-card-meta">
+                                            <span class="pillar-num">{pillar.number}</span>
+                                            <span class="pillar-tag">{pillar.tag}</span>
+                                        </div>
+                                        <div class="pillar-icon" set:html={pillar.icon} />
+                                    </div>
+                                    <h3 class="pillar-title">{pillar.title}</h3>
+                                    <p class="pillar-desc">{pillar.description}</p>
+                                    <div class="pillar-outcome">
+                                        <span class="outcome-label">TARGET:</span>
+                                        <span class="outcome-val">{pillar.outcome}</span>
+                                    </div>
+                                    <div class="pillar-footer">
+                                        <span class="pillar-link-text">Explore Guides</span>
+                                        <span class="pillar-arrow">&rarr;</span>
+                                    </div>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ============================================================== -->
+                <!-- CHAPTER 3: GUIDED ROADMAPS (STRUCTURED DOSSIER LAYOUT)         -->
+                <!-- ============================================================== -->
+                <section class="chapter chapter-guides" id="chapter-guides" data-chapter="2">
+
+                    <div class="chapter-content guides-layout">
+                        <!-- Left: Chapter Header -->
+                        <div class="chapter-header-box">
+                            <div class="chapter-badge">
+                                <span class="badge-index">03</span>
+                                <span class="badge-text">STEP-BY-STEP PATH</span>
+                            </div>
+                            <h2 class="chapter-heading">Start Building Your Business</h2>
+                            <p class="chapter-summary">
+                                Practical, sequential guides to take you from a raw concept to an offer you can test with real customers.
+                            </p>
+                            <div class="guides-direct-link">
+                                <a href="/blog" class="btn btn-outline">View All Articles &rarr;</a>
+                            </div>
+                        </div>
+
+                        <!-- Right: 3 Sequential Dossier Cards -->
+                        <div class="guides-dossier-track">
+                            {curatedPosts.map((post, index) => (
+                                <article class="card guide-dossier-card">
+                                    <div class="dossier-step-header">
+                                        <span class="dossier-num">{learningSteps[index]?.number}</span>
+                                        <span class="dossier-phase">&mdash; {learningSteps[index]?.label}</span>
+                                    </div>
+                                    <div class="dossier-body">
+                                        <span class="category-badge">{post.data.category}</span>
+                                        <h3 class="dossier-title">
+                                            <a href={`/blog/${post.id}`}>{post.data.title}</a>
+                                        </h3>
+                                        <p class="dossier-description">{post.data.description}</p>
+                                    </div>
+                                    <div class="dossier-footer">
+                                        <a href={`/blog/${post.id}`} class="dossier-action-link">
+                                            <span>Read Guide</span>
+                                            <span class="action-arrow">&rarr;</span>
+                                        </a>
+                                    </div>
+                                </article>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ============================================================== -->
+                <!-- CHAPTER 4: THE EXECUTION RHYTHM (METHODOLOGY SYSTEM)          -->
+                <!-- ============================================================== -->
+                <section class="chapter chapter-methodology" id="chapter-methodology" data-chapter="3">
+
+                    <div class="chapter-content methodology-layout">
+                        <!-- Chapter Intro Header -->
+                        <div class="section-header-centered">
+                            <div class="chapter-badge">
+                                <span class="badge-index">04</span>
+                                <span class="badge-text">EXECUTION ENGINE</span>
+                            </div>
+                            <h2 class="chapter-heading">Learn. Build. Publish. Improve.</h2>
+                            <p class="chapter-summary">
+                                A continuous operating rhythm for turning knowledge into testable products and measurable momentum.
+                            </p>
+                        </div>
+
+                        <!-- 4 Methodological Nodes in One Unified Row -->
+                        <div class="methodology-track-wrapper">
+                            <div class="methodology-connecting-line" aria-hidden="true"></div>
+                            
+                            <div class="methodology-nodes-grid">
+                                {methodologySteps.map((step) => (
+                                    <div class="methodology-node-card">
+                                        <div class="node-top">
+                                            <div class="node-num">{step.number}</div>
+                                            <span class="node-tag">{step.takeaway}</span>
+                                        </div>
+                                        <h3 class="node-title">{step.title}</h3>
+                                        <p class="node-desc">{step.description}</p>
+                                    </div>
+                                ))}
+                            </div>
+                            
+                            <!-- Closed Loop Repeat Indicator -->
+                            <div class="cycle-return-banner" aria-hidden="true">
+                                <span class="return-icon">&#x21bb;</span>
+                                <span class="return-text">Continuous Feedback: Real-world results from Step 04 inform Step 01</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ============================================================== -->
+                <!-- CHAPTER 5: THE LAUNCHPAD (EDGE-TO-EDGE DESTINATION CANVAS)    -->
+                <!-- ============================================================== -->
+                <section class="chapter chapter-cta" id="chapter-cta" data-chapter="4">
+
+                    <div class="chapter-content cta-layout">
+                        <div class="cta-inner-card">
+                            <div class="chapter-badge badge-dark">
+                                <span class="badge-index">05</span>
+                                <span class="badge-text">LAUNCHPAD</span>
+                            </div>
+                            <h2 class="cta-main-title">Ready to Start Building?</h2>
+                            <p class="cta-main-desc">
+                                Cut through the noise. Get actionable strategy, systems, and execution frameworks to build a profitable, sustainable business.
+                            </p>
+                            <div class="cta-action-wrap">
+                                <a href="/blog" class="btn btn-accent btn-large">Start Exploring</a>
+                                <a href="/guides" class="btn btn-dark-outline">Read Core Guides</a>
+                            </div>
+
+                            <!-- Integrated Quick Directory -->
+                            <div class="cta-directory">
+                                <div class="directory-title">DIRECTORY</div>
+                                <div class="directory-links">
+                                    <a href="/blog">All Articles</a>
+                                    <span class="dir-dot">&bull;</span>
+                                    <a href="/guides">Structured Guides</a>
+                                    <span class="dir-dot">&bull;</span>
+                                    <a href="/resources">Tools & Resources</a>
+                                    <span class="dir-dot">&bull;</span>
+                                    <a href="/about">About BYB</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
             </div>
-        </section>
+
+            <!-- ============================================================== -->
+            <!-- FLOATING EDITORIAL TIMELINE DOCK (DESKTOP INTERACTIVE CONTROL)  -->
+            <!-- ============================================================== -->
+            <nav class="editorial-dock" id="editorial-dock" aria-label="Editorial Panorama Navigation">
+                <div class="dock-container">
+                    <div class="dock-progress-rail">
+                        <div class="dock-progress-indicator" id="dock-progress-indicator"></div>
+                    </div>
+                    <ul class="dock-chapters-list">
+                        {chapters.map((chap, idx) => (
+                            <li>
+                                <button 
+                                    type="button" 
+                                    class={`dock-chapter-btn ${idx === 0 ? 'active' : ''}`}
+                                    data-chapter-index={idx}
+                                    data-chapter-id={chap.id}
+                                    aria-label={`Jump to Chapter ${chap.shortNum}: ${chap.label}`}
+                                >
+                                    <span class="dock-chap-num">{chap.shortNum}</span>
+                                    <span class="dock-chap-label">{chap.label}</span>
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </nav>
+
+        </div>
     </div>
 </Layout>
 
 <script>
-    // Scroll reveal logic
-    document.addEventListener("DOMContentLoaded", () => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
+    // =========================================================================
+    // EDITORIAL HORIZONTAL PANORAMA INTERACTION SCRIPT
+    // =========================================================================
+
+    function initEditorialPanorama(
+        root: HTMLElement,
+        viewport: HTMLElement,
+        canvas: HTMLElement
+    ): void {
+        const chapters = Array.from(document.querySelectorAll<HTMLElement>('.chapter'));
+        if (chapters.length === 0) return;
+
+        const chapterHero = document.getElementById('chapter-hero') as HTMLElement | null;
+        const sculptureCanvas = document.getElementById('hero-sculpture-canvas') as HTMLCanvasElement | null;
+        const sculptureStage = document.getElementById('hero-sculpture-stage') as HTMLElement | null;
+        const atmosphereEl = document.getElementById('panorama-atmosphere') as HTMLElement | null;
+
+        const dock = document.getElementById('editorial-dock');
+        const progressBar = document.getElementById('dock-progress-indicator');
+        const dockButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('.dock-chapter-btn'));
+
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        const MOBILE_BREAKPOINT = 768;
+
+        function isPanoramaActive(): boolean {
+            return window.innerWidth >= MOBILE_BREAKPOINT && !prefersReducedMotion.matches;
+        }
+
+        // =====================================================================
+        // CHAPTER 01 HERO SCULPTURE FRAME ANIMATION (96 WEBP FRAMES)
+        // =====================================================================
+        const TOTAL_FRAMES = 96;
+        const rawFrames: (HTMLImageElement | null)[] = new Array(TOTAL_FRAMES).fill(null);
+        const processedCanvases: (HTMLCanvasElement | null)[] = new Array(TOTAL_FRAMES).fill(null);
+        let lastRenderedFrameIndex = -1;
+        let currentRequestedIndex = 0;
+
+        // Process source WebP frame into an offscreen canvas with true RGBA transparency:
+        // - Crops unwanted outer margins and side border artifacts
+        // - High-confidence core segmentation preserves genuine sapphire glass, facets, and highlights
+        // - Connected component analysis isolates and discards the disconnected studio-floor artifact
+        // - Very narrow 1-2px edge transition eliminates soft gray/white halos without artificial de-matting
+        // - Preserves 100% of authentic glass colors, deep refractions, and frosted highlight gradients
+        function processFrameToCanvas(img: HTMLImageElement): HTMLCanvasElement {
+            const offscreen = document.createElement('canvas');
+            const CROP_X = 18;
+            const CROP_Y = 80;
+            const CROP_W = 684;
+            const CROP_H = 1100;
+
+            offscreen.width = CROP_W;
+            offscreen.height = CROP_H;
+            const offCtx = offscreen.getContext('2d', { willReadFrequently: true });
+            if (!offCtx) return offscreen;
+
+            offCtx.drawImage(img, CROP_X, CROP_Y, CROP_W, CROP_H, 0, 0, CROP_W, CROP_H);
+            const imgData = offCtx.getImageData(0, 0, CROP_W, CROP_H);
+            const d = imgData.data;
+            const totalPixels = CROP_W * CROP_H;
+            const width = CROP_W;
+
+            const coreConf = new Float32Array(totalPixels);
+            const richSapphire = new Uint8Array(totalPixels);
+
+            // PASS 1: Identify high-confidence core glass and rich sapphire features
+            for (let i = 0; i < totalPixels; i++) {
+                const dataIdx = i << 2;
+                const r = d[dataIdx];
+                const g = d[dataIdx + 1];
+                const b = d[dataIdx + 2];
+
+                // Immediate bypass for pure/near-pure neutral white studio background
+                if (r >= 250 && g >= 250 && b >= 250) continue;
+
+                const y = Math.floor(i / width);
+                const maxRG = r > g ? r : g;
+                const blueDom = b - maxRG;
+                const maxRGB = maxRG > b ? maxRG : b;
+                const minRGB = r < g ? (r < b ? r : b) : (g < b ? g : b);
+                const chroma = maxRGB - minRGB;
+                const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+                const sat = maxRGB > 0 ? chroma / maxRGB : 0;
+
+                const dr = 255 - r;
+                const dg = 255 - g;
+                const db = 255 - b;
+                const distWhite = Math.sqrt(dr * dr + dg * dg + db * db);
+
+                if (distWhite < 25) continue;
+
+                // Mark rich sapphire / dark facet pixels for component authentication
+                if ((sat >= 0.20 && blueDom >= 25) || (brightness < 165 && blueDom > 4)) {
+                    richSapphire[i] = 1;
+                }
+
+                // Studio floor shadow filter in lower quadrant (y > 720)
+                const isDarkStructure = brightness < 185 && blueDom > 3;
+                if (y > 720 && (sat < 0.14 || blueDom < 25) && minRGB > 185 && !isDarkStructure) {
+                    continue;
+                }
+
+                // 1. Dark refractions & structural facet lines
+                let darkGlassConf = 0;
+                if (isDarkStructure) {
+                    const bf = (185 - brightness) / 30;
+                    const bdf = (blueDom - 3) / 6;
+                    darkGlassConf = (bf > 1 ? 1 : bf) * (bdf > 1 ? 1 : bdf);
+                }
+
+                // 2. Saturated sapphire glass body
+                let satConf = 0;
+                if (sat >= 0.18 && blueDom >= 14) {
+                    const sf = (sat - 0.18) / 0.12;
+                    const bdf = (blueDom - 14) / 10;
+                    satConf = (sf > 1 ? 1 : sf) * (bdf > 1 ? 1 : bdf);
+                }
+
+                // 3. Blue dominance core & internal highlights
+                let bdomConf = 0;
+                if (blueDom >= 24 && distWhite >= 30) {
+                    const bdf = (blueDom - 24) / 12;
+                    const dwf = (distWhite - 30) / 20;
+                    bdomConf = (bdf > 1 ? 1 : bdf) * (dwf > 1 ? 1 : dwf);
+                }
+
+                let conf = darkGlassConf;
+                if (satConf > conf) conf = satConf;
+                if (bdomConf > conf) conf = bdomConf;
+
+                coreConf[i] = conf;
+            }
+
+            // PASS 2: Connected Component Analysis on candidate core regions (Union-Find)
+            // Allows all 4 cubes to remain independent connected components, while isolating
+            // and discarding small, low-chroma studio-floor artifacts and noise specks.
+            const labels = new Int32Array(totalPixels);
+            const parent = [0];
+            let nextLabel = 1;
+
+            function findRoot(node: number): number {
+                let root = node;
+                while (root !== parent[root]) root = parent[root];
+                let curr = node;
+                while (curr !== root) {
+                    const nxt = parent[curr];
+                    parent[curr] = root;
+                    curr = nxt;
+                }
+                return root;
+            }
+
+            function unionLabels(a: number, b: number): void {
+                const rootA = findRoot(a);
+                const rootB = findRoot(b);
+                if (rootA !== rootB) {
+                    if (rootA < rootB) parent[rootB] = rootA;
+                    else parent[rootA] = rootB;
+                }
+            }
+
+            for (let y = 0; y < CROP_H; y++) {
+                const rowOffset = y * width;
+                for (let x = 0; x < width; x++) {
+                    const idx = rowOffset + x;
+                    if (coreConf[idx] <= 0.10) continue;
+
+                    const left = x > 0 && coreConf[idx - 1] > 0.10 ? labels[idx - 1] : 0;
+                    const up = y > 0 && coreConf[idx - width] > 0.10 ? labels[idx - width] : 0;
+
+                    if (left === 0 && up === 0) {
+                        labels[idx] = nextLabel;
+                        parent.push(nextLabel);
+                        nextLabel++;
+                    } else if (left !== 0 && up === 0) {
+                        labels[idx] = left;
+                    } else if (left === 0 && up !== 0) {
+                        labels[idx] = up;
+                    } else {
+                        labels[idx] = left;
+                        if (left !== up) unionLabels(left, up);
+                    }
+                }
+            }
+
+            // Accumulate pixel area and rich sapphire pixel counts per component root
+            const compArea = new Int32Array(nextLabel);
+            const compSapphire = new Int32Array(nextLabel);
+
+            for (let i = 0; i < totalPixels; i++) {
+                if (labels[i] !== 0) {
+                    const root = findRoot(labels[i]);
+                    labels[i] = root;
+                    compArea[root]++;
+                    if (richSapphire[i] === 1) compSapphire[root]++;
+                }
+            }
+
+            // Keep components that contain substantial sapphire glass (genuine cubes have >= 45,000 px)
+            // Discard small disconnected studio floor residue (area < 8000 or sapphire < 2000)
+            const validRoot = new Uint8Array(nextLabel);
+            for (let l = 1; l < nextLabel; l++) {
+                if (parent[l] === l) {
+                    if (compArea[l] >= 8000 && compSapphire[l] >= 2000) {
+                        validRoot[l] = 1;
+                    }
+                }
+            }
+
+            const validCore = new Uint8Array(totalPixels);
+            for (let i = 0; i < totalPixels; i++) {
+                const l = labels[i];
+                if (l !== 0 && validRoot[l] === 1) {
+                    validCore[i] = 1;
+                }
+            }
+
+            // PASS 3: Clean Core & Narrow 1-2px Edge Mask Construction
+            // Avoids artificial white-subtractive de-matting math to preserve clean authentic sapphire color
+            for (let i = 0; i < totalPixels; i++) {
+                const dataIdx = i << 2;
+
+                if (validCore[i] === 1) {
+                    const conf = coreConf[i];
+                    if (conf >= 0.85) {
+                        d[dataIdx + 3] = 255;
+                    } else if (conf <= 0.05) {
+                        d[dataIdx + 3] = 0;
+                    } else {
+                        const alphaFloat = conf * conf * (3 - 2 * conf);
+                        d[dataIdx + 3] = Math.round(alphaFloat * 255);
+                    }
+                } else {
+                    // Check narrow 1-2px edge neighbor adjacency to valid core
+                    const x = i % width;
+                    const y = Math.floor(i / width);
+                    const isEdgeNeighbor =
+                        (x > 0 && validCore[i - 1] === 1) ||
+                        (x < width - 1 && validCore[i + 1] === 1) ||
+                        (y > 0 && validCore[i - width] === 1) ||
+                        (y < CROP_H - 1 && validCore[i + width] === 1);
+
+                    if (isEdgeNeighbor) {
+                        const r = d[dataIdx];
+                        const g = d[dataIdx + 1];
+                        const b = d[dataIdx + 2];
+                        const maxRG = r > g ? r : g;
+                        const blueDom = b - maxRG;
+                        const maxRGB = maxRG > b ? maxRG : b;
+                        const minRGB = r < g ? (r < b ? r : b) : (g < b ? g : b);
+                        const chroma = maxRGB - minRGB;
+                        const sat = maxRGB > 0 ? chroma / maxRGB : 0;
+                        const dr = 255 - r;
+                        const dg = 255 - g;
+                        const db = 255 - b;
+                        const distWhite = Math.sqrt(dr * dr + dg * dg + db * db);
+
+                        const isNeutralBg = distWhite < 25 || (minRGB > 210 && sat < 0.10) || blueDom < 6;
+                        if (!isNeutralBg) {
+                            const satFactor = Math.min(1, Math.max(0, (sat - 0.06) / 0.18));
+                            const bdomFactor = Math.min(1, Math.max(0, (blueDom - 6) / 16));
+                            const whiteFactor = Math.min(1, Math.max(0, (distWhite - 22) / 30));
+                            const edgeRaw = satFactor * bdomFactor * whiteFactor;
+                            const edgeSmooth = edgeRaw * edgeRaw * (3 - 2 * edgeRaw);
+                            d[dataIdx + 3] = Math.round(edgeSmooth * 255);
+                        } else {
+                            d[dataIdx + 3] = 0;
+                        }
+                    } else {
+                        d[dataIdx + 3] = 0;
+                    }
+                }
+            }
+
+            offCtx.putImageData(imgData, 0, 0);
+            return offscreen;
+        }
+
+        function loadFrame(index: number, onLoaded?: () => void): void {
+            if (index < 0 || index >= TOTAL_FRAMES || rawFrames[index]) return;
+            const img = new Image();
+            rawFrames[index] = img;
+            img.onload = () => {
+                // Process once when loaded and cache the transparent canvas
+                processedCanvases[index] = processFrameToCanvas(img);
+                if (onLoaded) onLoaded();
+            };
+            img.src = `/hero/frames/frame-${String(index + 1).padStart(4, '0')}.webp`;
+        }
+
+        function getNearestLoadedCanvas(targetIndex: number): HTMLCanvasElement | null {
+            if (processedCanvases[targetIndex]) {
+                return processedCanvases[targetIndex];
+            }
+            for (let offset = 1; offset < TOTAL_FRAMES; offset++) {
+                const down = targetIndex - offset;
+                if (down >= 0 && processedCanvases[down]) {
+                    return processedCanvases[down];
+                }
+                const up = targetIndex + offset;
+                if (up < TOTAL_FRAMES && processedCanvases[up]) {
+                    return processedCanvases[up];
+                }
+            }
+            return null;
+        }
+
+        function renderSculpture(targetIndex: number, forceRedraw = false): void {
+            if (!sculptureCanvas || !sculptureStage) return;
+            const ctx = sculptureCanvas.getContext('2d');
+            if (!ctx) return;
+
+            currentRequestedIndex = targetIndex;
+
+            if (!rawFrames[targetIndex]) {
+                loadFrame(targetIndex, () => {
+                    if (currentRequestedIndex === targetIndex) {
+                        renderSculpture(targetIndex);
+                    }
+                });
+            }
+
+            const cachedCanvas = getNearestLoadedCanvas(targetIndex);
+            if (!cachedCanvas) return;
+
+            if (!forceRedraw && lastRenderedFrameIndex === targetIndex && cachedCanvas === processedCanvases[targetIndex]) {
+                return;
+            }
+
+            const rect = sculptureStage.getBoundingClientRect();
+            const displayWidth = Math.max(1, Math.round(rect.width));
+            const displayHeight = Math.max(1, Math.round(rect.height));
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            const targetBufferWidth = Math.round(displayWidth * dpr);
+            const targetBufferHeight = Math.round(displayHeight * dpr);
+
+            if (sculptureCanvas.width !== targetBufferWidth || sculptureCanvas.height !== targetBufferHeight) {
+                sculptureCanvas.width = targetBufferWidth;
+                sculptureCanvas.height = targetBufferHeight;
+            }
+
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
+
+            const sWidth = cachedCanvas.width;
+            const sHeight = cachedCanvas.height;
+            const cropAspect = sWidth / sHeight;
+
+            // Target 80% to 85% of available stage height for a commanding, floating 3D presence
+            let drawH = Math.round(sculptureCanvas.height * 0.82);
+            let drawW = Math.round(drawH * cropAspect);
+
+            // Ensure ample breathing room horizontally with no clipping
+            if (drawW > sculptureCanvas.width * 0.88) {
+                drawW = Math.round(sculptureCanvas.width * 0.88);
+                drawH = Math.round(drawW / cropAspect);
+            }
+
+            const drawX = Math.round((sculptureCanvas.width - drawW) / 2);
+            const drawY = Math.round((sculptureCanvas.height - drawH) / 2);
+
+            ctx.clearRect(0, 0, sculptureCanvas.width, sculptureCanvas.height);
+            ctx.drawImage(cachedCanvas, drawX, drawY, drawW, drawH);
+
+            if (cachedCanvas === processedCanvases[targetIndex]) {
+                lastRenderedFrameIndex = targetIndex;
+            }
+        }
+
+        function preloadAllFrames(): void {
+            const isDesktopMotion = isPanoramaActive();
+            const primaryIndex = isDesktopMotion ? 0 : TOTAL_FRAMES - 1;
+
+            // 1. Priority: Load the primary frame immediately
+            loadFrame(primaryIndex, () => {
+                renderSculpture(primaryIndex, true);
+            });
+
+            // 2. Also load the opposite boundary early
+            const secondaryIndex = isDesktopMotion ? TOTAL_FRAMES - 1 : 0;
+            loadFrame(secondaryIndex, () => {
+                if (currentRequestedIndex === secondaryIndex) {
+                    renderSculpture(secondaryIndex);
                 }
             });
-        }, { threshold: 0.1 });
-        
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    });
+
+            // 3. Incrementally preload all remaining frames asynchronously
+            let nextIndex = 0;
+            function loadBatch(): void {
+                let count = 0;
+                while (nextIndex < TOTAL_FRAMES && count < 4) {
+                    const idx = nextIndex++;
+                    if (idx !== primaryIndex && idx !== secondaryIndex) {
+                        loadFrame(idx, () => {
+                            if (Math.abs(currentRequestedIndex - idx) <= 1) {
+                                renderSculpture(currentRequestedIndex);
+                            }
+                        });
+                        count++;
+                    }
+                }
+                if (nextIndex < TOTAL_FRAMES) {
+                    if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+                        (window as any).requestIdleCallback(loadBatch, { timeout: 150 });
+                    } else {
+                        setTimeout(loadBatch, 25);
+                    }
+                }
+            }
+
+            if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+                (window as any).requestIdleCallback(loadBatch, { timeout: 150 });
+            } else {
+                setTimeout(loadBatch, 25);
+            }
+        }
+
+        // =====================================================================
+        // SCROLL-REACTIVE ATMOSPHERIC BACKGROUND SYSTEM
+        // Progression: Midnight Navy -> Deep Cobalt -> Muted Blue -> Pale Blue -> Editorial Cream
+        // =====================================================================
+        interface AtmosphereStop {
+            progress: number;
+            r: number;
+            g: number;
+            b: number;
+            glowR: number;
+            glowG: number;
+            glowB: number;
+            glowA: number;
+            secA: number;
+        }
+
+        const ATMOSPHERE_STOPS: AtmosphereStop[] = [
+            // Stop 01 (progress 0.00): Midnight Navy (#071A33) with Cobalt & Sapphire atmosphere
+            { progress: 0.00, r: 7,   g: 26,  b: 51,  glowR: 0,   glowG: 116, glowB: 217, glowA: 0.20, secA: 0.09 },
+            // Stop 02 (progress 0.25): Deep Cobalt (#101F38)
+            { progress: 0.25, r: 16,  g: 31,  b: 56,  glowR: 59,  glowG: 130, glowB: 246, glowA: 0.14, secA: 0.06 },
+            // Stop 03 (progress 0.50): Muted Blue (#2C4868)
+            { progress: 0.50, r: 44,  g: 72,  b: 104, glowR: 96,  glowG: 165, glowB: 250, glowA: 0.12, secA: 0.03 },
+            // Stop 04 (progress 0.75): Pale Blue (#E2ECF7)
+            { progress: 0.75, r: 226, g: 236, b: 247, glowR: 255, glowG: 255, glowB: 255, glowA: 0.55, secA: 0.00 },
+            // Stop 05 (progress 1.00): Editorial Cream (#FBF9F4)
+            { progress: 1.00, r: 251, g: 249, b: 244, glowR: 255, glowG: 255, glowB: 255, glowA: 0.70, secA: 0.00 }
+        ];
+
+        function updateAtmosphere(progress: number): void {
+            if (!atmosphereEl) return;
+            const p = Math.max(0, Math.min(1, progress));
+
+            let s0 = ATMOSPHERE_STOPS[0];
+            let s1 = ATMOSPHERE_STOPS[ATMOSPHERE_STOPS.length - 1];
+
+            for (let i = 0; i < ATMOSPHERE_STOPS.length - 1; i++) {
+                if (p >= ATMOSPHERE_STOPS[i].progress && p <= ATMOSPHERE_STOPS[i + 1].progress) {
+                    s0 = ATMOSPHERE_STOPS[i];
+                    s1 = ATMOSPHERE_STOPS[i + 1];
+                    break;
+                }
+            }
+
+            const range = s1.progress - s0.progress;
+            const rawT = range > 0 ? (p - s0.progress) / range : 0;
+            // Hermite smoothstep for smooth organic interpolation across chapter transitions
+            const t = rawT * rawT * (3 - 2 * rawT);
+
+            const r = Math.round(s0.r + (s1.r - s0.r) * t);
+            const g = Math.round(s0.g + (s1.g - s0.g) * t);
+            const b = Math.round(s0.b + (s1.b - s0.b) * t);
+
+            const gr = Math.round(s0.glowR + (s1.glowR - s0.glowR) * t);
+            const gg = Math.round(s0.glowG + (s1.glowG - s0.glowG) * t);
+            const gb = Math.round(s0.glowB + (s1.glowB - s0.glowB) * t);
+            const ga = (s0.glowA + (s1.glowA - s0.glowA) * t).toFixed(3);
+            const sa = (s0.secA + (s1.secA - s0.secA) * t).toFixed(3);
+
+            const glowX = (40 + p * 20).toFixed(1);
+            const glowY = (28 + p * 12).toFixed(1);
+
+            atmosphereEl.style.setProperty('--atmosphere-bg', `rgb(${r}, ${g}, ${b})`);
+            atmosphereEl.style.setProperty('--glow-color', `rgba(${gr}, ${gg}, ${gb}, ${ga})`);
+            atmosphereEl.style.setProperty('--secondary-glow', `rgba(93, 169, 255, ${sa})`);
+            atmosphereEl.style.setProperty('--glow-x', `${glowX}%`);
+            atmosphereEl.style.setProperty('--glow-y', `${glowY}%`);
+        }
+
+        // Exact canvas travel calculated from the last chapter's offset
+        function getCanvasTravel(): number {
+            const lastChapter = chapters[chapters.length - 1];
+            return lastChapter ? lastChapter.offsetLeft : (chapters.length - 1) * viewport.clientWidth;
+        }
+
+        function calculateDimensions(): void {
+            if (!isPanoramaActive()) {
+                root.style.height = '';
+                canvas.style.transform = '';
+                if (dock) dock.classList.remove('dock-hidden');
+                renderSculpture(TOTAL_FRAMES - 1, true);
+                return;
+            }
+
+            const chapterWidth = viewport.clientWidth;
+            root.style.setProperty('--chapter-width', `${chapterWidth}px`);
+
+            // Exactly 1 viewport of vertical scroll runway per chapter transition
+            const totalRunway = (chapters.length - 1) * window.innerHeight;
+            root.style.height = `${window.innerHeight + totalRunway}px`;
+
+            renderSculpture(currentRequestedIndex, true);
+        }
+
+        let ticking = false;
+
+        function updateScroll(): void {
+            if (!isPanoramaActive()) {
+                renderSculpture(TOTAL_FRAMES - 1);
+                return;
+            }
+
+            const rect = root.getBoundingClientRect();
+            const maxScroll = root.offsetHeight - window.innerHeight;
+            if (maxScroll <= 0) return;
+
+            // Progress from 0.0 (entry) to 1.0 (terminal chapter)
+            const scrolled = -rect.top;
+            const progress = Math.max(0, Math.min(1, scrolled / maxScroll));
+
+            // Smooth horizontal translation tied 1:1 to viewport width
+            const totalTravel = getCanvasTravel();
+            const currentTranslate = progress * totalTravel;
+            canvas.style.transform = `translate3d(-${currentTranslate.toFixed(2)}px, 0, 0)`;
+
+            // Update scroll-reactive atmospheric background
+            updateAtmosphere(progress);
+
+            // Hero-local progress calculation from actual geometry
+            const heroStart = chapterHero ? chapterHero.offsetLeft : 0;
+            const heroEnd = chapterHero ? heroStart + chapterHero.offsetWidth : viewport.clientWidth;
+            const heroTravel = heroEnd - heroStart;
+            const heroProgress = heroTravel > 0
+                ? Math.max(0, Math.min(1, (currentTranslate - heroStart) / heroTravel))
+                : 0;
+
+            const frameIndex = Math.max(0, Math.min(TOTAL_FRAMES - 1, Math.round(heroProgress * (TOTAL_FRAMES - 1))));
+            renderSculpture(frameIndex);
+
+            // Update bottom dock progress bar
+            if (progressBar) {
+                progressBar.style.width = `${(progress * 100).toFixed(1)}%`;
+            }
+
+            // Determine active chapter based on normalized progress
+            const activeIdx = Math.min(
+                chapters.length - 1,
+                Math.max(0, Math.round(progress * (chapters.length - 1)))
+            );
+
+            dockButtons.forEach((btn, idx) => {
+                const isActive = idx === activeIdx;
+                btn.classList.toggle('active', isActive);
+                btn.setAttribute('aria-current', isActive ? 'true' : 'false');
+            });
+
+            // Seamlessly hide dock when exiting into the footer
+            if (dock) {
+                const isEnteringFooter = rect.bottom <= window.innerHeight + 20;
+                dock.classList.toggle('dock-hidden', isEnteringFooter);
+            }
+        }
+
+        function onScroll(): void {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    updateScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+
+        function scrollToChapter(index: number): void {
+            if (!isPanoramaActive() || !chapters[index]) return;
+
+            const targetProgress = index / (chapters.length - 1);
+            const maxScroll = root.offsetHeight - window.innerHeight;
+            const targetScroll = targetProgress * maxScroll;
+
+            window.scrollTo({
+                top: targetScroll,
+                behavior: 'smooth'
+            });
+        }
+
+        // Click on dock buttons
+        dockButtons.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const idxAttr = btn.getAttribute('data-chapter-index');
+                const idx = idxAttr ? parseInt(idxAttr, 10) : 0;
+                scrollToChapter(idx);
+            });
+        });
+
+        // Keyboard arrow navigation
+        window.addEventListener('keydown', (e: KeyboardEvent) => {
+            if (!isPanoramaActive()) return;
+
+            // Only navigate if not typing in an input
+            const target = e.target;
+            if (target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement) return;
+
+            const rect = root.getBoundingClientRect();
+            const maxScroll = root.offsetHeight - window.innerHeight;
+            const progress = maxScroll > 0 ? Math.max(0, Math.min(1, -rect.top / maxScroll)) : 0;
+            const currentIdx = Math.round(progress * (chapters.length - 1));
+
+            if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+                const nextIdx = Math.min(chapters.length - 1, currentIdx + 1);
+                scrollToChapter(nextIdx);
+            } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+                const prevIdx = Math.max(0, currentIdx - 1);
+                scrollToChapter(prevIdx);
+            }
+        });
+
+        // Support trackpad horizontal swipe gestures naturally
+        viewport.addEventListener('wheel', (e: WheelEvent) => {
+            if (!isPanoramaActive()) return;
+            if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && Math.abs(e.deltaX) > 10) {
+                window.scrollBy({ top: e.deltaX, behavior: 'auto' });
+            }
+        }, { passive: true });
+
+        // Tab focus auto-scroll to focused chapter
+        chapters.forEach((chapter, idx) => {
+            chapter.addEventListener('focusin', () => {
+                if (isPanoramaActive()) {
+                    scrollToChapter(idx);
+                }
+            });
+        });
+
+        // Window resize and motion listeners
+        window.addEventListener('resize', () => {
+            calculateDimensions();
+            updateScroll();
+        }, { passive: true });
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        prefersReducedMotion.addEventListener('change', () => {
+            calculateDimensions();
+            updateScroll();
+        });
+
+        // Initial setup
+        calculateDimensions();
+        updateScroll();
+        preloadAllFrames();
+    }
+
+    function init(): void {
+        const root = document.getElementById('editorial-panorama-root');
+        const viewport = document.getElementById('panorama-viewport');
+        const canvas = document.getElementById('panorama-canvas');
+
+        if (!root || !viewport || !canvas) {
+            return;
+        }
+
+        initEditorialPanorama(root, viewport, canvas);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
 </script>
 
 <style>
-    /* Scope styles for the homepage */
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 var(--space-3);
-    }
-    
-    .text-center {
-        text-align: center;
+    /* ========================================================================= */
+    /* EDITORIAL PANORAMA DESIGN SYSTEM & TOKENS                                 */
+    /* ========================================================================= */
+
+    .editorial-panorama-root {
+        position: relative;
+        width: 100%;
+        background-color: #071A33;
     }
 
-    section {
-        padding: var(--space-12) 0;
+    /* Scroll-Reactive Atmospheric Background Layer */
+    .panorama-atmosphere {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+        --atmosphere-bg: rgb(7, 26, 51);
+        --glow-color: rgba(0, 116, 217, 0.20);
+        --secondary-glow: rgba(93, 169, 255, 0.09);
+        --glow-x: 40%;
+        --glow-y: 28%;
+    }
+
+    .atmosphere-base {
+        position: absolute;
+        inset: 0;
+        background-color: var(--atmosphere-bg);
+        will-change: background-color;
+    }
+
+    .atmosphere-glow {
+        position: absolute;
+        inset: 0;
+        background:
+            radial-gradient(
+                ellipse 120% 90% at var(--glow-x) var(--glow-y),
+                var(--glow-color) 0%,
+                transparent 70%
+            ),
+            radial-gradient(
+                circle at 65% 45%,
+                var(--secondary-glow) 0%,
+                transparent 60%
+            );
+        will-change: background;
+    }
+
+    /* Seamless Homepage Footer Integration */
+    :global(body:has(#editorial-panorama-root) .site-footer) {
+        margin-top: 0 !important;
+        background-color: #070B14 !important;
+        color: #94A3B8 !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+        padding-top: 4rem !important;
+    }
+
+    :global(body:has(#editorial-panorama-root) .site-footer .brand-info h2) {
+        color: #FFFFFF !important;
+    }
+
+    :global(body:has(#editorial-panorama-root) .site-footer .brand-info p) {
+        color: #94A3B8 !important;
+    }
+
+    :global(body:has(#editorial-panorama-root) .site-footer .footer-links a) {
+        color: #CBD5E1 !important;
+    }
+
+    :global(body:has(#editorial-panorama-root) .site-footer .footer-links a:hover) {
+        color: #60A5FA !important;
+    }
+
+    :global(body:has(#editorial-panorama-root) .site-footer .copyright p) {
+        color: #64748B !important;
+    }
+
+    /* Common Chapter Primitives */
+    .chapter {
         position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        box-sizing: border-box;
         overflow: hidden;
     }
-    
-    .bg-alt {
-        background-color: var(--color-bg-alt);
-        border-top: 1px solid var(--color-border);
-        border-bottom: 1px solid var(--color-border);
+
+    .chapter-content {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        max-width: 1240px;
+        margin: 0 auto;
+        box-sizing: border-box;
     }
 
-    .section-title {
-        font-size: clamp(2rem, 4vw, 2.5rem);
+    /* Section Header Common Styles */
+    .section-header-centered {
+        text-align: center;
+        max-width: 680px;
+        margin: 0 auto var(--space-6) auto;
+    }
+
+    .chapter-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(37, 99, 235, 0.08);
+        border: 1px solid rgba(37, 99, 235, 0.18);
+        padding: 4px 12px;
+        border-radius: 20px;
+        margin-bottom: var(--space-3);
+    }
+
+    .badge-dark {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .badge-index {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        font-weight: 800;
+        color: var(--color-brand-accent);
+    }
+
+    .badge-dark .badge-index {
+        color: #60A5FA;
+    }
+
+    .badge-text {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: var(--color-brand-primary);
+        text-transform: uppercase;
+    }
+
+    .badge-dark .badge-text {
+        color: #ffffff;
+    }
+
+    .chapter-heading {
+        font-size: clamp(1.85rem, 2.5vw, 2.5rem);
+        line-height: 1.18;
+        letter-spacing: -0.03em;
         margin-top: 0;
         margin-bottom: var(--space-3);
+        color: var(--color-brand-primary);
     }
-    
-    .section-desc {
-        font-size: 1.125rem;
+
+    .chapter-summary {
+        font-size: 1.05rem;
         color: var(--color-text-muted);
-        max-width: 650px;
-        margin: 0 auto var(--space-4);
-        line-height: 1.7;
+        line-height: 1.6;
+        margin: 0;
     }
 
-    /* Hero Section */
-    .hero {
-        padding: var(--space-12) 0 var(--space-8);
-        text-align: left;
-        background: linear-gradient(135deg, rgba(0, 31, 63, 0.03) 0%, rgba(37, 99, 235, 0.05) 50%, rgba(139, 92, 246, 0.08) 100%);
-        position: relative;
-    }
-    
-    .hero-container {
-        display: grid;
-        grid-template-columns: 1.2fr 1fr;
-        gap: var(--space-8);
-        align-items: center;
-    }
-
-    .hero-content {
-        max-width: 600px;
-    }
-    
-    .hero-bg-glow {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 800px;
-        height: 400px;
-        background: radial-gradient(circle, rgba(37,99,235,0.15) 0%, rgba(255,255,255,0) 70%);
-        z-index: -1;
-    }
-    
-    .decoration {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(40px);
-        z-index: -2;
-        opacity: 0.5;
-    }
-    
-    .dec-1 {
-        width: 300px;
-        height: 300px;
-        background: rgba(139, 92, 246, 0.2);
-        top: -100px;
-        right: -100px;
-        animation: float 10s ease-in-out infinite;
-    }
-    
-    .dec-2 {
-        width: 250px;
-        height: 250px;
-        background: rgba(37, 99, 235, 0.2);
-        bottom: 50px;
-        left: -50px;
-        animation: float 12s ease-in-out infinite reverse;
-    }
-    
-    @keyframes float {
-        0% { transform: translateY(0) scale(1); }
-        50% { transform: translateY(-20px) scale(1.05); }
-        100% { transform: translateY(0) scale(1); }
-    }
-    
-    .eyebrow {
-        display: inline-block;
-        font-size: 0.875rem;
-        font-weight: 700;
-        letter-spacing: 0.05em;
-        color: var(--color-brand-accent);
-        text-transform: uppercase;
-        margin-bottom: var(--space-3);
-        background: rgba(37, 99, 235, 0.1);
-        padding: 6px 12px;
-        border-radius: 20px;
-    }
-    
-    .hero h1 {
-        margin-bottom: var(--space-4);
-        margin-left: 0;
-        margin-right: 0;
-        font-size: clamp(2.5rem, 4vw, 4rem);
-        line-height: 1.1;
-    }
-    
     .text-gradient {
         background: var(--gradient-accent);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
     }
-    
-    .hero .subtitle {
+
+    /* ========================================================================= */
+    /* CHAPTER 1: HERO & BUSINESS SYSTEM                                         */
+    /* ========================================================================= */
+    .chapter-hero {
+        background: transparent;
+    }
+
+    .hero-bg-glow {
+        position: absolute;
+        top: 10%;
+        left: 25%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, rgba(139, 92, 246, 0.03) 50%, transparent 70%);
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .hero-layout {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-8);
+    }
+
+    .hero-lead {
+        flex: 1.15;
+        max-width: 560px;
+    }
+
+    .hero-title {
+        font-size: clamp(2.4rem, 4vw, 3.8rem);
+        line-height: 1.08;
+        letter-spacing: -0.03em;
+        margin-bottom: var(--space-3);
+        color: var(--color-brand-primary);
+    }
+
+    .hero-desc {
         font-size: 1.125rem;
         color: var(--color-text-muted);
-        margin: 0 0 var(--space-6) 0;
-        max-width: 500px;
-        line-height: 1.6;
+        line-height: 1.65;
+        margin-bottom: var(--space-6);
+        max-width: 480px;
     }
-    
-    .cta-group {
+
+    .hero-cta-group {
         display: flex;
         gap: var(--space-3);
-        justify-content: flex-start;
+        margin-bottom: var(--space-6);
         flex-wrap: wrap;
     }
 
-    /* Hero Visual Card */
-    .hero-visual {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .system-card {
-        background: #ffffff;
-        border: 1px solid rgba(0, 31, 63, 0.08);
-        border-radius: 16px;
-        padding: 2rem;
-        width: 100%;
-        max-width: 400px;
-        box-shadow: 0 20px 40px -15px rgba(0, 116, 217, 0.15), 0 0 20px rgba(139, 92, 246, 0.05);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .system-card::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0; height: 4px;
-        background: linear-gradient(90deg, #0074D9, #8B5CF6);
-    }
-
-    .system-header {
-        text-align: center;
-        margin-bottom: 2rem;
-    }
-
-    .system-label {
-        font-size: 0.75rem;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        color: #001F3F;
-        background: rgba(0, 31, 63, 0.05);
-        padding: 4px 12px;
-        border-radius: 20px;
-    }
-
-    .system-steps {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-    }
-
-    .step-item {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding: 0.75rem 1rem;
-        border-radius: 8px;
-        background: transparent;
-        transition: all 0.3s ease;
-    }
-
-    .step-item:hover, .step-item.active-step {
-        background: rgba(0, 116, 217, 0.05);
-        transform: translateX(5px);
-    }
-
-    .step-icon {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        background: #001F3F;
-        color: #ffffff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        font-size: 0.875rem;
-        flex-shrink: 0;
-        box-shadow: 0 4px 10px rgba(0, 31, 63, 0.2);
-    }
-
-    .step-item.active-step .step-icon {
-        background: #0074D9;
-        box-shadow: 0 4px 12px rgba(0, 116, 217, 0.3);
-    }
-
-    .step-text {
-        font-weight: 700;
-        color: #001F3F;
-        letter-spacing: 0.05em;
-    }
-
-    .step-connector {
-        width: 2px;
-        height: 16px;
-        background: rgba(0, 31, 63, 0.1);
-        margin-left: 31px;
-    }
-
-    /* Grid & Cards */
-    .features-header {
-        margin-bottom: var(--space-8);
-    }
-    
-    .pillars-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--space-6);
-        max-width: 1000px;
-        margin: 0 auto;
-    }
-    
-    .pillar-card {
-        background: #ffffff;
-        border: 1px solid rgba(0, 31, 63, 0.08);
-        border-radius: 16px;
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-        box-shadow: 0 4px 15px rgba(0, 31, 63, 0.03);
-        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-        position: relative;
-    }
-    
-    .pillar-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 24px rgba(0, 116, 217, 0.1);
-        border-top-color: var(--color-brand-accent);
-    }
-
-    .pillar-card:nth-child(1) { border-top: 3px solid var(--color-brand-primary); }
-    .pillar-card:nth-child(2) { border-top: 3px solid var(--color-brand-accent); }
-    .pillar-card:nth-child(3) { border-top: 3px solid var(--color-success); }
-    .pillar-card:nth-child(4) { border-top: 3px solid var(--color-brand-purple); }
-    .pillar-card:nth-child(5) { border-top: 3px solid var(--color-warning); }
-
-    .pillar-featured {
-        grid-column: 1 / -1;
-        flex-direction: row;
-        align-items: flex-start;
-    }
-
-    .pillar-featured .featured-content {
-        flex: 1;
-        margin-left: var(--space-6);
-        margin-right: var(--space-6);
-    }
-    
-    .pillar-featured .pillar-header {
-        margin-bottom: 0;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
-
-    .pillar-featured .pillar-footer {
-        align-self: center;
-    }
-    
-    .pillar-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: var(--space-4);
-    }
-    
-    .pillar-number {
-        font-family: monospace;
-        font-size: 0.875rem;
-        font-weight: 700;
-        color: var(--color-brand-accent);
-        background: rgba(37, 99, 235, 0.05);
-        padding: 4px 8px;
-        border-radius: 4px;
-    }
-
-    .card-icon {
+    .hero-scroll-hint {
         display: inline-flex;
         align-items: center;
-        justify-content: center;
-        width: 48px;
-        height: 48px;
-        border-radius: var(--radius-md);
-        background: rgba(0, 31, 63, 0.03);
-        color: #001F3F;
-    }
-    
-    .pillar-card h3 {
-        margin-bottom: var(--space-2);
-        font-size: 1.25rem;
-        color: #001F3F;
-    }
-    
-    .pillar-card p {
-        color: var(--color-text-muted);
-        font-size: 0.95rem;
-        line-height: 1.6;
-        flex-grow: 1;
-        margin-bottom: var(--space-4);
-    }
-    
-    .pillar-footer {
-        display: flex;
-        justify-content: flex-end;
-    }
-    
-    .pillar-arrow {
-        color: #0074D9;
-        font-weight: bold;
-        transition: transform 0.3s ease;
-    }
-    
-    .pillar-card:hover .pillar-arrow {
-        transform: translateX(5px);
+        gap: 8px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--color-brand-accent);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        opacity: 0.85;
     }
 
-    /* Final CTA */
-    .final-cta {
-        background: var(--color-brand-primary);
-        color: #fff;
+    .hint-arrow {
+        font-size: 1.1rem;
+        transition: transform 0.25s ease;
     }
-    
-    .final-cta h2 {
-        color: #fff;
+
+    .hero-scroll-hint:hover .hint-arrow {
+        transform: translateX(4px);
     }
-    
-    .final-cta .section-desc {
-        color: var(--color-text-light);
+
+    .hero-visual-card {
+        flex: 1.2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
-    
-    /* Learning Path / Featured Content */
-    .path-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: var(--space-6);
-        margin-top: var(--space-8);
-        text-align: left;
+
+    .hero-sculpture-stage {
+        position: relative;
+        width: 100%;
+        max-width: 580px;
+        height: min(700px, 78vh);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--radius-xl);
+        background: radial-gradient(
+            circle at 50% 50%,
+            rgba(0, 116, 217, 0.09) 0%,
+            rgba(0, 116, 217, 0.02) 45%,
+            transparent 70%
+        );
+        border: none;
+        box-shadow: none;
+        overflow: visible;
     }
-    
-    .path-card {
+
+    .hero-sculpture-canvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    /* ========================================================================= */
+    /* CHAPTER 2: THE 5 PILLARS (COHERENT CARD SYSTEM)                           */
+    /* ========================================================================= */
+    .chapter-pillars {
+        background-color: transparent;
+    }
+
+    .pillars-layout {
         display: flex;
         flex-direction: column;
+        align-items: center;
+    }
+
+    /* 5-Column Equal Geometry Grid */
+    .pillars-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: var(--space-3);
+        width: 100%;
+        align-items: stretch;
+    }
+
+    .pillar-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        min-height: 370px;
+        background: #ffffff;
+        border: 1px solid rgba(0, 31, 63, 0.08);
+        border-top: 3px solid var(--pillar-accent, var(--color-brand-accent));
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        box-sizing: border-box;
+        text-decoration: none;
+        color: inherit;
+        box-shadow: 0 2px 10px rgba(0, 31, 63, 0.03);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .pillar-card:hover,
+    .pillar-card:focus-visible {
+        transform: translateY(-4px);
+        box-shadow: 0 14px 28px rgba(0, 31, 63, 0.07);
+        border-color: rgba(0, 31, 63, 0.16);
+    }
+
+    .pillar-card-header {
+        display: flex;
         justify-content: space-between;
-        padding: 0;
-        overflow: hidden;
-        border-top: 3px solid transparent;
-        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        align-items: center;
+        margin-bottom: var(--space-3);
+        height: 36px;
     }
-    
-    .path-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 24px rgba(0, 31, 63, 0.08);
-        border-top-color: var(--color-brand-accent);
-    }
-    
-    .path-card:nth-child(1) { border-top-color: var(--color-brand-primary); }
-    .path-card:nth-child(2) { border-top-color: var(--color-brand-accent); }
-    .path-card:nth-child(3) { border-top-color: var(--color-brand-purple); }
-    
-    .path-header {
-        padding: var(--space-4) var(--space-4) 0;
+
+    .pillar-card-meta {
         display: flex;
         align-items: center;
         gap: 8px;
-        margin-bottom: var(--space-2);
     }
-    
-    .path-num {
+
+    .pillar-num {
         font-family: var(--font-mono);
+        font-size: 0.8rem;
         font-weight: 800;
-        font-size: 1.125rem;
-        color: var(--color-brand-accent);
+        color: var(--pillar-accent, var(--color-brand-accent));
+        background: rgba(0, 31, 63, 0.04);
+        padding: 2px 7px;
+        border-radius: 4px;
     }
-    
-    .path-label {
-        font-size: 0.75rem;
+
+    .pillar-tag {
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
         font-weight: 700;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.06em;
         color: var(--color-text-muted);
     }
-    
-    .card-content {
-        padding: 0 var(--space-4);
+
+    .pillar-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 6px;
+        background: rgba(0, 31, 63, 0.03);
+        color: var(--pillar-accent, var(--color-brand-primary));
+    }
+
+    .pillar-title {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--color-brand-primary);
+        line-height: 1.3;
+        margin: 0 0 var(--space-2) 0;
+        min-height: 2.6em;
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .pillar-desc {
+        color: var(--color-text-muted);
+        font-size: 0.875rem;
+        line-height: 1.55;
+        margin: 0 0 var(--space-3) 0;
+        flex: 1 1 auto;
+    }
+
+    .pillar-outcome {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--color-bg-alt);
+        border: 1px solid rgba(0, 31, 63, 0.05);
+        border-radius: 6px;
+        padding: 6px 10px;
+        margin-bottom: var(--space-3);
+    }
+
+    .outcome-label {
+        font-family: var(--font-mono);
+        font-size: 0.6rem;
+        font-weight: 800;
+        color: var(--pillar-accent, var(--color-brand-accent));
+        letter-spacing: 0.04em;
+    }
+
+    .outcome-val {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--color-brand-primary);
+    }
+
+    .pillar-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: var(--space-2);
+        border-top: 1px solid rgba(0, 31, 63, 0.05);
+        margin-top: auto;
+    }
+
+    .pillar-link-text {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--pillar-accent, var(--color-brand-accent));
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .pillar-arrow {
+        color: var(--pillar-accent, var(--color-brand-accent));
+        font-weight: bold;
+        transition: transform 0.2s ease;
+    }
+
+    .pillar-card:hover .pillar-arrow {
+        transform: translateX(4px);
+    }
+
+    /* ========================================================================= */
+    /* CHAPTER 3: GUIDED ROADMAPS (STRUCTURED DOSSIER)                           */
+    /* ========================================================================= */
+    .chapter-guides {
+        background-color: transparent;
+    }
+
+    .guides-layout {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-8);
+    }
+
+    .chapter-header-box {
+        max-width: 360px;
+        flex-shrink: 0;
+    }
+
+    .guides-direct-link {
+        margin-top: var(--space-4);
+    }
+
+    .guides-dossier-track {
+        display: flex;
+        flex-direction: row;
+        gap: var(--space-4);
+        flex: 1;
+        justify-content: flex-end;
+    }
+
+    .guide-dossier-card {
+        width: 270px;
+        min-height: 350px;
+        flex-shrink: 0;
+        background: #ffffff;
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 0 2px 10px rgba(0, 31, 63, 0.03);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .guide-dossier-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 14px 28px rgba(0, 31, 63, 0.07);
+        border-color: var(--color-brand-accent);
+    }
+
+    .dossier-step-header {
+        padding: var(--space-3) var(--space-4);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--color-editorial-bg);
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .dossier-num {
+        font-family: var(--font-mono);
+        font-weight: 800;
+        font-size: 1rem;
+        color: var(--color-brand-accent);
+    }
+
+    .dossier-phase {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        color: var(--color-text-muted);
+    }
+
+    .dossier-body {
+        padding: var(--space-4);
         flex-grow: 1;
     }
-    
+
     .category-badge {
         display: inline-block;
-        font-size: 0.75rem;
+        font-size: 0.65rem;
         font-weight: 700;
         text-transform: uppercase;
         color: var(--color-brand-purple);
-        background: rgba(139, 92, 246, 0.1);
-        padding: 4px 10px;
-        border-radius: 20px;
-        margin-bottom: var(--space-3);
-    }
-    
-    .path-card h3 {
-        font-size: 1.25rem;
+        background: rgba(139, 92, 246, 0.08);
+        padding: 2px 8px;
+        border-radius: 12px;
         margin-bottom: var(--space-2);
-        line-height: 1.3;
     }
-    
-    .path-card h3 a {
+
+    .dossier-title {
+        font-size: 1.15rem;
+        margin-top: 0;
+        margin-bottom: var(--space-2);
+        line-height: 1.35;
+    }
+
+    .dossier-title a {
         color: var(--color-brand-primary);
+        text-decoration: none;
     }
-    
-    .path-card h3 a:hover {
+
+    .dossier-title a:hover {
         color: var(--color-brand-accent);
     }
-    
-    .path-card h3 a::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-    }
-    
-    .description {
-        font-size: 1rem;
+
+    .dossier-description {
+        font-size: 0.875rem;
         color: var(--color-text-muted);
+        line-height: 1.55;
+        margin: 0;
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
-    
-    .card-footer {
-        padding: var(--space-4);
-        margin-top: auto;
-    }
-    
-    .read-more-text {
-        font-weight: 600;
-        color: var(--color-brand-accent);
-        font-size: 0.875rem;
-        position: relative;
-        z-index: 2;
-        transition: transform 0.3s ease, color 0.3s ease;
-        display: inline-block;
-    }
-    
-    .path-card:hover .read-more-text {
-        color: var(--color-brand-primary);
-        transform: translateX(5px);
+
+    .dossier-footer {
+        padding: var(--space-3) var(--space-4);
+        border-top: 1px solid var(--color-border);
+        background: #ffffff;
     }
 
-    /* Methodology / Cycle */
-    .methodology {
-        padding: var(--space-8) 0;
-    }
-    
-    .cycle-container {
-        position: relative;
-        max-width: 1000px;
-        margin: var(--space-8) auto 0;
-        padding: var(--space-4) 0 var(--space-8);
-    }
-    
-    .cycle-track {
-        position: absolute;
-        top: 88px; /* 32px container pad + 32px step pad + 24px half circle */
-        left: 12.5%;
-        right: 12.5%;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, rgba(0, 116, 217, 0.3), transparent);
-        z-index: 1;
-    }
-    
-    .cycle-return {
-        position: absolute;
-        bottom: 20px;
-        left: 12.5%;
-        right: 12.5%;
-        height: 30px;
-        border: 2px dashed rgba(0, 116, 217, 0.3);
-        border-top: none;
-        border-radius: 0 0 20px 20px;
-        z-index: 1;
-    }
-    
-    .cycle-return::after {
-        content: "⟲ Repeat";
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 0.875rem;
+    .dossier-action-link {
+        font-size: 0.8rem;
         font-weight: 700;
-        color: rgba(0, 116, 217, 0.8);
-        background: var(--color-bg-alt);
-        padding: 0 16px;
+        color: var(--color-brand-accent);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: transform 0.2s ease;
     }
-    
-    .cycle-steps {
+
+    .dossier-action-link:hover {
+        transform: translateX(4px);
+    }
+
+    /* ========================================================================= */
+    /* CHAPTER 4: METHODOLOGY CYCLE (RHYTHM SPREAD)                              */
+    /* ========================================================================= */
+    .chapter-methodology {
+        background-color: transparent;
+    }
+
+    .methodology-layout {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .methodology-track-wrapper {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+    }
+
+    .methodology-connecting-line {
+        position: absolute;
+        top: 36px;
+        left: 60px;
+        right: 60px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.3), transparent);
+        z-index: 1;
+    }
+
+    .methodology-nodes-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: var(--space-4);
         position: relative;
         z-index: 2;
+        width: 100%;
     }
-    
-    .cycle-step {
-        text-align: center;
-        padding: var(--space-4) var(--space-3);
-        transition: transform 0.3s ease, background 0.3s ease;
-        border-radius: var(--radius-lg);
-        background: transparent;
-    }
-    
-    .cycle-step:hover {
-        transform: translateY(-5px);
+
+    .methodology-node-card {
         background: #ffffff;
-        box-shadow: 0 10px 20px rgba(0, 31, 63, 0.05);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        box-shadow: 0 2px 10px rgba(0, 31, 63, 0.03);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        display: flex;
+        flex-direction: column;
     }
-    
-    .cycle-num {
+
+    .methodology-node-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 14px 28px rgba(0, 31, 63, 0.07);
+        border-color: var(--color-brand-accent);
+    }
+
+    .node-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: var(--space-3);
+    }
+
+    .node-num {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--color-bg-alt);
+        border: 2px solid var(--color-brand-primary);
+        color: var(--color-brand-primary);
+        font-family: var(--font-mono);
+        font-weight: 800;
+        font-size: 0.9rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 48px;
-        height: 48px;
-        margin: 0 auto var(--space-4);
-        border-radius: 50%;
-        background: var(--color-bg-alt);
-        border: 2px solid #001F3F;
-        color: #001F3F;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+    }
+
+    .methodology-node-card:hover .node-num {
+        background: var(--color-brand-accent);
+        border-color: var(--color-brand-accent);
+        color: #ffffff;
+    }
+
+    .node-tag {
         font-family: var(--font-mono);
-        font-weight: 800;
-        font-size: 1.125rem;
-        transition: color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        font-size: 0.65rem;
+        font-weight: 700;
+        color: var(--color-brand-accent);
+        background: rgba(37, 99, 235, 0.06);
+        padding: 2px 6px;
+        border-radius: 4px;
     }
-    
-    .cycle-step:hover .cycle-num {
-        color: #0074D9;
-        border-color: #0074D9;
-        box-shadow: 0 0 15px rgba(0, 116, 217, 0.15);
-        background: #ffffff;
-    }
-    
-    .cycle-title {
+
+    .node-title {
         font-size: 1.25rem;
-        color: #001F3F;
+        margin-top: 0;
         margin-bottom: var(--space-2);
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
+        color: var(--color-brand-primary);
     }
-    
-    .cycle-text {
-        font-size: 0.95rem;
+
+    .node-desc {
+        font-size: 0.875rem;
         color: var(--color-text-muted);
-        line-height: 1.5;
+        line-height: 1.55;
         margin: 0;
     }
 
-    @media (max-width: 992px) {
-        .pillars-grid {
-            grid-template-columns: 1fr;
+    .cycle-return-banner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 8px 16px;
+        border: 1px dashed rgba(37, 99, 235, 0.3);
+        border-radius: 20px;
+        background: rgba(37, 99, 235, 0.04);
+        color: var(--color-brand-accent);
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        font-weight: 700;
+        margin-top: var(--space-2);
+    }
+
+    .return-icon {
+        font-size: 1rem;
+    }
+
+    /* ========================================================================= */
+    /* CHAPTER 5: THE LAUNCHPAD (EDGE-TO-EDGE CANVAS)                            */
+    /* ========================================================================= */
+    .chapter-cta {
+        background: transparent;
+        color: #0B1120;
+        border-right: none;
+    }
+
+    .cta-layout {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .cta-inner-card {
+        max-width: 640px;
+        text-align: center;
+        padding: 2.5rem 1.5rem;
+    }
+
+    .cta-main-title {
+        font-size: clamp(2.2rem, 3.8vw, 3.6rem);
+        font-weight: 800;
+        line-height: 1.12;
+        letter-spacing: -0.03em;
+        color: #ffffff;
+        margin-top: 0;
+        margin-bottom: var(--space-4);
+    }
+
+    .cta-main-desc {
+        font-size: 1.1rem;
+        color: var(--color-text-light);
+        line-height: 1.65;
+        margin: 0 auto var(--space-6) auto;
+        max-width: 500px;
+    }
+
+    .cta-action-wrap {
+        display: flex;
+        justify-content: center;
+        gap: var(--space-4);
+        margin-bottom: var(--space-6);
+        flex-wrap: wrap;
+    }
+
+    .btn-large {
+        padding: 13px 30px;
+        font-size: 1rem;
+        font-weight: 700;
+    }
+
+    .btn-dark-outline {
+        background: transparent;
+        color: #ffffff;
+        border: 2px solid rgba(255, 255, 255, 0.25);
+        border-radius: var(--radius-md);
+        padding: 13px 26px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.25s ease;
+    }
+
+    .btn-dark-outline:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: #ffffff;
+    }
+
+    .cta-directory {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: var(--space-4);
+    }
+
+    .directory-title {
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        color: rgba(255, 255, 255, 0.4);
+        margin-bottom: var(--space-2);
+    }
+
+    .directory-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: var(--space-3);
+        flex-wrap: wrap;
+    }
+
+    .directory-links a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: color 0.2s ease;
+    }
+
+    .directory-links a:hover {
+        color: #ffffff;
+    }
+
+    .dir-dot {
+        color: rgba(255, 255, 255, 0.25);
+    }
+
+    /* ========================================================================= */
+    /* FLOATING EDITORIAL TIMELINE DOCK (DESKTOP)                                */
+    /* ========================================================================= */
+    .editorial-dock {
+        position: fixed;
+        bottom: 1.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 90;
+        background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(0, 31, 63, 0.1);
+        border-radius: 36px;
+        padding: 6px 14px;
+        box-shadow: 0 10px 30px rgba(0, 31, 63, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+        max-width: 90vw;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .editorial-dock.dock-hidden {
+        opacity: 0;
+        transform: translate(-50%, 25px);
+        pointer-events: none;
+    }
+
+    .dock-container {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .dock-progress-rail {
+        height: 2px;
+        width: 100%;
+        background: rgba(0, 31, 63, 0.08);
+        border-radius: 2px;
+        overflow: hidden;
+    }
+
+    .dock-progress-indicator {
+        height: 100%;
+        width: 0%;
+        background: var(--gradient-accent);
+        border-radius: 2px;
+        transition: width 0.1s linear;
+    }
+
+    .dock-chapters-list {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        gap: 4px;
+    }
+
+    .dock-chapter-btn {
+        background: transparent;
+        border: none;
+        border-radius: 20px;
+        padding: 6px 12px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        outline: none;
+        color: var(--color-text-muted);
+    }
+
+    .dock-chapter-btn:hover {
+        background: rgba(37, 99, 235, 0.06);
+        color: var(--color-brand-accent);
+    }
+
+    .dock-chapter-btn.active {
+        background: var(--color-brand-primary);
+        color: #ffffff;
+        box-shadow: 0 2px 8px rgba(11, 17, 32, 0.2);
+    }
+
+    .dock-chap-num {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        font-weight: 800;
+        opacity: 0.8;
+    }
+
+    .dock-chapter-btn.active .dock-chap-num {
+        color: #60A5FA;
+    }
+
+    .dock-chap-label {
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+    }
+
+    /* ========================================================================= */
+    /* RESPONSIVE LAYOUT MODES: DESKTOP PANORAMA VS MOBILE VERTICAL EDITORIAL    */
+    /* ========================================================================= */
+
+    /* Desktop Panorama Mode (>= 768px) */
+    @media (min-width: 768px) {
+        /* Fixed Header eliminates any initial vertical document movement */
+        :global(body:has(#editorial-panorama-root) .site-header) {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.92) !important;
+            backdrop-filter: blur(14px) !important;
+            border-bottom: 1px solid rgba(0, 31, 63, 0.06) !important;
         }
-        .pillar-featured {
-            flex-direction: column;
-            align-items: stretch;
+
+        .panorama-viewport {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            container-type: inline-size;
         }
-        .pillar-featured .pillar-header {
-            flex-direction: row;
-            justify-content: space-between;
-            margin-bottom: var(--space-4);
-            gap: 0;
-        }
-        .pillar-featured .featured-content {
-            margin: 0 0 var(--space-4) 0;
-        }
-        .pillar-featured .pillar-footer {
-            align-self: flex-end;
-        }
-        
-        .path-grid {
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        }
-        
-        .cycle-track {
-            top: 70px; /* Adjust for padding on mobile */
-            bottom: 70px;
-            left: 56px; /* 32px step pad + 24px half circle */
-            right: auto;
-            width: 2px;
-            height: auto;
-            background: linear-gradient(180deg, transparent, rgba(0, 116, 217, 0.3), transparent);
-        }
-        
-        .cycle-return {
-            left: auto;
-            right: 0px;
-            top: 70px;
-            bottom: 70px;
-            width: 30px;
-            height: auto;
-            border: 2px dashed rgba(0, 116, 217, 0.3);
-            border-left: none;
-            border-radius: 0 20px 20px 0;
-        }
-        
-        .cycle-return::after {
-            top: 50%;
-            right: -10px;
-            left: auto;
-            bottom: auto;
-            transform: translateY(-50%) rotate(90deg);
-        }
-        
-        .cycle-steps {
-            grid-template-columns: 1fr;
-            gap: 0;
-        }
-        
-        .cycle-step {
+
+        .panorama-canvas {
+            position: relative;
+            z-index: 1;
             display: flex;
-            align-items: flex-start;
-            text-align: left;
-            padding: var(--space-4);
+            flex-direction: row;
+            height: 100%;
+            width: max-content;
+            will-change: transform;
         }
-        
-        .cycle-num {
-            margin: 0 var(--space-4) 0 0;
+
+        /* Every chapter occupies exactly one viewport width */
+        .chapter {
+            width: var(--chapter-width, 100cqw);
+            min-width: var(--chapter-width, 100cqw);
+            max-width: var(--chapter-width, 100cqw);
+            flex-basis: var(--chapter-width, 100cqw);
             flex-shrink: 0;
+            height: 100vh;
+            padding: 80px 2.5rem 40px;
+            box-sizing: border-box;
+            background: transparent;
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
         }
-        
-        .cycle-title {
-            margin-top: 8px;
-            margin-bottom: 4px;
+
+        /* ------------------------------------------------------------- */
+        /* Chapter 01: Hero (Midnight Navy Atmosphere)                   */
+        /* ------------------------------------------------------------- */
+        .chapter-hero {
+            background: transparent;
+        }
+
+        .chapter-hero .hero-title {
+            color: #FFFFFF;
+        }
+
+        .chapter-hero .text-gradient {
+            background: linear-gradient(135deg, #60A5FA 0%, #C084FC 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .chapter-hero .hero-desc {
+            color: #94A3B8;
+        }
+
+        .chapter-hero .chapter-badge {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.16);
+        }
+
+        .chapter-hero .badge-index {
+            color: #60A5FA;
+        }
+
+        .chapter-hero .badge-text {
+            color: #F8FAFC;
+        }
+
+        .chapter-hero .btn-primary {
+            background: #2563EB;
+            color: #FFFFFF;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+        }
+
+        .chapter-hero .btn-primary:hover {
+            background: #1D4ED8;
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+        }
+
+        .chapter-hero .btn-outline {
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            color: #FFFFFF;
+        }
+
+        .chapter-hero .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #FFFFFF;
+        }
+
+        .chapter-hero .hero-scroll-hint {
+            color: #60A5FA;
+        }
+
+        .chapter-hero .hero-sculpture-stage {
+            background: radial-gradient(
+                circle at 50% 50%,
+                rgba(37, 99, 235, 0.14) 0%,
+                rgba(37, 99, 235, 0.03) 50%,
+                transparent 70%
+            );
+        }
+
+        /* ------------------------------------------------------------- */
+        /* Chapter 02: Pillars (Deep Cobalt Atmosphere)                  */
+        /* ------------------------------------------------------------- */
+        .chapter-pillars {
+            background: transparent;
+        }
+
+        .chapter-pillars .chapter-heading {
+            color: #FFFFFF;
+        }
+
+        .chapter-pillars .chapter-summary {
+            color: #94A3B8;
+        }
+
+        .chapter-pillars .chapter-badge {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.16);
+        }
+
+        .chapter-pillars .badge-index {
+            color: #60A5FA;
+        }
+
+        .chapter-pillars .badge-text {
+            color: #F8FAFC;
+        }
+
+        .chapter-pillars .pillar-card {
+            background: #FFFFFF;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+        }
+
+        .chapter-pillars .pillar-card:hover,
+        .chapter-pillars .pillar-card:focus-visible {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.32);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* ------------------------------------------------------------- */
+        /* Chapter 03: Guided Roadmaps (Muted Blue Atmosphere)           */
+        /* ------------------------------------------------------------- */
+        .chapter-guides {
+            background: transparent;
+        }
+
+        .chapter-guides .chapter-heading {
+            color: #FFFFFF;
+        }
+
+        .chapter-guides .chapter-summary {
+            color: #CBD5E1;
+        }
+
+        .chapter-guides .chapter-badge {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.18);
+        }
+
+        .chapter-guides .badge-index {
+            color: #93C5FD;
+        }
+
+        .chapter-guides .badge-text {
+            color: #FFFFFF;
+        }
+
+        .chapter-guides .guides-direct-link .btn-outline {
+            border: 1.5px solid rgba(255, 255, 255, 0.35);
+            color: #FFFFFF;
+        }
+
+        .chapter-guides .guides-direct-link .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: #FFFFFF;
+        }
+
+        .chapter-guides .guide-dossier-card {
+            background: #FFFFFF;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+        }
+
+        /* ------------------------------------------------------------- */
+        /* Chapter 04: Execution Methodology (Pale Blue Atmosphere)      */
+        /* ------------------------------------------------------------- */
+        .chapter-methodology {
+            background: transparent;
+            border-right: 1px solid rgba(0, 31, 63, 0.08);
+        }
+
+        .chapter-methodology .chapter-heading {
+            color: #0B1120;
+        }
+
+        .chapter-methodology .chapter-summary {
+            color: #475569;
+        }
+
+        .chapter-methodology .chapter-badge {
+            background: rgba(37, 99, 235, 0.08);
+            border-color: rgba(37, 99, 235, 0.2);
+        }
+
+        .chapter-methodology .badge-index {
+            color: #2563EB;
+        }
+
+        .chapter-methodology .badge-text {
+            color: #0B1120;
+        }
+
+        .chapter-methodology .methodology-node-card {
+            background: #FFFFFF;
+            border: 1px solid rgba(37, 99, 235, 0.14);
+            box-shadow: 0 8px 24px rgba(16, 29, 54, 0.06);
+        }
+
+        .chapter-methodology .cycle-return-banner {
+            background: rgba(255, 255, 255, 0.85);
+            border-color: rgba(37, 99, 235, 0.35);
+            color: #1D4ED8;
+        }
+
+        /* ------------------------------------------------------------- */
+        /* Chapter 05: Destination Launchpad (Editorial Cream Atmosphere)*/
+        /* ------------------------------------------------------------- */
+        .chapter-cta {
+            background: transparent;
+            border-right: none;
+        }
+
+        .chapter-cta .chapter-badge {
+            background: rgba(11, 17, 32, 0.06);
+            border: 1px solid rgba(11, 17, 32, 0.14);
+        }
+
+        .chapter-cta .badge-index {
+            color: #2563EB;
+        }
+
+        .chapter-cta .badge-text {
+            color: #0B1120;
+        }
+
+        .chapter-cta .cta-main-title {
+            color: #0B1120;
+        }
+
+        .chapter-cta .cta-main-desc {
+            color: #475569;
+        }
+
+        .chapter-cta .btn-dark-outline {
+            background: transparent;
+            color: #0B1120;
+            border: 2px solid #0B1120;
+        }
+
+        .chapter-cta .btn-dark-outline:hover {
+            background: rgba(11, 17, 32, 0.06);
+            border-color: #0B1120;
+        }
+
+        .chapter-cta .cta-directory {
+            border-top: 1px solid rgba(11, 17, 32, 0.1);
+        }
+
+        .chapter-cta .directory-title {
+            color: #64748B;
+        }
+
+        .chapter-cta .directory-links a {
+            color: #0B1120;
+        }
+
+        .chapter-cta .directory-links a:hover {
+            color: #2563EB;
+        }
+
+        .chapter-cta .dir-dot {
+            color: #94A3B8;
         }
     }
 
-    @media (max-width: 768px) {
-        .hero {
-            padding: var(--space-8) 0 var(--space-8);
-            text-align: center;
+    /* Mobile Vertical Editorial Mode (< 768px) */
+    @media (max-width: 767px) {
+        .panorama-atmosphere {
+            display: none !important;
         }
-        .hero-container {
-            grid-template-columns: 1fr;
-            gap: var(--space-6);
+
+        .editorial-panorama-root {
+            height: auto !important;
         }
-        .hero h1 {
-            margin-left: auto;
-            margin-right: auto;
-            font-size: clamp(2rem, 8vw, 2.5rem);
+
+        .panorama-viewport {
+            position: static !important;
+            height: auto !important;
+            overflow: visible !important;
         }
-        .hero .subtitle {
-            margin-left: auto;
-            margin-right: auto;
+
+        .panorama-canvas {
+            display: block !important;
+            width: 100% !important;
+            transform: none !important;
         }
-        .cta-group {
-            justify-content: center;
-            flex-direction: column;
+
+        .chapter {
+            width: 100% !important;
+            min-width: 0 !important;
+            max-width: 100% !important;
+            height: auto !important;
+            padding: var(--space-8) var(--space-3) !important;
+            border-right: none !important;
         }
-        .cta-group .btn {
+
+        /* 01: Midnight Navy */
+        .chapter-hero {
+            background: #071A33 !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        }
+
+        .chapter-hero .hero-title {
+            color: #FFFFFF !important;
+        }
+
+        .chapter-hero .text-gradient {
+            background: linear-gradient(135deg, #60A5FA 0%, #C084FC 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+        }
+
+        .chapter-hero .hero-desc {
+            color: #94A3B8 !important;
+        }
+
+        .chapter-hero .chapter-badge {
+            background: rgba(255, 255, 255, 0.08) !important;
+            border: 1px solid rgba(255, 255, 255, 0.16) !important;
+        }
+
+        .chapter-hero .badge-index {
+            color: #60A5FA !important;
+        }
+
+        .chapter-hero .badge-text {
+            color: #F8FAFC !important;
+        }
+
+        .chapter-hero .btn-primary {
+            background: #2563EB !important;
+            color: #FFFFFF !important;
+        }
+
+        .chapter-hero .btn-outline {
+            border-color: rgba(255, 255, 255, 0.3) !important;
+            color: #FFFFFF !important;
+        }
+
+        .chapter-hero .hero-scroll-hint {
+            color: #60A5FA !important;
+        }
+
+        /* 02: Deep Cobalt */
+        .chapter-pillars {
+            background: #101F38 !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        }
+
+        .chapter-pillars .chapter-heading {
+            color: #FFFFFF !important;
+        }
+
+        .chapter-pillars .chapter-summary {
+            color: #94A3B8 !important;
+        }
+
+        .chapter-pillars .chapter-badge {
+            background: rgba(255, 255, 255, 0.08) !important;
+            border: 1px solid rgba(255, 255, 255, 0.16) !important;
+        }
+
+        .chapter-pillars .badge-index {
+            color: #60A5FA !important;
+        }
+
+        .chapter-pillars .badge-text {
+            color: #F8FAFC !important;
+        }
+
+        /* 03: Muted Blue */
+        .chapter-guides {
+            background: #2C4868 !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .chapter-guides .chapter-heading {
+            color: #FFFFFF !important;
+        }
+
+        .chapter-guides .chapter-summary {
+            color: #CBD5E1 !important;
+        }
+
+        .chapter-guides .chapter-badge {
+            background: rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid rgba(255, 255, 255, 0.18) !important;
+        }
+
+        .chapter-guides .badge-index {
+            color: #93C5FD !important;
+        }
+
+        .chapter-guides .badge-text {
+            color: #FFFFFF !important;
+        }
+
+        .chapter-guides .guides-direct-link .btn-outline {
+            border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+            color: #FFFFFF !important;
+        }
+
+        /* 04: Pale Blue */
+        .chapter-methodology {
+            background: #E2ECF7 !important;
+            border-bottom: 1px solid rgba(0, 31, 63, 0.08) !important;
+        }
+
+        .chapter-methodology .chapter-heading {
+            color: #0B1120 !important;
+        }
+
+        .chapter-methodology .chapter-summary {
+            color: #475569 !important;
+        }
+
+        .chapter-methodology .chapter-badge {
+            background: rgba(37, 99, 235, 0.08) !important;
+            border: 1px solid rgba(37, 99, 235, 0.2) !important;
+        }
+
+        .chapter-methodology .badge-index {
+            color: #2563EB !important;
+        }
+
+        .chapter-methodology .badge-text {
+            color: #0B1120 !important;
+        }
+
+        /* 05: Editorial Cream */
+        .chapter-cta {
+            background: #FBF9F4 !important;
+            border-bottom: none !important;
+        }
+
+        .chapter-cta .chapter-badge {
+            background: rgba(11, 17, 32, 0.06) !important;
+            border: 1px solid rgba(11, 17, 32, 0.14) !important;
+        }
+
+        .chapter-cta .badge-index {
+            color: #2563EB !important;
+        }
+
+        .chapter-cta .badge-text {
+            color: #0B1120 !important;
+        }
+
+        .chapter-cta .cta-main-title {
+            color: #0B1120 !important;
+        }
+
+        .chapter-cta .cta-main-desc {
+            color: #475569 !important;
+        }
+
+        .chapter-cta .btn-dark-outline {
+            background: transparent !important;
+            color: #0B1120 !important;
+            border: 2px solid #0B1120 !important;
+        }
+
+        .chapter-cta .cta-directory {
+            border-top: 1px solid rgba(11, 17, 32, 0.1) !important;
+        }
+
+        .chapter-cta .directory-title {
+            color: #64748B !important;
+        }
+
+        .chapter-cta .directory-links a {
+            color: #0B1120 !important;
+        }
+
+        .chapter-cta .dir-dot {
+            color: #94A3B8 !important;
+        }
+
+        .hero-layout,
+        .guides-layout {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            padding: 0 !important;
+            gap: var(--space-6) !important;
+        }
+
+        .hero-visual-card {
             width: 100%;
+            justify-content: center;
         }
-        .step-item:hover, .step-item.active-step {
-            transform: none;
+
+        .hero-sculpture-stage {
+            max-width: 340px;
+            width: 100%;
+            margin: 0 auto;
+            height: min(440px, 50vh);
+        }
+
+        .pillars-grid,
+        .guides-dossier-track,
+        .methodology-nodes-grid {
+            display: flex !important;
+            flex-direction: column !important;
+            width: 100% !important;
+            gap: var(--space-4) !important;
+        }
+
+        .pillar-card,
+        .guide-dossier-card,
+        .methodology-node-card {
+            width: 100% !important;
+            min-height: auto !important;
+        }
+
+        .methodology-connecting-line {
+            display: none !important;
+        }
+
+        .cta-inner-card {
+            padding: 2rem 0;
+        }
+
+        .cta-main-title {
+            font-size: 2.25rem;
+        }
+
+        .editorial-dock {
+            display: none !important;
+        }
+    }
+
+    /* ========================================================================= */
+    /* ACCESSIBILITY: REDUCED MOTION FALLBACK                                    */
+    /* ========================================================================= */
+    @media (prefers-reduced-motion: reduce) {
+        .panorama-atmosphere {
+            display: none !important;
+        }
+
+        .editorial-panorama-root {
+            height: auto !important;
+        }
+
+        .panorama-viewport {
+            position: static !important;
+            height: auto !important;
+            overflow: visible !important;
+        }
+
+        .panorama-canvas {
+            display: block !important;
+            width: 100% !important;
+            transform: none !important;
+        }
+
+        .chapter {
+            width: 100% !important;
+            min-width: 0 !important;
+            max-width: 100% !important;
+            height: auto !important;
+            padding: var(--space-8) var(--space-4) !important;
+            border-right: none !important;
+        }
+
+        .chapter-hero {
+            background: #071A33 !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        }
+
+        .chapter-hero .hero-title {
+            color: #FFFFFF !important;
+        }
+
+        .chapter-hero .hero-desc {
+            color: #94A3B8 !important;
+        }
+
+        .chapter-pillars {
+            background: #101F38 !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        }
+
+        .chapter-pillars .chapter-heading {
+            color: #FFFFFF !important;
+        }
+
+        .chapter-pillars .chapter-summary {
+            color: #94A3B8 !important;
+        }
+
+        .chapter-guides {
+            background: #2C4868 !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .chapter-guides .chapter-heading {
+            color: #FFFFFF !important;
+        }
+
+        .chapter-guides .chapter-summary {
+            color: #CBD5E1 !important;
+        }
+
+        .chapter-methodology {
+            background: #E2ECF7 !important;
+            border-bottom: 1px solid rgba(0, 31, 63, 0.08) !important;
+        }
+
+        .chapter-methodology .chapter-heading {
+            color: #0B1120 !important;
+        }
+
+        .chapter-methodology .chapter-summary {
+            color: #475569 !important;
+        }
+
+        .chapter-cta {
+            background: #FBF9F4 !important;
+            border-bottom: none !important;
+        }
+
+        .chapter-cta .cta-main-title {
+            color: #0B1120 !important;
+        }
+
+        .chapter-cta .cta-main-desc {
+            color: #475569 !important;
+        }
+
+        .editorial-dock {
+            display: none !important;
         }
     }
 </style>
