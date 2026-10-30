@@ -411,6 +411,16 @@ const chapters = [
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
         const MOBILE_BREAKPOINT = 768;
 
+        // Prevent browser from restoring stale intermediate vertical/horizontal scroll positions across reloads
+        if (typeof history !== 'undefined' && 'scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+
+        // Ensure horizontal track never drifts inside the viewport container
+        if (viewport.scrollLeft !== 0) {
+            viewport.scrollLeft = 0;
+        }
+
         function isPanoramaActive(): boolean {
             return window.innerWidth >= MOBILE_BREAKPOINT && !prefersReducedMotion.matches;
         }
@@ -478,15 +488,19 @@ const chapters = [
                 if (distWhite < 25) continue;
 
                 // Mark rich sapphire / dark facet pixels for component authentication
-                if ((sat >= 0.20 && blueDom >= 25) || (brightness < 165 && blueDom > 4)) {
+                if ((sat >= 0.20 && blueDom >= 25) || (brightness < 185 && blueDom > 4)) {
                     richSapphire[i] = 1;
                 }
 
-                // Studio floor shadow filter in lower quadrant (y > 720)
-                const isDarkStructure = brightness < 185 && blueDom > 3;
-                if (y > 720 && (sat < 0.14 || blueDom < 25) && minRGB > 185 && !isDarkStructure) {
+                // Studio floor shadow & reflection filter in lower quadrant (y >= 720)
+                // Isolates pale, low-chroma studio-floor reflections (brightness > 165, minRGB > 155, sat < 0.18)
+                // Genuine sapphire glass has higher saturation (sat >= 0.18) or structural facet refractions (brightness < 185).
+                const isPaleFloorReflect = y >= 720 && brightness > 165 && minRGB > 150 && sat < 0.32 && blueDom < 55;
+                if (isPaleFloorReflect) {
                     continue;
                 }
+
+                const isDarkStructure = brightness < 185 && blueDom > 3;
 
                 // 1. Dark refractions & structural facet lines
                 let darkGlassConf = 0;
@@ -642,12 +656,14 @@ const chapters = [
                         const dg = 255 - g;
                         const db = 255 - b;
                         const distWhite = Math.sqrt(dr * dr + dg * dg + db * db);
+                        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
 
-                        const isNeutralBg = distWhite < 25 || (minRGB > 210 && sat < 0.10) || blueDom < 6;
+                        const isPaleFloorReflect = y >= 720 && brightness > 165 && minRGB > 150 && sat < 0.32 && blueDom < 55;
+                        const isNeutralBg = distWhite < 30 || (minRGB > 195 && sat < 0.14) || blueDom < 8 || isPaleFloorReflect;
                         if (!isNeutralBg) {
-                            const satFactor = Math.min(1, Math.max(0, (sat - 0.06) / 0.18));
-                            const bdomFactor = Math.min(1, Math.max(0, (blueDom - 6) / 16));
-                            const whiteFactor = Math.min(1, Math.max(0, (distWhite - 22) / 30));
+                            const satFactor = Math.min(1, Math.max(0, (sat - 0.08) / 0.16));
+                            const bdomFactor = Math.min(1, Math.max(0, (blueDom - 8) / 14));
+                            const whiteFactor = Math.min(1, Math.max(0, (distWhite - 26) / 26));
                             const edgeRaw = satFactor * bdomFactor * whiteFactor;
                             const edgeSmooth = edgeRaw * edgeRaw * (3 - 2 * edgeRaw);
                             d[dataIdx + 3] = Math.round(edgeSmooth * 255);
@@ -694,7 +710,7 @@ const chapters = [
         }
 
         function renderSculpture(targetIndex: number, forceRedraw = false): void {
-            if (!sculptureCanvas || !sculptureStage) return;
+            if (!isPanoramaActive() || !sculptureCanvas || !sculptureStage) return;
             const ctx = sculptureCanvas.getContext('2d');
             if (!ctx) return;
 
@@ -740,21 +756,22 @@ const chapters = [
             let drawH: number;
 
             if (isMobile) {
-                // On mobile portrait, size relative to stage width so genuine glass occupies 55–70% of hero width
+                // On mobile portrait, size relative to stage width so genuine glass occupies 55–65% of hero width
                 // In frame 96, genuine glass pixels occupy 76.9% of crop width (526px / 684px)
-                // drawW at 86% of stage width yields ~66% glass presence in stage (~58-62% of mobile viewport)
-                drawW = Math.round(sculptureCanvas.width * 0.86);
+                // drawW at 88% of stage width yields ~67.7% of stage width (~59% of mobile viewport width)
+                drawW = Math.round(sculptureCanvas.width * 0.88);
                 drawH = Math.round(drawW / cropAspect);
 
-                // If stage height is constrained, ensure glass height does not exceed 90% of stage height
-                if (drawH * (662 / 1100) > sculptureCanvas.height * 0.90) {
-                    drawH = Math.round((sculptureCanvas.height * 0.90) / (662 / 1100));
+                // If stage height is constrained, ensure glass height does not exceed 92% of stage height
+                // Clean sapphire glass height in Frame 96 is 601px (y: 253 to 854)
+                if (drawH * (601 / 1100) > sculptureCanvas.height * 0.92) {
+                    drawH = Math.round((sculptureCanvas.height * 0.92) / (601 / 1100));
                     drawW = Math.round(drawH * cropAspect);
                 }
 
-                // Frame 96 glass center is at 53.1% of crop height (584 / 1100)
+                // Frame 96 clean glass vertical center is at 50.3% of crop height (553.5 / 1100)
                 // Center the actual glass geometry vertically and horizontally inside the canvas
-                const glassCenterY = drawH * (584 / 1100);
+                const glassCenterY = drawH * (553.5 / 1100);
                 const drawX = Math.round((sculptureCanvas.width - drawW) / 2);
                 const drawY = Math.round((sculptureCanvas.height / 2) - glassCenterY);
 
@@ -784,16 +801,16 @@ const chapters = [
         }
 
         function preloadAllFrames(): void {
-            const isDesktopMotion = isPanoramaActive();
-            const primaryIndex = isDesktopMotion ? 0 : TOTAL_FRAMES - 1;
+            if (!isPanoramaActive()) return;
+            const primaryIndex = 0;
 
-            // 1. Priority: Load the primary frame immediately
+            // 1. Priority: Load the primary initial frame immediately
             loadFrame(primaryIndex, () => {
                 renderSculpture(primaryIndex, true);
             });
 
             // 2. Also load the opposite boundary early
-            const secondaryIndex = isDesktopMotion ? TOTAL_FRAMES - 1 : 0;
+            const secondaryIndex = isPanoramaActive() ? TOTAL_FRAMES - 1 : 0;
             loadFrame(secondaryIndex, () => {
                 if (currentRequestedIndex === secondaryIndex) {
                     renderSculpture(secondaryIndex);
@@ -903,7 +920,9 @@ const chapters = [
         // Exact canvas travel calculated from the last chapter's offset
         function getCanvasTravel(): number {
             const lastChapter = chapters[chapters.length - 1];
-            return lastChapter ? lastChapter.offsetLeft : (chapters.length - 1) * viewport.clientWidth;
+            return lastChapter && lastChapter.offsetLeft > 0 
+                ? lastChapter.offsetLeft 
+                : (chapters.length - 1) * viewport.clientWidth;
         }
 
         function calculateDimensions(): void {
@@ -912,12 +931,16 @@ const chapters = [
                 root.style.removeProperty('--chapter-width');
                 canvas.style.transform = '';
                 if (dock) dock.classList.remove('dock-hidden');
-                renderSculpture(TOTAL_FRAMES - 1, true);
                 return;
             }
 
             const chapterWidth = viewport.clientWidth;
             root.style.setProperty('--chapter-width', `${chapterWidth}px`);
+
+            // Guarantee viewport container never retains a horizontal scroll offset
+            if (viewport.scrollLeft !== 0) {
+                viewport.scrollLeft = 0;
+            }
 
             // Exactly 1 viewport of vertical scroll runway per chapter transition
             const totalRunway = (chapters.length - 1) * window.innerHeight;
@@ -930,8 +953,12 @@ const chapters = [
 
         function updateScroll(): void {
             if (!isPanoramaActive()) {
-                renderSculpture(TOTAL_FRAMES - 1);
                 return;
+            }
+
+            // Lock viewport container horizontal offset strictly to 0
+            if (viewport.scrollLeft !== 0) {
+                viewport.scrollLeft = 0;
             }
 
             const rect = root.getBoundingClientRect();
@@ -939,13 +966,17 @@ const chapters = [
             if (maxScroll <= 0) return;
 
             // Progress from 0.0 (entry) to 1.0 (terminal chapter)
-            const scrolled = -rect.top;
+            const scrolled = Math.max(0, -rect.top);
             const progress = Math.max(0, Math.min(1, scrolled / maxScroll));
 
             // Smooth horizontal translation tied 1:1 to viewport width
             const totalTravel = getCanvasTravel();
             const currentTranslate = progress * totalTravel;
-            canvas.style.transform = `translate3d(-${currentTranslate.toFixed(2)}px, 0, 0)`;
+            if (progress <= 0 || scrolled <= 0) {
+                canvas.style.transform = 'translate3d(0, 0, 0)';
+            } else {
+                canvas.style.transform = `translate3d(-${currentTranslate.toFixed(2)}px, 0, 0)`;
+            }
 
             // Update scroll-reactive atmospheric background
             updateAtmosphere(progress);
@@ -1047,6 +1078,13 @@ const chapters = [
             }
         }, { passive: true });
 
+        // Guarantee viewport container never retains a horizontal scroll offset
+        viewport.addEventListener('scroll', () => {
+            if (viewport.scrollLeft !== 0) {
+                viewport.scrollLeft = 0;
+            }
+        }, { passive: true });
+
         // Tab focus auto-scroll to focused chapter
         chapters.forEach((chapter, idx) => {
             chapter.addEventListener('focusin', () => {
@@ -1060,6 +1098,9 @@ const chapters = [
         window.addEventListener('resize', () => {
             calculateDimensions();
             updateScroll();
+            if (isPanoramaActive()) {
+                preloadAllFrames();
+            }
         }, { passive: true });
 
         window.addEventListener('scroll', onScroll, { passive: true });
@@ -1069,10 +1110,29 @@ const chapters = [
             updateScroll();
         });
 
-        // Initial setup
+        // Initial setup: ensure clean origin state at Chapter 01
+        viewport.scrollLeft = 0;
+        const hasChapterHash = window.location.hash && document.querySelector(window.location.hash);
+        if (!hasChapterHash && window.scrollY !== 0) {
+            window.scrollTo(0, 0);
+        }
         calculateDimensions();
         updateScroll();
-        preloadAllFrames();
+        if (isPanoramaActive()) {
+            preloadAllFrames();
+        }
+
+        // Handle page restorations and back/forward navigation
+        window.addEventListener('pageshow', (event) => {
+            if (event.persisted || !window.location.hash) {
+                if (!window.location.hash && window.scrollY !== 0) {
+                    window.scrollTo(0, 0);
+                }
+                viewport.scrollLeft = 0;
+                calculateDimensions();
+                updateScroll();
+            }
+        });
     }
 
     function init(): void {
@@ -1577,7 +1637,6 @@ const chapters = [
         box-shadow: 0 2px 10px rgba(0, 31, 63, 0.03);
         transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     }
-
     .guide-dossier-card:hover {
         transform: translateY(-4px);
         box-shadow: 0 14px 28px rgba(0, 31, 63, 0.07);
@@ -2319,6 +2378,12 @@ const chapters = [
 
     /* Mobile Vertical Editorial Mode (< 768px) */
     @media (max-width: 767px) {
+        :global(html),
+        :global(body) {
+            overflow-x: hidden !important;
+            max-width: 100vw !important;
+        }
+
         .panorama-atmosphere {
             display: none !important;
         }
@@ -2357,7 +2422,7 @@ const chapters = [
             overflow-x: hidden !important;
         }
 
-        /* 01: Midnight Navy Hero Mobile Composition */
+        /* 01: Midnight Navy Hero Mobile Composition (Centered Editorial) */
         .chapter-hero {
             background: #071A33 !important;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
@@ -2366,9 +2431,10 @@ const chapters = [
             box-sizing: border-box !important;
             overflow: hidden !important;
             position: relative !important;
-            padding: var(--space-4) var(--space-3) var(--space-5) !important;
+            padding: var(--space-8) var(--space-3) !important;
             min-height: calc(100svh - 60px) !important;
             display: flex !important;
+            flex-direction: column !important;
             align-items: center !important;
             justify-content: center !important;
         }
@@ -2380,23 +2446,35 @@ const chapters = [
         .hero-layout {
             display: flex !important;
             flex-direction: column !important;
-            align-items: flex-start !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
             padding: 0 !important;
-            gap: var(--space-3) !important;
+            gap: 0 !important;
             width: 100% !important;
-            max-width: 100% !important;
+            max-width: 520px !important;
+            margin: 0 auto !important;
         }
 
         .hero-lead {
             width: 100% !important;
             max-width: 100% !important;
             flex: none !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+            margin: 0 auto !important;
         }
 
         .chapter-hero .chapter-badge {
             background: rgba(255, 255, 255, 0.08) !important;
             border: 1px solid rgba(255, 255, 255, 0.16) !important;
-            margin-bottom: var(--space-2) !important;
+            margin: 0 auto var(--space-3) auto !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            align-self: center !important;
         }
 
         .chapter-hero .badge-index {
@@ -2409,10 +2487,13 @@ const chapters = [
 
         .chapter-hero .hero-title {
             color: #FFFFFF !important;
-            font-size: clamp(2rem, 6.8vw, 2.5rem) !important;
-            line-height: 1.12 !important;
+            font-size: clamp(1.9rem, 6.5vw, 2.45rem) !important;
+            line-height: 1.14 !important;
             letter-spacing: -0.03em !important;
-            margin-bottom: var(--space-2) !important;
+            text-align: center !important;
+            margin: 0 auto var(--space-3) auto !important;
+            max-width: 16ch !important;
+            width: 100% !important;
         }
 
         .chapter-hero .text-gradient {
@@ -2426,16 +2507,20 @@ const chapters = [
             color: #94A3B8 !important;
             font-size: 0.95rem !important;
             line-height: 1.55 !important;
-            margin-bottom: var(--space-3) !important;
-            max-width: 100% !important;
+            text-align: center !important;
+            margin: 0 auto var(--space-4) auto !important;
+            max-width: 380px !important;
+            width: 100% !important;
         }
 
         .chapter-hero .hero-cta-group {
             display: flex !important;
             flex-direction: row !important;
+            justify-content: center !important;
+            align-items: center !important;
             flex-wrap: wrap !important;
             gap: 12px !important;
-            margin-bottom: var(--space-3) !important;
+            margin: 0 auto var(--space-4) auto !important;
             width: 100% !important;
         }
 
@@ -2445,6 +2530,8 @@ const chapters = [
             padding: 10px 22px !important;
             font-size: 0.95rem !important;
             white-space: nowrap !important;
+            text-align: center !important;
+            justify-content: center !important;
         }
 
         .chapter-hero .btn-outline {
@@ -2453,53 +2540,27 @@ const chapters = [
             padding: 10px 22px !important;
             font-size: 0.95rem !important;
             white-space: nowrap !important;
+            text-align: center !important;
+            justify-content: center !important;
         }
 
         .chapter-hero .hero-scroll-hint {
             display: inline-flex !important;
             align-items: center !important;
+            justify-content: center !important;
             gap: 8px !important;
             font-size: 0.75rem !important;
             font-weight: 600 !important;
             letter-spacing: 0.06em !important;
             text-transform: uppercase !important;
-            margin-bottom: 0 !important;
+            margin: 0 auto !important;
             color: #60A5FA !important;
+            text-align: center !important;
+            align-self: center !important;
         }
 
         .hero-visual-card {
-            width: 100% !important;
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-            flex: none !important;
-            margin: 0 !important;
-            padding: 0 !important;
-        }
-
-        .hero-sculpture-stage {
-            position: relative !important;
-            width: 100% !important;
-            max-width: min(360px, 88vw) !important;
-            height: min(320px, 38vh) !important;
-            margin: 0 auto !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            background: radial-gradient(
-                circle at 50% 50%,
-                rgba(37, 99, 235, 0.16) 0%,
-                rgba(37, 99, 235, 0.04) 50%,
-                transparent 72%
-            ) !important;
-            border-radius: var(--radius-xl) !important;
-            overflow: visible !important;
-        }
-
-        .hero-sculpture-canvas {
-            width: 100% !important;
-            height: 100% !important;
-            display: block !important;
+            display: none !important;
         }
 
         /* 02: Deep Cobalt */
