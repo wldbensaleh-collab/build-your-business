@@ -1,5 +1,7 @@
 ---
 title: "How to Validate a Business Idea Before You Waste Your Time and Money"
+seoTitle: "How to Validate a Business Idea"
+seoDescription: "Learn how to test your business idea before investing time and money. Run cheap real-world experiments, verify customer demand, and check your unit economics."
 description: "Learn how to practically test your business idea with real customers and basic financial analysis to ensure it is viable before you invest."
 pubDate: 2026-10-08
 author: "Build Your Business Team"
@@ -8,8 +10,6 @@ tags: ["validation", "basics", "getting started"]
 draft: false
 ---
 
-# How to Validate a Business Idea Before You Waste Your Time and Money
-
 <div class="editorial-intro">
 <span class="intro-label">Introduction</span>
 
@@ -17,7 +17,7 @@ Before spending months building a product or putting your savings at risk, you m
 
 The goal of validation is not to achieve guaranteed certainty—in early-stage business, certainty does not exist. Instead, validation systematically reduces uncertainty so you can make an informed decision to **GO**, **PIVOT**, or **STOP** before committing serious time and capital.
 
-In this guide, you will learn how to test an idea using cheap real-world experiments and basic unit economics—bridging the gap between [finding an initial idea](/blog/how-to-find-a-business-idea) and writing an executable [simple business plan](/blog/how-to-write-a-business-plan).
+In this guide, you will learn how to test an idea using cheap real-world experiments and basic unit economics—bridging the gap between [finding an initial idea](/blog/how-to-find-a-business-idea/) and writing an executable [simple business plan](/blog/how-to-write-a-business-plan/).
 </div>
 
 ## The Validation Framework: From Idea to Evidence
@@ -189,7 +189,7 @@ Validation produces evidence. A business plan organizes that evidence into an ex
 
 **Business Idea → Validation Experiment → Simple Business Plan**
 
-Once small-scale experiments confirm that buyers will pay and that your unit economics leave a healthy contribution margin, transfer those facts directly into a [simple business plan](/blog/how-to-write-a-business-plan) covering the 9 operational essentials:
+Once small-scale experiments confirm that buyers will pay and that your unit economics leave a healthy contribution margin, transfer those facts directly into a [simple business plan](/blog/how-to-write-a-business-plan/) covering the 9 operational essentials:
 
 | Business Plan Element | What to Define |
 | :--- | :--- |
@@ -229,4 +229,4 @@ Before spending money on tools, inventory, or branding, check off each item:
 - [ ] **Collect Real Commitments:** Secured pre-orders, deposits, or advance payments rather than polite compliments.
 - [ ] **Make the Decision:** Chose a clear **GO**, **PIVOT**, or **STOP** based on real buyer behavior.
 
-If your validation test succeeds, you have verified demand with real cash. You are ready to turn your evidence into an operating roadmap with our guide to [How to Write a Simple Business Plan](/blog/how-to-write-a-business-plan). If you need an idea to validate first, start with [How to Find a Business Idea](/blog/how-to-find-a-business-idea).
+If your validation test succeeds, you have verified demand with real cash. You are ready to turn your evidence into an operating roadmap with our guide to [How to Write a Simple Business Plan](/blog/how-to-write-a-business-plan/). If you need an idea to validate first, start with [How to Find a Business Idea](/blog/how-to-find-a-business-idea/).

@@ -107,11 +107,14 @@ if (currentStep) {
         };
     }
 }
+const rawTitle = entry.data.seoTitle || entry.data.title;
+const pageTitle = `${rawTitle} | Build Your Business`;
+const pageDescription = entry.data.seoDescription || entry.data.description;
 ---
 
 <Layout 
-    title={`${entry.data.title} | Build Your Business`} 
-    description={entry.data.description}
+    title={pageTitle} 
+    description={pageDescription}
     ogType="article"
     articleMetadata={{
         publishedTime: entry.data.pubDate.toISOString(),
@@ -126,7 +129,7 @@ if (currentStep) {
         <header class="article-hero">
             <div class="article-container reveal">
                 <div class="back-link">
-                    <a href="/blog">
+                    <a href="/blog/">
                         <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
                         Back to Insights
                     </a>

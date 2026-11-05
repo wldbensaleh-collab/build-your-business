@@ -27,7 +27,7 @@ const pillars = [
         number: '01',
         title: 'Business Fundamentals',
         description: 'Understand how businesses make money, select viable models, price offers, and build solid foundations.',
-        href: '/guides',
+        href: '/guides/',
         tag: 'FOUNDATION',
         outcome: 'Core Business Model',
         borderColor: 'var(--color-brand-primary)',
@@ -37,7 +37,7 @@ const pillars = [
         number: '02',
         title: 'Starting a Business',
         description: 'Go from an initial idea to customer validation, your first offer, and your first paying customer.',
-        href: '/guides',
+        href: '/guides/',
         tag: 'VALIDATION',
         outcome: 'First Paying Customer',
         borderColor: 'var(--color-brand-accent)',
@@ -47,7 +47,7 @@ const pillars = [
         number: '03',
         title: 'Making Money',
         description: 'Learn practical ways to earn through high-value skills, pricing, and recurring revenue streams.',
-        href: '/blog',
+        href: '/blog/',
         tag: 'REVENUE',
         outcome: 'Predictable Cash Flow',
         borderColor: 'var(--color-success)',
@@ -57,7 +57,7 @@ const pillars = [
         number: '04',
         title: 'Business Management & Systems',
         description: 'Build reliable processes, automation, measurable workflows, and scalable operations.',
-        href: '/guides',
+        href: '/guides/',
         tag: 'OPERATIONS',
         outcome: 'Scalable Systems',
         borderColor: 'var(--color-brand-purple)',
@@ -67,7 +67,7 @@ const pillars = [
         number: '05',
         title: 'Growing a Business',
         description: 'Learn modern marketing, sales, customer acquisition, retention, and sustainable scaling.',
-        href: '/blog',
+        href: '/blog/',
         tag: 'SCALING',
         outcome: 'Compounding Growth',
         borderColor: 'var(--color-warning)',
@@ -112,8 +112,8 @@ const chapters = [
 ---
 
 <Layout 
-    title="Build Your Business | Start Lean, Grow Smart" 
-    description="Practical guidance on building, managing, and growing a business using strategy, systems, technology, and practical execution."
+    title="Build Your Business | Practical Startup Guides & Frameworks" 
+    description="Practical guidance to help you start lean and grow a real business. Explore structured guides, core business frameworks, and step-by-step execution playbooks."
 >
     <div class="editorial-panorama-root" id="editorial-panorama-root">
         
@@ -151,8 +151,8 @@ const chapters = [
                                 Cut through the noise. Get practical guidance on building, managing, and growing a profitable business through systems, execution, and strategy.
                             </p>
                             <div class="hero-cta-group">
-                                <a href="/blog" class="btn btn-primary">Start Here</a>
-                                <a href="/guides" class="btn btn-outline">Explore Guides</a>
+                                <a href="/blog/" class="btn btn-primary">Start Here</a>
+                                <a href="/guides/" class="btn btn-outline">Explore Guides</a>
                             </div>
                             
                             <div class="hero-scroll-hint" aria-hidden="true">
@@ -241,7 +241,7 @@ const chapters = [
                                 Practical, sequential guides to take you from a raw concept to an offer you can test with real customers.
                             </p>
                             <div class="guides-direct-link">
-                                <a href="/blog" class="btn btn-outline">View All Articles &rarr;</a>
+                                <a href="/blog/" class="btn btn-outline">View All Articles &rarr;</a>
                             </div>
                         </div>
 
@@ -256,12 +256,12 @@ const chapters = [
                                     <div class="dossier-body">
                                         <span class="category-badge">{post.data.category}</span>
                                         <h3 class="dossier-title">
-                                            <a href={`/blog/${post.id}`}>{post.data.title}</a>
+                                            <a href={`/blog/${post.id}/`}>{post.data.title}</a>
                                         </h3>
                                         <p class="dossier-description">{post.data.description}</p>
                                     </div>
                                     <div class="dossier-footer">
-                                        <a href={`/blog/${post.id}`} class="dossier-action-link">
+                                        <a href={`/blog/${post.id}/`} class="dossier-action-link">
                                             <span>Read Guide</span>
                                             <span class="action-arrow">&rarr;</span>
                                         </a>
@@ -332,21 +332,21 @@ const chapters = [
                                 Cut through the noise. Get actionable strategy, systems, and execution frameworks to build a profitable, sustainable business.
                             </p>
                             <div class="cta-action-wrap">
-                                <a href="/blog" class="btn btn-accent btn-large">Start Exploring</a>
-                                <a href="/guides" class="btn btn-dark-outline">Read Core Guides</a>
+                                <a href="/blog/" class="btn btn-accent btn-large">Start Exploring</a>
+                                <a href="/guides/" class="btn btn-dark-outline">Read Core Guides</a>
                             </div>
 
                             <!-- Integrated Quick Directory -->
                             <div class="cta-directory">
                                 <div class="directory-title">DIRECTORY</div>
                                 <div class="directory-links">
-                                    <a href="/blog">All Articles</a>
+                                    <a href="/blog/">All Articles</a>
                                     <span class="dir-dot">&bull;</span>
-                                    <a href="/guides">Structured Guides</a>
+                                    <a href="/guides/">Structured Guides</a>
                                     <span class="dir-dot">&bull;</span>
-                                    <a href="/resources">Tools & Resources</a>
+                                    <a href="/resources/">Tools & Resources</a>
                                     <span class="dir-dot">&bull;</span>
-                                    <a href="/about">About BYB</a>
+                                    <a href="/about/">About BYB</a>
                                 </div>
                             </div>
                         </div>

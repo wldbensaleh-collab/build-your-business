@@ -1,78 +1,152 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
 
-const allPosts = await getCollection('blog', ({ data }) => {
+const allPosts = await getCollection("blog", ({ data }) => {
     return data.draft !== true;
 });
 
 allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-const featuredSlug = 'how-to-start-a-business-with-no-money';
-const featuredPost = allPosts.find(post => post.id === featuredSlug);
-const regularPosts = allPosts.filter(post => post.id !== featuredSlug);
+const featuredSlug = "how-to-start-a-business-with-no-money";
+const featuredPost = allPosts.find((post) => post.id === featuredSlug);
+const regularPosts = allPosts.filter((post) => post.id !== featuredSlug);
 ---
 
-<Layout title="Business Insights | Build Your Business" description="Practical guidance on starting, managing, and growing a business.">
+<Layout
+    title="Business Guides & Articles | Build Your Business"
+    description="Explore practical business guides and articles on starting lean, generating ideas, validating customer demand, and writing a simple business plan."
+>
     <div class="blog-index">
         <header class="page-header">
             <div class="hero-bg-glow"></div>
             <div class="container">
                 <span class="eyebrow">BUSINESS INSIGHTS</span>
                 <h1>Business Insights</h1>
-                <p>Practical guidance on starting, managing, and growing a successful business.</p>
+                <p>
+                    Practical guidance on starting, managing, and growing a
+                    successful business.
+                </p>
             </div>
         </header>
 
         <section class="post-feed">
             <div class="container">
-                {featuredPost && (
-                    <div class="featured-section">
-                        <span class="featured-label">START HERE</span>
-                        <article class="featured-card">
-                            <div class="featured-content">
-                                <h2><a href={`/blog/${featuredPost.id}`}>{featuredPost.data.title}</a></h2>
-                                <p class="featured-description">{featuredPost.data.description}</p>
-                                <a href={`/blog/${featuredPost.id}`} class="read-article featured-cta" aria-label={`Read ${featuredPost.data.title}`}>
-                                    Read the guide
-                                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                                </a>
-                            </div>
-                        </article>
-                    </div>
-                )}
-                
-                <div class="post-grid">
-                    {regularPosts.map((post) => (
-                        <article class="article-card">
-                            <div class="card-content">
-                                <div class="card-meta">
-                                    <span class="category-badge">{post.data.category || 'Business'}</span>
-                                    <time datetime={post.data.pubDate.toISOString()}>
-                                        {post.data.pubDate.toLocaleDateString('en-US', {
-                                            month: 'short',
-                                            day: 'numeric',
-                                            year: 'numeric'
-                                        })}
-                                    </time>
+                {
+                    featuredPost && (
+                        <div class="featured-section">
+                            <span class="featured-label">START HERE</span>
+                            <article class="featured-card">
+                                <div class="featured-content">
+                                    <h2>
+                                        <a href={`/blog/${featuredPost.id}/`}>
+                                            {featuredPost.data.title}
+                                        </a>
+                                    </h2>
+                                    <p class="featured-description">
+                                        {featuredPost.data.description}
+                                    </p>
+                                    <a
+                                        href={`/blog/${featuredPost.id}/`}
+                                        class="read-article featured-cta"
+                                        aria-label={`Read ${featuredPost.data.title}`}
+                                    >
+                                        Read the guide
+                                        <svg
+                                            viewBox="0 0 24 24"
+                                            width="16"
+                                            height="16"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            fill="none"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <>
+                                                <line
+                                                    x1="5"
+                                                    y1="12"
+                                                    x2="19"
+                                                    y2="12"
+                                                />
+                                                <polyline points="12 5 19 12 12 19" />
+                                            </>
+                                        </svg>
+                                    </a>
                                 </div>
-                                <h2><a href={`/blog/${post.id}`}>{post.data.title}</a></h2>
-                                <p class="description">{post.data.description}</p>
-                            </div>
-                            <div class="card-footer">
-                                <a href={`/blog/${post.id}`} class="read-article" aria-label={`Read ${post.data.title}`}>
-                                    Read Article
-                                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                                </a>
-                            </div>
-                        </article>
-                    ))}
+                            </article>
+                        </div>
+                    )
+                }
+
+                <div class="post-grid">
+                    {
+                        regularPosts.map((post) => (
+                            <article class="article-card">
+                                <div class="card-content">
+                                    <div class="card-meta">
+                                        <span class="category-badge">
+                                            {post.data.category || "Business"}
+                                        </span>
+                                        <time
+                                            datetime={post.data.pubDate.toISOString()}
+                                        >
+                                            {post.data.pubDate.toLocaleDateString(
+                                                "en-US",
+                                                {
+                                                    month: "short",
+                                                    day: "numeric",
+                                                    year: "numeric",
+                                                },
+                                            )}
+                                        </time>
+                                    </div>
+                                    <h2>
+                                        <a href={`/blog/${post.id}/`}>
+                                            {post.data.title}
+                                        </a>
+                                    </h2>
+                                    <p class="description">
+                                        {post.data.description}
+                                    </p>
+                                </div>
+                                <div class="card-footer">
+                                    <a
+                                        href={`/blog/${post.id}/`}
+                                        class="read-article"
+                                        aria-label={`Read ${post.data.title}`}
+                                    >
+                                        Read Article
+                                        <svg
+                                            viewBox="0 0 24 24"
+                                            width="16"
+                                            height="16"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            fill="none"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <>
+                                                <line
+                                                    x1="5"
+                                                    y1="12"
+                                                    x2="19"
+                                                    y2="12"
+                                                />
+                                                <polyline points="12 5 19 12 12 19" />
+                                            </>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </article>
+                        ))
+                    }
                 </div>
             </div>
         </section>
     </div>
 </Layout>
-
 
 <style>
     .container {
@@ -80,31 +154,35 @@ const regularPosts = allPosts.filter(post => post.id !== featuredSlug);
         margin: 0 auto;
         padding: 0 var(--space-3);
     }
-    
+
     .blog-index {
         background-color: var(--color-bg-alt);
         min-height: 100vh;
         position: relative;
     }
-    
+
     .page-header {
         position: relative;
         padding: var(--space-16) 0 var(--space-12);
         border-bottom: 1px solid var(--color-border);
         overflow: hidden;
     }
-    
+
     .hero-bg-glow {
         position: absolute;
         top: -50%;
         left: 0;
         width: 800px;
         height: 800px;
-        background: radial-gradient(circle, rgba(0, 116, 217, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+        background: radial-gradient(
+            circle,
+            rgba(0, 116, 217, 0.05) 0%,
+            rgba(255, 255, 255, 0) 70%
+        );
         pointer-events: none;
         z-index: 0;
     }
-    
+
     .page-header .container {
         position: relative;
         z-index: 1;
@@ -118,14 +196,14 @@ const regularPosts = allPosts.filter(post => post.id !== featuredSlug);
         letter-spacing: 0.1em;
         margin-bottom: var(--space-3);
     }
-    
+
     .page-header h1 {
         color: var(--color-brand-primary);
         font-size: clamp(2.5rem, 4vw, 3.5rem);
         letter-spacing: -0.02em;
         margin-bottom: var(--space-4);
     }
-    
+
     .page-header p {
         font-size: 1.25rem;
         color: var(--color-text-muted);
@@ -133,11 +211,11 @@ const regularPosts = allPosts.filter(post => post.id !== featuredSlug);
         line-height: 1.6;
         margin: 0;
     }
-    
+
     .post-feed {
         padding: var(--space-8) 0 var(--space-16);
     }
-    
+
     .post-grid {
         display: grid;
         grid-template-columns: 1fr;
@@ -145,33 +223,50 @@ const regularPosts = allPosts.filter(post => post.id !== featuredSlug);
         max-width: 1200px;
         margin: 0 auto;
     }
-    
+
     @media (min-width: 768px) {
         .post-grid {
             grid-template-columns: repeat(2, 1fr);
         }
     }
-    
+
+    @media (min-width: 1024px) {
+        .post-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-4);
+        }
+    }
+
+    @media (min-width: 1280px) {
+        .post-grid {
+            gap: var(--space-6);
+        }
+    }
+
     .article-card {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         height: 100%;
-        max-width: 560px;
         padding: 32px;
         background: #ffffff;
         border: 1px solid rgba(0, 0, 0, 0.06);
         border-radius: 20px;
         position: relative;
-        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease,
+            border-color 0.2s ease;
     }
-    
+
     .article-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 12px 24px -8px rgba(0, 31, 63, 0.08), 0 4px 8px -4px rgba(0, 31, 63, 0.04);
+        box-shadow:
+            0 12px 24px -8px rgba(0, 31, 63, 0.08),
+            0 4px 8px -4px rgba(0, 31, 63, 0.04);
         border-color: rgba(0, 116, 217, 0.2);
     }
-    
+
     .card-meta {
         display: flex;
         justify-content: space-between;
@@ -182,7 +277,7 @@ const regularPosts = allPosts.filter(post => post.id !== featuredSlug);
         font-size: 0.875rem;
         color: var(--color-text-light);
     }
-    
+
     .category-badge {
         font-weight: 700;
         text-transform: uppercase;
@@ -190,24 +285,24 @@ const regularPosts = allPosts.filter(post => post.id !== featuredSlug);
         letter-spacing: 0.05em;
         font-size: 0.75rem;
     }
-    
+
     .article-card h2 {
         font-size: 1.5rem;
         line-height: 1.3;
         margin-bottom: var(--space-3);
     }
-    
+
     .article-card h2 a {
         color: var(--color-brand-primary);
     }
-    
+
     .article-card h2 a::before {
         content: "";
         position: absolute;
         inset: 0;
         z-index: 1;
     }
-    
+
     .description {
         font-size: 1.05rem;
         color: var(--color-text-muted);
@@ -217,13 +312,13 @@ const regularPosts = allPosts.filter(post => post.id !== featuredSlug);
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
-    
+
     .card-footer {
         margin-top: var(--space-6);
         padding-top: var(--space-4);
         border-top: 1px solid var(--color-border);
     }
-    
+
     .read-article {
         display: flex;
         align-items: center;
@@ -235,19 +330,19 @@ const regularPosts = allPosts.filter(post => post.id !== featuredSlug);
         transition: color 0.2s ease;
         text-decoration: none;
     }
-    
+
     .read-article svg {
         transition: transform 0.2s ease;
     }
-    
+
     .article-card:hover .read-article {
         color: var(--color-brand-primary);
     }
-    
+
     .article-card:hover .read-article svg {
         transform: translateX(4px);
     }
-    
+
     @media (max-width: 768px) {
         .page-header {
             padding: var(--space-12) 0 var(--space-8);
@@ -264,7 +359,7 @@ const regularPosts = allPosts.filter(post => post.id !== featuredSlug);
     .featured-section {
         margin-bottom: var(--space-12);
     }
-    
+
     .featured-label {
         display: inline-block;
         font-size: 0.75rem;
@@ -274,7 +369,7 @@ const regularPosts = allPosts.filter(post => post.id !== featuredSlug);
         color: var(--color-brand-accent);
         margin-bottom: var(--space-4);
     }
-    
+
     .featured-card {
         background: rgba(0, 31, 63, 0.03);
         border: 1px solid rgba(0, 31, 63, 0.08);
@@ -282,15 +377,18 @@ const regularPosts = allPosts.filter(post => post.id !== featuredSlug);
         border-radius: 20px;
         padding: var(--space-8);
         position: relative;
-        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease,
+            border-color 0.2s ease;
     }
-    
+
     .featured-card:hover {
         transform: translateY(-3px);
         box-shadow: var(--shadow-sm);
         border-color: rgba(0, 116, 217, 0.2);
     }
-    
+
     .featured-card h2 {
         font-size: clamp(1.75rem, 3vw, 2.25rem);
         color: var(--color-brand-primary);
@@ -298,19 +396,19 @@ const regularPosts = allPosts.filter(post => post.id !== featuredSlug);
         margin-bottom: var(--space-4);
         font-weight: 800;
     }
-    
+
     .featured-card h2 a {
         color: inherit;
         text-decoration: none;
     }
-    
+
     .featured-card h2 a::before {
         content: "";
         position: absolute;
         inset: 0;
         z-index: 1;
     }
-    
+
     .featured-description {
         font-size: clamp(1.15rem, 2.5vw, 1.35rem);
         color: var(--color-text-muted);
@@ -318,15 +416,14 @@ const regularPosts = allPosts.filter(post => post.id !== featuredSlug);
         margin-bottom: var(--space-6);
         max-width: 800px;
     }
-    
+
     .featured-cta {
         font-size: 1.05rem;
     }
-    
+
     @media (max-width: 768px) {
         .featured-card {
             padding: var(--space-6);
         }
     }
 </style>
-

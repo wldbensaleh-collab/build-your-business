@@ -5,17 +5,17 @@ const currentYear = new Date().getFullYear();
     <div class="container">
         <div class="footer-content">
             <div class="brand-info">
-                <h2>Build Your Business</h2>
+                <div class="brand-title">Build Your Business</div>
                 <p>Learn how to build, manage, and grow a successful business from the ground up.</p>
             </div>
             <div class="footer-links">
                 <nav aria-label="Footer Navigation">
                     <ul>
                         <li><a href="/">Home</a></li>
-                        <li><a href="/blog">Blog</a></li>
-                        <li><a href="/guides">Guides</a></li>
-                        <li><a href="/resources">Resources</a></li>
-                        <li><a href="/about">About</a></li>
+                        <li><a href="/blog/">Articles</a></li>
+                        <li><a href="/guides/">Guides</a></li>
+                        <li><a href="/resources/">Resources</a></li>
+                        <li><a href="/about/">About</a></li>
                     </ul>
                 </nav>
             </div>
@@ -48,11 +48,18 @@ const currentYear = new Date().getFullYear();
     .brand-info {
         max-width: 400px;
     }
-    .brand-info h2 {
+    .brand-info .brand-title {
         font-size: 1.25rem;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
         margin-top: 0;
         margin-bottom: 0.5rem;
         color: #111827;
+    }
+
+    :global(body:has(#editorial-panorama-root) .site-footer .brand-info .brand-title) {
+        color: #FFFFFF !important;
     }
     .brand-info p {
         color: #6b7280;

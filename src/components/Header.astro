@@ -2,16 +2,18 @@
 const pathname = Astro.url.pathname;
 
 const links = [
-    { label: 'Articles', href: '/blog' },
-    { label: 'Guides', href: '/guides' },
-    { label: 'Resources', href: '/resources' },
-    { label: 'About', href: '/about' }
+    { label: 'Articles', href: '/blog/' },
+    { label: 'Guides', href: '/guides/' },
+    { label: 'Resources', href: '/resources/' },
+    { label: 'About', href: '/about/' }
 ];
 
 // Helper to check if a link is active
 const isActive = (href) => {
-    if (href === '/') return pathname === '/';
-    return pathname.startsWith(href);
+    if (href === '/') return pathname === '/' || pathname === '';
+    const normalizedPath = pathname.endsWith('/') ? pathname : pathname + '/';
+    const normalizedHref = href.endsWith('/') ? href : href + '/';
+    return normalizedPath.startsWith(normalizedHref);
 };
 ---
 <header class="site-header" id="main-header">
@@ -34,7 +36,7 @@ const isActive = (href) => {
                 ))}
             </ul>
             <div class="header-cta">
-                <a href="/blog" class="btn btn-primary">Start Learning</a>
+                <a href="/blog/" class="btn btn-primary">Start Learning</a>
             </div>
         </nav>
 

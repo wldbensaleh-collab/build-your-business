@@ -1,5 +1,7 @@
 ---
 title: "How to Find a Business Idea (Without Waiting for a \"Lightbulb\" Moment)"
+seoTitle: "How to Find a Business Idea That Works"
+seoDescription: "Stop waiting for inspiration. Learn a practical process to identify real customer problems, evaluate market demand, and monetize your existing skills."
 description: "Stop waiting for the perfect \"million-dollar idea.\" Learn a practical, repeatable process for finding and evaluating realistic business opportunities based on skills and market needs."
 pubDate: 2026-10-06
 author: "Build Your Business Team"
@@ -7,8 +9,6 @@ category: "Starting a Business"
 tags: ["ideation", "basics", "getting started"]
 draft: false
 ---
-
-# How to Find a Business Idea (Without Waiting for a "Lightbulb" Moment)
 
 <div class="editorial-intro">
 <span class="intro-label">Introduction</span>
@@ -41,7 +41,7 @@ You do not need to invent a new category. Use these three frameworks to find val
 ### 1. Monetize Your Existing Skills
 * **What it means:** Package a skill you already use in your job or hobbies into a direct service.
 * **Example:** A corporate accountant starts a bookkeeping service focused exclusively on digital marketing agencies.
-* **Action:** List 3 tasks you perform easily at work that non-technical people or business owners struggle with. If you are starting with zero capital, review our guide on [how to start a business with no money](/blog/how-to-start-a-business-with-no-money).
+* **Action:** List 3 tasks you perform easily at work that non-technical people or business owners struggle with. If you are starting with zero capital, review our guide on [how to start a business with no money](/blog/how-to-start-a-business-with-no-money/).
 
 ### 2. Scratch Your Own Itch
 * **What it means:** Build a solution for a friction you personally experience, where existing tools fall short.
@@ -91,5 +91,5 @@ Competition proves that paying customers exist. You do not need to invent an unp
 An idea written in a notebook is simply an unverified hypothesis. It only becomes a business when real customers agree to pay for it.
 
 Once you have identified a promising problem, proceed immediately to testing customer demand:
-* Read [How to Validate a Business Idea](/blog/how-to-validate-a-business-idea) to run simple, low-cost experiments before investing your savings.
-* If your idea requires zero startup capital, review [How to Start a Business With No Money](/blog/how-to-start-a-business-with-no-money) to start with sweat equity.
+* Read [How to Validate a Business Idea](/blog/how-to-validate-a-business-idea/) to run simple, low-cost experiments before investing your savings.
+* If your idea requires zero startup capital, review [How to Start a Business With No Money](/blog/how-to-start-a-business-with-no-money/) to start with sweat equity.

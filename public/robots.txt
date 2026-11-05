@@ -1,2 +1,5 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://build-your-business.pages.dev/sitemap-index.xml
+
