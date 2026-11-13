@@ -17,7 +17,7 @@ interface Props {
         author?: string;
         section?: string;
     };
-    schema?: string;
+    schema?: string | Record<string, any>;
 }
 
 const DEFAULT_IMAGE = '/brand/build-your-business-og.png';
@@ -44,6 +44,7 @@ const resolvedAlt = imageAlt || (isDefaultImage ? DEFAULT_IMAGE_ALT : `${title} 
 const resolvedType = imageType || (image.endsWith('.svg') ? 'image/svg+xml' : image.endsWith('.webp') ? 'image/webp' : (image.endsWith('.jpg') || image.endsWith('.jpeg')) ? 'image/jpeg' : 'image/png');
 const resolvedWidth = imageWidth || (isDefaultImage ? '1200' : undefined);
 const resolvedHeight = imageHeight || (isDefaultImage ? '630' : undefined);
+const serializedSchema = typeof schema === 'object' ? JSON.stringify(schema) : schema;
 ---
 
 <!doctype html>
@@ -85,7 +86,7 @@ const resolvedHeight = imageHeight || (isDefaultImage ? '630' : undefined);
 
         <link rel="icon" type="image/png" href="/brand/build-your-business-favicon.png" />
         
-        {schema && <script type="application/ld+json" set:html={schema} />}
+        {serializedSchema && <script type="application/ld+json" set:html={serializedSchema} />}
         <!-- MailerLite Universal -->
         <script is:inline>
             (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])

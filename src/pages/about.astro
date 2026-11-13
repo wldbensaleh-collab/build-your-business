@@ -1,10 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getAboutPageSchema } from '../utils/structuredData';
+
+const pageSchema = getAboutPageSchema();
 ---
 
 <Layout 
     title="About Build Your Business | Practical Business Guidance" 
     description="Learn about Build Your Business: our mission to provide practical, evidence-based business guidance without the get-rich-quick hype or academic theory."
+    schema={pageSchema}
 >
     <div class="about-page">
         <!-- 1. HERO SECTION -->

@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import { getBlogIndexSchema } from "../../utils/structuredData";
 
 const allPosts = await getCollection("blog", ({ data }) => {
     return data.draft !== true;
@@ -11,11 +12,13 @@ allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const featuredSlug = "how-to-start-a-business-with-no-money";
 const featuredPost = allPosts.find((post) => post.id === featuredSlug);
 const regularPosts = allPosts.filter((post) => post.id !== featuredSlug);
+const pageSchema = getBlogIndexSchema(allPosts);
 ---
 
 <Layout
     title="Business Guides & Articles | Build Your Business"
     description="Explore practical business guides and articles on starting lean, generating ideas, validating customer demand, and writing a simple business plan."
+    schema={pageSchema}
 >
     <div class="blog-index">
         <header class="page-header">

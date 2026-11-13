@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import { getGuidesPageSchema } from '../utils/structuredData';
 
 const allPosts = await getCollection('blog', ({ data }) => {
     return data.draft !== true;
@@ -45,11 +46,14 @@ const stepsWithPosts = foundationSteps.map(item => {
         post
     };
 });
+
+const pageSchema = getGuidesPageSchema();
 ---
 
 <Layout 
     title="Practical Business Guides | Build Your Business" 
     description="Follow our structured, step-by-step business guides. Learn the sequential path from finding an idea and validating demand to planning and launching lean."
+    schema={pageSchema}
 >
     <div class="guides-page">
         <!-- 1. HERO SECTION -->

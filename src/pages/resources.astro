@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getResourcesPageSchema } from '../utils/structuredData';
 
 const businessFrameworks = [
     {
@@ -96,11 +97,14 @@ const startingSteps = [
         url: "/blog/how-to-start-a-business-with-no-money/"
     }
 ];
+
+const pageSchema = getResourcesPageSchema();
 ---
 
 <Layout 
     title="Business Frameworks & Toolkits | Build Your Business" 
     description="Curated business frameworks, mental models, and working tools. Learn how to validate customer demand, structure business models, and plan daily operations."
+    schema={pageSchema}
 >
     <div class="resources-page">
         <!-- 1. HERO SECTION -->

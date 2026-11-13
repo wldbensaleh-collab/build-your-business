@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { getHomepageSchema } from '../utils/structuredData';
 
 const allPosts = await getCollection('blog', ({ data }) => {
     return data.draft !== true;
@@ -109,11 +110,14 @@ const chapters = [
     { id: 'chapter-methodology', label: 'Methodology', shortNum: '04' },
     { id: 'chapter-cta', label: 'Launch', shortNum: '05' }
 ];
+
+const pageSchema = getHomepageSchema();
 ---
 
 <Layout 
     title="Build Your Business | Practical Startup Guides & Frameworks" 
     description="Practical guidance to help you start lean and grow a real business. Explore structured guides, core business frameworks, and step-by-step execution playbooks."
+    schema={pageSchema}
 >
     <div class="editorial-panorama-root" id="editorial-panorama-root">
         
