@@ -8,6 +8,10 @@ interface Props {
     description?: string;
     ogType?: string;
     image?: string;
+    imageAlt?: string;
+    imageWidth?: number | string;
+    imageHeight?: number | string;
+    imageType?: string;
     articleMetadata?: {
         publishedTime?: string;
         author?: string;
@@ -16,17 +20,30 @@ interface Props {
     schema?: string;
 }
 
+const DEFAULT_IMAGE = '/brand/build-your-business-og.png';
+const DEFAULT_IMAGE_ALT = 'Build Your Business — Systems & Playbooks: A practical business architecture from first idea to scalable enterprise across five core pillars: Understand, Validate, Earn, Operate, and Scale.';
+
 const {
     title = 'Build Your Business',
     description = 'Learn how to build, manage, and grow a business.',
     ogType = 'website',
-    image = '/brand/build-your-business-og.svg',
+    image = DEFAULT_IMAGE,
+    imageAlt,
+    imageWidth,
+    imageHeight,
+    imageType,
     articleMetadata,
     schema,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url);
 const socialImageURL = new URL(image, Astro.site || Astro.url);
+
+const isDefaultImage = image === DEFAULT_IMAGE;
+const resolvedAlt = imageAlt || (isDefaultImage ? DEFAULT_IMAGE_ALT : `${title} | Build Your Business`);
+const resolvedType = imageType || (image.endsWith('.svg') ? 'image/svg+xml' : image.endsWith('.webp') ? 'image/webp' : (image.endsWith('.jpg') || image.endsWith('.jpeg')) ? 'image/jpeg' : 'image/png');
+const resolvedWidth = imageWidth || (isDefaultImage ? '1200' : undefined);
+const resolvedHeight = imageHeight || (isDefaultImage ? '630' : undefined);
 ---
 
 <!doctype html>
@@ -46,6 +63,11 @@ const socialImageURL = new URL(image, Astro.site || Astro.url);
         <meta property="og:type" content={ogType} />
         <meta property="og:url" content={canonicalURL} />
         <meta property="og:image" content={socialImageURL} />
+        <meta property="og:image:secure_url" content={socialImageURL} />
+        <meta property="og:image:type" content={resolvedType} />
+        {resolvedWidth && <meta property="og:image:width" content={String(resolvedWidth)} />}
+        {resolvedHeight && <meta property="og:image:height" content={String(resolvedHeight)} />}
+        <meta property="og:image:alt" content={resolvedAlt} />
         
         {ogType === 'article' && articleMetadata && (
             <>
@@ -59,12 +81,13 @@ const socialImageURL = new URL(image, Astro.site || Astro.url);
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={socialImageURL} />
+        <meta name="twitter:image:alt" content={resolvedAlt} />
 
         <link rel="icon" type="image/png" href="/brand/build-your-business-favicon.png" />
         
         {schema && <script type="application/ld+json" set:html={schema} />}
         <!-- MailerLite Universal -->
-        <script>
+        <script is:inline>
             (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
             .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
             n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})

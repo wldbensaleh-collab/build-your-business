@@ -116,6 +116,8 @@ const pageDescription = entry.data.seoDescription || entry.data.description;
     title={pageTitle} 
     description={pageDescription}
     ogType="article"
+    image={entry.data.image}
+    imageAlt={entry.data.imageAlt}
     articleMetadata={{
         publishedTime: entry.data.pubDate.toISOString(),
         author: entry.data.author,
