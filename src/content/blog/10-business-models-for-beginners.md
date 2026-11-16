@@ -7,7 +7,7 @@ pubDate: 2026-11-16
 author: "Build Your Business Team"
 category: "Business Fundamentals"
 tags: ["business models", "basics", "getting started", "strategy"]
-draft: true
+draft: false
 ---
 
 <div class="editorial-intro">
