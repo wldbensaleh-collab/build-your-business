@@ -4,7 +4,7 @@ import { getCollection } from "astro:content";
 import { getBlogIndexSchema } from "../../utils/structuredData";
 
 const allPosts = await getCollection("blog", ({ data }) => {
-    return data.draft !== true;
+    return !import.meta.env.PROD || !data.draft;
 });
 
 allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
